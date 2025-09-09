@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZERL'N - Premium Clothing Brand</title>
+    <link rel="stylesheet" href="sty6le.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Loading Screen with Wooden Door Animation -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="wooden-door">
+            <div class="door-left">
+                <div class="door-handle"></div>
+            </div>
+            <div class="door-right">
+                <div class="door-handle"></div>
+            </div>
+        </div>
+        <div class="loading-text">ZERL'N</div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <!-- Logo -->
+            <div class="nav-logo">
+                <img src="https://images.pexels.com/photos/1148820/pexels-photo-1148820.jpeg?auto=compress&cs=tinysrgb&w=50&h=50&fit=crop" alt="ZERL'N Logo" class="logo-img">
+                <span class="logo-text">ZERL'N</span>
+            </div>
+
+            <!-- Desktop Navigation -->
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item">
+                    <a href="#" class="nav-link active" onclick="showPage('home')">
+                        <span data-en="Home" data-ur="گھر">Home</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" onclick="showPage('products')">
+                        <span data-en="Products" data-ur="مصنوعات">Products</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" onclick="showPage('services')">
+                        <span data-en="Services" data-ur="خدمات">Services</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" onclick="showPage('contact')">
+                        <span data-en="Contact" data-ur="رابطہ">Contact</span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- Right Side Icons -->
+            <div class="nav-right">
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Search products..." id="searchInput">
+                    <i class="fas fa-search search-icon"></i>
+                </div>
+                
+                <button class="settings-btn" onclick="toggleSettings()">
+                    <i class="fas fa-cog"></i>
+                </button>
+                
+                <button class="cart-btn" onclick="showPage('cart')">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+                
+                <button class="login-btn" onclick="showPage('login')">
+                    <i class="fas fa-user"></i>
+                    <span data-en="Login" data-ur="لاگ ان">Login</span>
+                </button>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <div class="hamburger" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+
+        <!-- Settings Panel -->
+        <div class="settings-panel" id="settingsPanel">
+            <h3>Settings</h3>
+            <div class="setting-item">
+                <label>Theme:</label>
+                <button class="theme-toggle" onclick="toggleTheme()">
+                    <i class="fas fa-moon" id="themeIcon"></i>
+                </button>
+            </div>
+            <div class="setting-item">
+                <label>Language:</label>
+                <select onchange="changeLanguage(this.value)" id="languageSelect">
+                    <option value="en">English</option>
+                    <option value="ur">اردو</option>
+                </select>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Bottom Navigation -->
+    <div class="bottom-nav" id="bottomNav">
+        <button onclick="showPage('home')" class="bottom-nav-btn active">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </button>
+        <button onclick="showPage('products')" class="bottom-nav-btn">
+            <i class="fas fa-shopping-bag"></i>
+            <span>Shop</span>
+        </button>
+        <button onclick="showPage('cart')" class="bottom-nav-btn">
+            <i class="fas fa-shopping-cart"></i>
+            <span>Cart</span>
+        </button>
+        <button onclick="showPage('profile')" class="bottom-nav-btn">
+            <i class="fas fa-user"></i>
+            <span>Profile</span>
+        </button>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Home Page -->
+        <div id="homePage" class="page active">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="hero-slider" id="heroSlider">
+                    <div class="slide active">
+                        <img src="https://images.pexels.com/photos/996329/pexels-photo-996329.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop" alt="Fashion Collection">
+                        <div class="slide-content">
+                            <h1>Premium Fashion Collection</h1>
+                            <p>Discover the latest trends in fashion</p>
+                            <button class="cta-btn" onclick="showPage('products')">Shop Now</button>
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <img src="https://images.pexels.com/photos/1040945/pexels-photo-1040945.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop" alt="Men's Fashion">
+                        <div class="slide-content">
+                            <h1>Men's Fashion</h1>
+                            <p>Stylish and comfortable clothing</p>
+                            <button class="cta-btn" onclick="showPage('products')">Explore</button>
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <img src="https://images.pexels.com/photos/1549200/pexels-photo-1549200.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop" alt="Women's Fashion">
+                        <div class="slide-content">
+                            <h1>Women's Collection</h1>
+                            <p>Elegant and trendy designs</p>
+                            <button class="cta-btn" onclick="showPage('products')">Shop Women</button>
+                        </div>
+                    </div>
+                </div>
+                <button class="slider-btn prev" onclick="prevSlide()">‹</button>
+                <button class="slider-btn next" onclick="nextSlide()">›</button>
+            </section>
+
+            <!-- Featured Categories -->
+            <section class="categories">
+                <h2>Shop by Category</h2>
+                <div class="category-grid">
+                    <div class="category-card" onclick="filterProducts('men')">
+                        <img src="https://images.pexels.com/photos/1040945/pexels-photo-1040945.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" alt="Men's Clothing">
+                        <h3>Men's Fashion</h3>
+                    </div>
+                    <div class="category-card" onclick="filterProducts('women')">
+                        <img src="https://images.pexels.com/photos/1549200/pexels-photo-1549200.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" alt="Women's Clothing">
+                        <h3>Women's Fashion</h3>
+                    </div>
+                    <div class="category-card" onclick="filterProducts('accessories')">
+                        <img src="https://images.pexels.com/photos/1152077/pexels-photo-1152077.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" alt="Accessories">
+                        <h3>Accessories</h3>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Featured Products -->
+            <section class="featured-products">
+                <h2>Featured Products</h2>
+                <div class="products-grid" id="featuredProducts">
+                    <!-- Products will be loaded dynamically -->
+                </div>
+            </section>
+
+            <!-- Customer Reviews -->
+            <section class="reviews">
+                <h2>What Our Customers Say</h2>
+                <div class="reviews-container" id="reviewsContainer">
+                    <!-- Reviews will be loaded dynamically -->
+                </div>
+            </section>
+        </div>
+
+        <!-- Products Page -->
+        <div id="productsPage" class="page">
+            <div class="products-header">
+                <h1>Our Products</h1>
+                <div class="filters">
+                    <select id="categoryFilter" onchange="applyFilters()">
+                        <option value="">All Categories</option>
+                        <option value="men">Men's Fashion</option>
+                        <option value="women">Women's Fashion</option>
+                        <option value="accessories">Accessories</option>
+                    </select>
+                    <select id="priceFilter" onchange="applyFilters()">
+                        <option value="">All Prices</option>
+                        <option value="low">Low to High</option>
+                        <option value="high">High to Low</option>
+                    </select>
+                    <select id="stockFilter" onchange="applyFilters()">
+                        <option value="">All Stock</option>
+                        <option value="instock">In Stock</option>
+                        <option value="outstock">Out of Stock</option>
+                    </select>
+                </div>
+            </div>
+            <div class="products-grid" id="allProducts">
+                <!-- Products will be loaded dynamically -->
+            </div>
+        </div>
+
+        <!-- Product Detail Page -->
+        <div id="productDetailPage" class="page">
+            <div class="product-detail" id="productDetail">
+                <!-- Product details will be loaded dynamically -->
+            </div>
+        </div>
+
+        <!-- Cart Page -->
+        <div id="cartPage" class="page">
+            <div class="cart-container">
+                <h1>Shopping Cart</h1>
+                <div class="cart-content" id="cartContent">
+                    <!-- Cart items will be loaded dynamically -->
+                </div>
+                <div class="cart-summary" id="cartSummary">
+                    <!-- Cart summary will be loaded dynamically -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Login/Signup Page -->
+        <div id="loginPage" class="page">
+            <div class="auth-container">
+                <div class="auth-tabs">
+                    <button class="auth-tab active" onclick="switchAuthTab('login')">Login</button>
+                    <button class="auth-tab" onclick="switchAuthTab('signup')">Sign Up</button>
+                </div>
+                
+                <!-- Login Form -->
+                <form id="loginForm" class="auth-form active">
+                    <h2>Login to Your Account</h2>
+                    <div class="form-group">
+                        <input type="email" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" placeholder="Password" required>
+                    </div>
+                    <button type="submit" class="auth-btn">Login</button>
+                    <button type="button" class="google-btn" onclick="googleSignIn()">
+                        <i class="fab fa-google"></i> Sign in with Google
+                    </button>
+                </form>
+
+                <!-- Signup Form -->
+                <form id="signupForm" class="auth-form">
+                    <h2>Create Account</h2>
+                    <div class="form-group">
+                        <input type="text" placeholder="Full Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" placeholder="Password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="profilePhoto">Profile Photo:</label>
+                        <input type="file" id="profilePhoto" accept="image/*">
+                    </div>
+                    <button type="submit" class="auth-btn">Sign Up</button>
+                    <button type="button" class="google-btn" onclick="googleSignIn()">
+                        <i class="fab fa-google"></i> Sign up with Google
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Profile Page -->
+        <div id="profilePage" class="page">
+            <div class="profile-container" id="profileContainer">
+                <!-- Profile content will be loaded dynamically -->
+            </div>
+        </div>
+
+        <!-- Services Page -->
+        <div id="servicesPage" class="page">
+            <div class="services-container">
+                <h1>Our Services</h1>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <i class="fas fa-shipping-fast"></i>
+                        <h3>Fast Delivery</h3>
+                        <p>Quick and reliable delivery across Pakistan</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-undo"></i>
+                        <h3>Easy Returns</h3>
+                        <p>30-day return policy for your convenience</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-headset"></i>
+                        <h3>24/7 Support</h3>
+                        <p>Round the clock customer support</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Secure Payment</h3>
+                        <p>Safe and secure payment methods</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Page -->
+        <div id="contactPage" class="page">
+            <div class="contact-container">
+                <h1>Contact Us</h1>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h3>Get in Touch</h3>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Lahore, Pakistan</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+92 300 1234567</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>info@zerln.com</span>
+                        </div>
+                        <div class="social-links">
+                            <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+                            <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                            <a href="#" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-group">
+                            <input type="text" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" placeholder="Phone Number">
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Your Message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="contact-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Checkout Page -->
+        <div id="checkoutPage" class="page">
+            <div class="checkout-container">
+                <h1>Checkout</h1>
+                <form class="checkout-form" id="checkoutForm">
+                    <div class="checkout-section">
+                        <h3>Delivery Information</h3>
+                        <div class="form-group">
+                            <input type="text" placeholder="Full Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" placeholder="Phone Number" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="City" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Complete Address" rows="3" required></textarea>
+                        </div>
+                    </div>
+                    
+                    <div class="checkout-section">
+                        <h3>Payment Method</h3>
+                        <div class="payment-options">
+                            <label><input type="radio" name="payment" value="cod" checked> Cash on Delivery</label>
+                            <label><input type="radio" name="payment" value="card"> Credit/Debit Card</label>
+                            <label><input type="radio" name="payment" value="bank"> Bank Transfer</label>
+                        </div>
+                    </div>
+                    
+                    <div class="order-summary" id="orderSummary">
+                        <!-- Order summary will be loaded dynamically -->
+                    </div>
+                    
+                    <button type="submit" class="place-order-btn">Place Order</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore-compat.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="firebase.js"></script>
+    <script src="product.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
