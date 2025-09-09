@@ -27,7 +27,7 @@
         <div class="nav-container">
             <!-- Logo -->
             <div class="nav-logo">
-                <img src="https://images.pexels.com/photos/1148820/pexels-photo-1148820.jpeg?auto=compress&cs=tinysrgb&w=50&h=50&fit=crop" alt="ZERL'N Logo" class="logo-img">
+                <img src="logo.png" alt="ZERL'N Logo" class="logo-img">
                 <span class="logo-text">ZERL'N</span>
             </div>
 
@@ -53,7 +53,11 @@
                         <span data-en="Contact" data-ur="رابطہ">Contact</span>
                     </a>
                 </li>
+                  <button class="settings-btn1" onclick="toggleSettings()">
+                    <i class="fas fa-cog"></i>
+                </button>
             </ul>
+            
 
             <!-- Right Side Icons -->
             <div class="nav-right">
@@ -62,7 +66,7 @@
                     <i class="fas fa-search search-icon"></i>
                 </div>
                 
-                <button class="settings-btn" onclick="toggleSettings()">
+           <button class="settings-btn" onclick="toggleSettings()">
                     <i class="fas fa-cog"></i>
                 </button>
                 
@@ -134,7 +138,7 @@
                     <div class="slide active">
                         <img src="https://images.pexels.com/photos/996329/pexels-photo-996329.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop" alt="Fashion Collection">
                         <div class="slide-content">
-                            <h1>Premium Fashion Collection</h1>
+                            <h1>Zerli'n</h1>
                             <p>Discover the latest trends in fashion</p>
                             <button class="cta-btn" onclick="showPage('products')">Shop Now</button>
                         </div>
@@ -226,7 +230,11 @@
 
         <!-- Product Detail Page -->
         <div id="productDetailPage" class="page">
+            <button><a href="#" class="go-back" onclick="showPage('products')">
+                        <span data-en="Go back" data-ur="مصنوعات">Go back</span>
+                    </a></button>
             <div class="product-detail" id="productDetail">
+                
                 <!-- Product details will be loaded dynamically -->
             </div>
         </div>
@@ -379,19 +387,19 @@
                     <div class="checkout-section">
                         <h3>Delivery Information</h3>
                         <div class="form-group">
-                            <input type="text" placeholder="Full Name" required>
+                            <input type="text" placeholder="Full Name" name="Full Name" required>
                         </div>
                         <div class="form-group">
-                            <input type="tel" placeholder="Phone Number" required>
+                            <input type="tel" placeholder="Phone Number" name="Phone Number" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" placeholder="Email" required>
+                            <input type="email" placeholder="Email" name="Email" required>
                         </div>
                         <div class="form-group">
-                            <input type="text" placeholder="City" required>
+                            <input type="text" placeholder="City" name="City" required>
                         </div>
                         <div class="form-group">
-                            <textarea placeholder="Complete Address" rows="3" required></textarea>
+                            <textarea placeholder="Complete Address" rows="3" name="Complete Address" required></textarea>
                         </div>
                     </div>
                     

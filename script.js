@@ -33,7 +33,7 @@ async function initializeApp() {
     
     // Initialize EmailJS
     try {
-        emailjs.init("your_public_key"); // Replace with your EmailJS public key
+        emailjs.init("ZKJrFdtrTk4pQYv1j"); // Replace with your EmailJS public key
     } catch (error) {
         console.log('EmailJS not configured');
     }
@@ -822,22 +822,22 @@ function loadReviews() {
     
     const sampleReviews = [
         {
-            name: 'Sarah Ahmed',
-            avatar: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop',
+            name: 'Shafique ur Rehman',
+            avatar: 'shafique.jpeg',
             rating: 5,
             text: 'Amazing quality and fast delivery! Love shopping here.'
         },
         {
-            name: 'Mohammad Ali',
-            avatar: 'https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop',
+            name: 'Muhammad ALi',
+            avatar: 'ali.JPG',
             rating: 4,
             text: 'Great products and excellent customer service. Highly recommended!'
         },
         {
-            name: 'Fatima Khan',
-            avatar: 'https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop',
-            rating: 5,
-            text: 'Beautiful clothing collection. Perfect fit and premium quality.'
+            name: 'Hania Khan',
+            avatar: 'hania.jpeg',
+            rating: 3,
+            text: 'Beautiful clothing collection. Perfect fit and best quality.'
         }
     ];
     
@@ -910,7 +910,7 @@ document.getElementById('checkoutForm').addEventListener('submit', async functio
     
     try {
         // Send order email
-        await emailjs.send('service_id', 'order_template_id', orderData);
+        await emailjs.send('service_2m9hw9p', 'template_y345958', orderData);
         showMessage('Order placed successfully!', 'success');
         cart = [];
         updateCartCount();
