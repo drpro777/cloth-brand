@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ZERL'N - Premium Clothing Brand</title>
     <link rel="stylesheet" href="sty6le.css">
+    <link rel="icon" href="logoo.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
@@ -19,20 +20,25 @@
                 <div class="door-handle"></div>
             </div>
         </div>
-        <div class="loading-text">ZERL'N</div>
+        <div class="loading-text">ZERLI'N</div>
     </div>
 
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
+               <button class="cart-btn1" onclick="showPage('cart')">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count1" id="cartCount">0</span>
+                </button>
             <!-- Logo -->
             <div class="nav-logo">
-                <img src="logo.png" alt="ZERL'N Logo" class="logo-img">
-                <span class="logo-text">ZERL'N</span>
+                <img src="logoo.png" alt="ZERL'N Logo" class="logo-img">
+                <span class="logo-text">ZERLI'N</span>
             </div>
 
             <!-- Desktop Navigation -->
             <ul class="nav-menu" id="nav-menu">
+                
                 <li class="nav-item">
                     <a href="#" class="nav-link active" onclick="showPage('home')">
                         <span data-en="Home" data-ur="گھر">Home</span>
@@ -104,8 +110,25 @@
                     <option value="en">English</option>
                     <option value="ur">اردو</option>
                 </select>
-            </div>
+                
+            </div>                       <!-- Add inside your Navigation Menu (Desktop Nav) -->
+<li class="nav-item">
+  <a href="#" class="nav-link" onclick="showPage('faq')">
+    <span data-en="FAQ" data-ur="سوالات">FAQ</span>
+  </a>
+</li>
+<li class="nav-item">
+  <a href="#" class="nav-link" onclick="showPage('terms')">
+    <span data-en="Terms & Conditions" data-ur="شرائط">Terms & Conditions</span>
+  </a>
+</li>
+<li class="nav-item">
+  <a href="#" class="nav-link" onclick="showPage('privacy')">
+    <span data-en="Privacy" data-ur="رازداری">Privacy</span>
+  </a>
+</li>
         </div>
+        
     </nav>
 
     <!-- Mobile Bottom Navigation -->
@@ -126,10 +149,61 @@
             <i class="fas fa-user"></i>
             <span>Profile</span>
         </button>
+        
     </div>
 
     <!-- Main Content -->
     <main class="main-content">
+        <!-- Terms & Conditions Page -->
+<div id="termsPage" class="page">
+  <div class="info-container">
+    <h1>Terms & Conditions</h1>
+    <p>Welcome to Zerli’n. By accessing or using our website, you agree to comply with the following terms and conditions...</p>
+    <ul>
+      <li>Use of our website is for lawful purposes only.</li>
+      <li>All products are subject to availability.</li>
+      <li>We reserve the right to update these terms anytime.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- Privacy Policy Page -->
+<div id="privacyPage" class="page">
+  <div class="info-container">
+    <h1>Privacy Policy</h1>
+    <p>Your privacy is important to us. This policy explains how we collect, use, and protect your data...</p>
+    <h3>Information We Collect</h3>
+    <p>Name, email, phone, and order details for processing your purchases.</p>
+    <h3>How We Use Information</h3>
+    <p>To process orders, improve services, and send updates with your consent.</p>
+    <h3>Data Protection</h3>
+    <p>We use secure systems to protect your personal information.</p>
+  </div>
+</div>
+
+<!-- FAQ Page -->
+<div id="faqPage" class="page">
+  <div class="info-container">
+    <h1>Frequently Asked Questions (FAQ)</h1>
+    <div class="faq-item">
+      <h3>1. How can I place an order?</h3>
+      <p>Simply browse products, add to cart, and proceed to checkout.</p>
+    </div>
+    <div class="faq-item">
+      <h3>2. What payment methods do you accept?</h3>
+      <p>We accept Cash on Delivery, Credit/Debit Card, and Bank Transfer.</p>
+    </div>
+    <div class="faq-item">
+      <h3>3. How long does delivery take?</h3>
+      <p>Orders are usually delivered within 3–5 business days across Pakistan.</p>
+    </div>
+    <div class="faq-item">
+      <h3>4. Can I return a product?</h3>
+      <p>Yes, we offer a 30-day easy return policy.</p>
+    </div>
+  </div>
+</div>
+
         <!-- Home Page -->
         <div id="homePage" class="page active">
             <!-- Hero Section -->
@@ -204,6 +278,7 @@
         <div id="productsPage" class="page">
             <div class="products-header">
                 <h1>Our Products</h1>
+                
                 <div class="filters">
                     <select id="categoryFilter" onchange="applyFilters()">
                         <option value="">All Categories</option>
@@ -429,5 +504,6 @@
     <script src="firebase.js"></script>
     <script src="product.js"></script>
     <script src="script.js"></script>
+    
 </body>
 </html>
