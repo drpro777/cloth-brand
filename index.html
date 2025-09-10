@@ -305,13 +305,14 @@
 
         <!-- Product Detail Page -->
         <div id="productDetailPage" class="page">
-            <button><a href="#" class="go-back" onclick="showPage('products')">
+            <button class="go-back" onclick="showPage('products')">
                         <span data-en="Go back" data-ur="مصنوعات">Go back</span>
-                    </a></button>
+                    </button>
             <div class="product-detail" id="productDetail">
                 
                 <!-- Product details will be loaded dynamically -->
             </div>
+            
         </div>
 
         <!-- Cart Page -->
@@ -496,7 +497,7 @@
             </div>
         </div>
     </main>
-
+ 
     <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore-compat.js"></script>
@@ -504,6 +505,104 @@
     <script src="firebase.js"></script>
     <script src="product.js"></script>
     <script src="script.js"></script>
-    
+      <footer class="site-footer">
+        <div class="footer-wave">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="shape-fill"></path>
+                <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" class="shape-fill"></path>
+                <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="shape-fill"></path>
+            </svg>
+        </div>
+        
+        <!-- Floating elements for background -->
+        <div class="floating-element float-1"></div>
+        <div class="floating-element float-2"></div>
+        <div class="floating-element float-3"></div>
+        
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <img src="logoo.png" alt="ZERL'N Logo">
+                    <span class="logo-text">ZERLI'N</span>
+                </div>
+                <p>Elevating style with premium quality clothing for the modern individual. Crafted with excellence, designed for distinction.</p>
+                <div class="footer-social">
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-pinterest-p"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">New Arrivals</a></li>
+                    <li><a href="#">Best Sellers</a></li>
+                    <li><a href="#">Seasonal Collections</a></li>
+                    <li><a href="#">Limited Editions</a></li>
+                    <li><a href="#">Lookbook</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Customer Service</h3>
+                <ul>
+                    <li><a href="#">Size Guide</a></li>
+                    <li><a href="#">Shipping & Returns</a></li>
+                    <li> <a href="#" class="nav-link" onclick="showPage('terms')"><span data-en="Terms & Conditions" data-ur="شرائط">Terms & Conditions</span></a></li>
+                    <li><a href="#" class="nav-link" onclick="showPage('faq')"><span data-en="FAQ" data-ur="سوالات">FAQ</span></a></li>
+                    <li> <a href="#" class="nav-link" onclick="showPage('privacy')"><span data-en="Privacy & policy" data-ur="رازداری">Privacy & Policy</span></a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Newsletter</h3>
+                <p>Subscribe to get exclusive updates, early access to new collections, and special offers.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your email address" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+                
+                <!-- Creator Profile -->
+                <div class="creator-profile">
+                    <div class="creator-avatar">
+                        <img src="ali.JPG" alt="Creator">
+                    </div>
+                    <div class="creator-info">
+                        <h4>Muhammad ALi</h4>
+                        <p>Founder & Creative Director</p>
+                        <div class="creator-social">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-facebook"></i></a>
+                         
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 ZERLI'N. All rights reserved. Created with excellence.</p>
+            <div class="payment-methods">
+                <i class="fab fa-cc-visa"></i>
+                <i class="fab fa-cc-mastercard"></i>
+                <i class="fab fa-cc-amex"></i>
+                <i class="fab fa-cc-paypal"></i>
+                <i class="fab fa-cc-apple-pay"></i>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
