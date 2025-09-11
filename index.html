@@ -97,6 +97,9 @@
 
         <!-- Settings Panel -->
         <div class="settings-panel" id="settingsPanel">
+            <button class="settings-btn2" onclick="toggleSettings()">
+                <i class="fas fa-times"></i>
+                </button>
             <h3>Settings</h3>
             <div class="setting-item">
                 <label>Theme:</label>
@@ -303,14 +306,17 @@
             </div>
         </div>
 
+        
+
         <!-- Product Detail Page -->
         <div id="productDetailPage" class="page">
             <button class="go-back" onclick="showPage('products')">
-                        <span data-en="Go back" data-ur="مصنوعات">Go back</span>
+                        <span data-en="" data-ur="مصنوعات"></span>
                     </button>
             <div class="product-detail" id="productDetail">
                 
                 <!-- Product details will be loaded dynamically -->
+                
             </div>
             
         </div>
@@ -408,8 +414,45 @@
                         <p>Safe and secure payment methods</p>
                     </div>
                 </div>
+       
+        <!-- Product + Service Showcase -->
+        <div class="service-showcase">
+            <h2>Our Services with Products</h2>
+            <div class="showcase-grid">
+                <div class="showcase-item">
+                    <h3>Best Collections</h3>
+                    <p>Made with premium fabric for style & comfort.</p>
+                    <img src="https://cdn.shopify.com/s/files/1/2995/1158/files/GREEN_FLORAL_PRINT_GEORGETTE_SALWAR_SUIT_480x480.jpg" alt="Custom Jacket">
+                </div>
+                <div class="showcase-item">
+                    <h3>All Varities</h3>
+                    <p>Perfect packaging with home delivery.</p>
+                    <img src="https://i.pinimg.com/736x/21/63/bd/2163bd15f8459a0955a9a36fd57b92dc.jpg" alt="Gift Box">
+                </div>
             </div>
         </div>
+
+        <!-- FAQ Section -->
+        <div class="faq">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <h4>How long does delivery take?</h4>
+                <p>Usually within 7 to 9 days for major cities in Pakistan.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Can I exchange my product?</h4>
+                <p>Yes, we offer easy exchanges within 3 days.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Do you ship internationally?</h4>
+                <p>Currently, we only ship within Pakistan, but international shipping is coming soon!</p>
+            </div>
+        </div>
+    </div>
+</div>
+            </div>
+        </div>
+        
 
         <!-- Contact Page -->
         <div id="contactPage" class="page">
@@ -438,16 +481,16 @@
                     </div>
                     <form class="contact-form" id="contactForm">
                         <div class="form-group">
-                            <input type="text" placeholder="Your Name" required>
+                            <input type="text" placeholder="Your Name"  required name="name">
                         </div>
                         <div class="form-group">
-                            <input type="email" placeholder="Your Email" required>
+                            <input type="email" placeholder="Your Email" required name="email">
                         </div>
                         <div class="form-group">
-                            <input type="tel" placeholder="Phone Number">
+                            <input type="tel" placeholder="Phone Number"required name="phone">
                         </div>
                         <div class="form-group">
-                            <textarea placeholder="Your Message" rows="5" required></textarea>
+                            <textarea placeholder="Your Message" rows="5"  required name="message"></textarea>
                         </div>
                         <button type="submit" class="contact-btn">Send Message</button>
                     </form>
@@ -463,19 +506,19 @@
                     <div class="checkout-section">
                         <h3>Delivery Information</h3>
                         <div class="form-group">
-                            <input type="text" placeholder="Full Name" name="Full Name" required>
+                            <input type="text" placeholder="Full Name"required name="name">
                         </div>
                         <div class="form-group">
-                            <input type="tel" placeholder="Phone Number" name="Phone Number" required>
+                            <input type="tel" placeholder="Phone Number" required name="phone">
                         </div>
                         <div class="form-group">
-                            <input type="email" placeholder="Email" name="Email" required>
+                            <input type="email" placeholder="Email"  required name="email">
                         </div>
                         <div class="form-group">
-                            <input type="text" placeholder="City" name="City" required>
+                            <input type="text" placeholder="City" required name="city">
                         </div>
                         <div class="form-group">
-                            <textarea placeholder="Complete Address" rows="3" name="Complete Address" required></textarea>
+                            <textarea placeholder="Complete Address" rows="3" required name="address"></textarea>
                         </div>
                     </div>
                     
@@ -604,5 +647,39 @@
             </div>
         </div>
     </footer>
+    <!-- WhatsApp Contact Button -->
+<a href="https://wa.me/923001234567" 
+   class="whatsapp-btn" 
+   target="_blank" 
+   aria-label="Chat on WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+    <!-- Scroll to Top Button -->
+<button id="scrollTopBtn" class="scroll-top-btn">
+  <i class="fas fa-arrow-up"></i>
+</button>
+<script>
+    // Scroll to Top Button
+const scrollTopBtn = document.getElementById("scrollTopBtn");
+
+// Show button when scrolling down
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 300) {
+    scrollTopBtn.style.display = "flex";
+  } else {
+    scrollTopBtn.style.display = "none";
+  }
+});
+
+// Smooth scroll to top when clicked
+scrollTopBtn.addEventListener("click", () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+});
+
+</script>
 </body>
 </html>

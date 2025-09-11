@@ -31,11 +31,8 @@ async function initializeApp() {
     // Load products
     await loadProducts();
     
-    // Initialize EmailJS
     try {
-        emailjs.init("ZKJrFdtrTk4pQYv1j"); // Replace with your EmailJS public key
     } catch (error) {
-        console.log('EmailJS not configured');
     }
     
     // Load cart from localStorage
@@ -134,6 +131,25 @@ function toggleMobileMenu() {
     navMenu.classList.toggle('active');
     hamburger.classList.toggle('active');
 }
+
+// Close menu when a nav link is clicked
+document.querySelectorAll('#nav-menu a').forEach(link => {
+    link.addEventListener('click', function () {
+        const navMenu = document.getElementById('nav-menu');
+        const hamburger = document.querySelector('.hamburger');
+
+        // Close the mobile menu
+        navMenu.classList.remove('active');
+        hamburger.classList.remove('active');
+
+        // If you are using showPage() function for SPA navigation
+        const targetPage = this.getAttribute('data-page');
+        if (targetPage) {
+            showPage(targetPage);
+        }
+    });
+});
+
 
 // Settings
 function toggleSettings() {
@@ -870,7 +886,11 @@ document.getElementById('signupForm').addEventListener('submit', function(e) {
     showMessage('Signup functionality will be implemented with Firebase', 'warning');
 });
 
-document.getElementById('contactForm').addEventListener('submit', async function(e) {
+ (function() {
+    emailjs.init("ZKJrFdtrTk4pQYv1j"); // replace with your actual public key
+  })();
+
+  document.getElementById('contactForm').addEventListener('submit', async function(e) {
     e.preventDefault();
     
     const formData = new FormData(e.target);
@@ -880,46 +900,71 @@ document.getElementById('contactForm').addEventListener('submit', async function
         phone: formData.get('phone'),
         message: formData.get('message')
     };
-    
+
     try {
-        // Send email using EmailJS
-        await emailjs.send('service_id', 'template_id', data);
-        showMessage('Message sent successfully!', 'success');
+        await emailjs.send('service_2m9hw9p', 'template_y345958', data);
+        showMessage('✅ Message sent successfully!', 'success');
         e.target.reset();
     } catch (error) {
-        showMessage('Failed to send message. Please try again.', 'error');
+        console.error('EmailJS error:', error);
+        showMessage('❌ Failed to send message. Please try again.', 'error');
     }
-});
+  });
 
-document.getElementById('checkoutForm').addEventListener('submit', async function(e) {
+  function showMessage(message, type) {
+    const msgBox = document.createElement("div");
+    msgBox.textContent = message;
+    msgBox.className = type === "success" ? "msg-success" : "msg-error";
+    document.body.appendChild(msgBox);
+    setTimeout(() => msgBox.remove(), 3000);
+  }
+// Product emailjs order form
+ (function() {
+    emailjs.init("ZKJrFdtrTk4pQYv1j"); 
+  })();
+
+  document.getElementById('checkoutForm').addEventListener('submit', async function(e) {
     e.preventDefault();
     
     const formData = new FormData(e.target);
     const orderData = {
-        customer: {
-            name: formData.get('name'),
-            phone: formData.get('phone'),
-            email: formData.get('email'),
-            city: formData.get('city'),
-            address: formData.get('address')
-        },
+        name: formData.get('name'),
+        phone: formData.get('phone'),
+        email: formData.get('email'),
+        city: formData.get('city'),
+        address: formData.get('address'),
         payment: formData.get('payment'),
-        items: cart,
+        items: cart.map(item => `${item.title} x${item.quantity}`).join(", "),
         total: cart.reduce((total, item) => total + (item.price * item.quantity), 0)
     };
-    
+
     try {
-        // Send order email
-        await emailjs.send('service_2m9hw9p', 'template_y345958', orderData);
-        showMessage('Order placed successfully!', 'success');
-        cart = [];
-        updateCartCount();
-        saveCart();
-        showPage('home');
+      await emailjs.send(
+        "service_2m9hw9p",     
+        "template_14kaace",   
+        orderData             
+      );
+
+      showMessage('✅ Order placed successfully!', 'success');
+      cart = [];
+      updateCartCount();
+      saveCart();
+      showPage('home');
     } catch (error) {
-        showMessage('Failed to place order. Please try again.', 'error');
+      console.error("❌ EmailJS Error:", error);
+      showMessage('⚠️ Failed to place order. Please try again.', 'error');
     }
-});
+  });
+
+  // Example message popup
+  function showMessage(message, type) {
+    const msg = document.createElement("div");
+    msg.textContent = message;
+    msg.className = type === "success" ? "msg-success" : "msg-error";
+    document.body.appendChild(msg);
+    setTimeout(() => msg.remove(), 3000);
+  }
+
 
 // Utility Functions
 function showMessage(message, type = 'info') {

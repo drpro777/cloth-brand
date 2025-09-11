@@ -18,7 +18,7 @@ const productsData = [
         sizes: ["S", "M", "L", "XL", "XXL"],
         colors: ["Black", "White", "Navy", "Gray"],
         stock: 50,
-        discount: 30
+        discount: 35
     },
     {
         id: 2,
@@ -399,5 +399,25 @@ const productsData = [
         colors: ["Beige", "Gray", "Pink", "Navy"],
         stock: 0, 
         discount: 24
-    }
+    },
+      {
+        id: 21,
+        title: "Cardigan Sweater",
+        description: "Cozy cardigan sweater perfect for layering. Soft knit fabric with classic button-up design.",
+        price: 4200,
+        originalPrice: 5500,
+        images: [
+            "https://drpro777.github.io/photo-driver/20.jpg",
+            "https://images.pexels.com/photos/1549201/pexels-photo-1549201.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549202/pexels-photo-1549202.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549203/pexels-photo-1549203.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
+        ],
+        category: "women",
+        rating: 4.4,
+        reviews: 110,
+        sizes: ["XS", "S", "M", "L", "XL"],
+        colors: ["Beige", "Gray", "Pink", "Navy"],
+        stock: 2, 
+        discount: 24
+    },
 ];
