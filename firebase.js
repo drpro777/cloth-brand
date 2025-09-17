@@ -75,6 +75,17 @@ function logout() {
       console.error("Sign-out error:", error);
     });
 }
+function updateUserInterface() {
+  const logoutBtn = document.getElementById("logoutBtn");
+
+  if (currentUser) {
+    // Show logout button when signed in
+    if (logoutBtn) logoutBtn.style.display = "inline-block";
+  } else {
+    // Hide logout button when signed out
+    if (logoutBtn) logoutBtn.style.display = "none";
+  }
+}
 
 // Database functions
 function saveUserData(userId, data) {

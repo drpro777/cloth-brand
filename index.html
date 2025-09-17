@@ -357,8 +357,11 @@
              <button class="go-back" onclick="showPage('home')">
                         <span data-en="" data-ur="مصنوعات"></span>
                     </button>
-            <div class="products-header">
-                <h1>Our Products</h1>
+                       <!-- Navigation Links (auto-created with JS) -->
+    <div id="productsNav" class="products-nav"></div>
+
+    <div class="products-header">
+        <h1>Our Products</h1>
                 
                 <div class="filters">
                     <select id="categoryFilter" onchange="applyFilters()">
@@ -434,6 +437,9 @@
       <button type="button" class="google-btn" onclick="googleSignIn()">
         <i class="fab fa-google"></i> Sign in with Google
       </button>
+        <button type="button" class="facebook-btn" onclick="facebookSignIn()">
+    <i class="fab fa-facebook-f"></i> Sign in with Facebook
+  </button>
     </form>
 
     <!-- Signup Form -->
@@ -633,7 +639,7 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script src="firebase.js"></script>
     <script src="product.js"></script>
-    <script src="script.js"></script>
+    <script src="script.js" ></script>
       <footer class="site-footer">
         <div class="footer-wave">
             <svg viewBox="0 0 1200 120" preserveAspectRatio="none">

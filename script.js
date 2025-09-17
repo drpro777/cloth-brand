@@ -885,32 +885,32 @@ function switchAuthTab(tab) {
     document.getElementById(tab + 'Form').classList.add('active');
 }
 
-// function googleSignIn() {
-//     // Implement Google Sign-In
-//     if (typeof firebase !== 'undefined' && firebase.auth) {
-//         const provider = new firebase.auth.GoogleAuthProvider();
-//         firebase.auth().signInWithPopup(provider)
-//             .then((result) => {
-//                 currentUser = result.user;
-//                 showMessage('Signed in successfully!', 'success');
-//                 showPage('profile');
-//                 updateUserInterface();
-//             })
-//             .catch((error) => {
-//                 showMessage('Sign in failed: ' + error.message, 'error');
-//             });
-//     } else {
-//         // Mock Google sign-in for demo
-//         currentUser = {
-//             displayName: 'Demo User',
-//             email: 'demo@example.com',
-//             photoURL: 'https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop'
-//         };
-//         showMessage('Signed in successfully! (Demo)', 'success');
-//         showPage('profile');
-//         updateUserInterface();
-//     }
-// }
+function googleSignIn() {
+    // Implement Google Sign-In
+    if (typeof firebase !== 'undefined' && firebase.auth) {
+        const provider = new firebase.auth.GoogleAuthProvider();
+        firebase.auth().signInWithPopup(provider)
+            .then((result) => {
+                currentUser = result.user;
+                showMessage('Signed in successfully!', 'success');
+                showPage('profile');
+                updateUserInterface();
+            })
+            .catch((error) => {
+                showMessage('Sign in failed: ' + error.message, 'error');
+            });
+    } else {
+        // Mock Google sign-in for demo
+        currentUser = {
+            displayName: 'Demo User',
+            email: 'demo@example.com',
+            photoURL: 'https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop'
+        };
+        showMessage('Signed in successfully! (Demo)', 'success');
+        showPage('profile');
+        updateUserInterface();
+    }
+}
 
 function displayProfile() {
     const container = document.getElementById('profileContainer');
@@ -926,33 +926,35 @@ function displayProfile() {
         return;
     }
     
-    container.innerHTML = `
-        <div class="profile-header">
-            <img src="${currentUser.photoURL || 'https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&w=120&h=120&fit=crop'}" alt="Profile" class="profile-image">
-            <div class="profile-info">
-                <h1>${currentUser.displayName || 'User'}</h1>
-                <p>${currentUser.email}</p>
-                <button class="edit-profile-btn" onclick="editProfile()">Edit Profile</button>
-            </div>
+container.innerHTML = `
+    <div class="profile-header">
+        <img src="${currentUser.photoURL || 'https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&w=120&h=120&fit=crop'}" alt="Profile" class="profile-image">
+        <div class="profile-info">
+            <h1>${currentUser.displayName || 'User'}</h1>
+            <p>${currentUser.email}</p>
+            <button class="edit-profile-btn" onclick="editProfile()">Edit Profile</button>
+            <button class="logout-btn" onclick="logout()">Logout</button>
+        </div>
+    </div>
+    
+    <div class="profile-sections">
+        <div class="profile-section">
+            <h3>Order History</h3>
+            <p>View your past orders and track current ones.</p>
         </div>
         
-        <div class="profile-sections">
-            <div class="profile-section">
-                <h3>Order History</h3>
-                <p>View your past orders and track current ones.</p>
-            </div>
-            
-            <div class="profile-section">
-                <h3>Favorites</h3>
-                <p>Manage your favorite products.</p>
-            </div>
-            
-            <div class="profile-section">
-                <h3>Settings</h3>
-                <p>Update your preferences and account settings.</p>
-            </div>
+        <div class="profile-section">
+            <h3>Favorites</h3>
+            <p>Manage your favorite products.</p>
         </div>
-    `;
+        
+        <div class="profile-section">
+            <h3>Settings</h3>
+            <p>Update your preferences and account settings.</p>
+        </div>
+    </div>
+`;
+
 }
 
 function updateUserInterface() {
@@ -1008,33 +1010,8 @@ function loadReviews() {
 }
 
 
- function displayProfile() {
-    const container = document.getElementById('profileContainer');
-    if (!currentUser) {
-      container.innerHTML = `
-        <div class="auth-required">
-          <h2>Please Sign In</h2>
-          <p>You need to sign in to view your profile.</p>
-          <button class="auth-btn" onclick="showPage('login')">Sign In</button>
-        </div>`;
-      return;
-    }
 
-    container.innerHTML = `
-      <div class="profile-header">
-        <img src="${currentUser.photoURL || 'https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&w=120&h=120&fit=crop'}" alt="Profile" class="profile-image">
-        <div class="profile-info">
-          <h1>${currentUser.displayName || 'User'}</h1>
-          <p>${currentUser.email}</p>
-          <button class="edit-profile-btn" onclick="editProfile()">Edit Profile</button>
-        </div>
-      </div>
-      <div class="profile-sections">
-        <div class="profile-section"><h3>Order History</h3><p>View your past orders and track current ones.</p></div>
-        <div class="profile-section"><h3>Favorites</h3><p>Manage your favorite products.</p></div>
-        <div class="profile-section"><h3>Settings</h3><p>Update your preferences and account settings.</p></div>
-      </div>`;
-  }
+  
   // Email/Password Signup
 document.getElementById("loginForm").addEventListener("submit", function (e) {
   e.preventDefault();
@@ -1245,3 +1222,27 @@ document.getElementById("checkoutForm").addEventListener("submit", function(e) {
     alert("Please enter a valid Pakistani phone number (e.g. +923001234567 or 03001234567).");
   }
 });
+
+function facebookSignIn() {
+  var provider = new firebase.auth.FacebookAuthProvider();
+  firebase.auth()
+    .signInWithPopup(provider)
+    .then((result) => {
+      console.log('Facebook sign-in successful:', result.user);
+      // Redirect or update UI
+    })
+    .catch((error) => {
+      console.error('Facebook sign-in error:', error);
+    });
+}
+function logout() {
+    firebase.auth().signOut()
+        .then(() => {
+            console.log('User signed out.');
+            // Redirect to login page or update UI
+            showPage('login'); 
+        })
+        .catch((error) => {
+            console.error('Logout error:', error);
+        });
+}

@@ -1245,6 +1245,7 @@ body {
 }
 
 .auth-btn {
+  display: none;
   background: var(--secondary-color);
   color: white;
 }
@@ -1702,7 +1703,7 @@ body {
   align-items: center;
   background: none;
   border: none;
-  color: rgba(226, 214, 214, 0.581);
+  color: rgb(145 114 114 / 65%);
   font-size: 12px;
   cursor: pointer;
   padding: 8px 14px;
@@ -3325,4 +3326,191 @@ border: none;
 }
 .checkout-btn:hover {
     background: #1d8cd4;
+}
+/* Form Container */
+.auth-form {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 30px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  font-family: 'Arial', sans-serif;
+}
+
+/* Form Heading */
+.auth-form h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 1.8rem;
+  color: #333;
+}
+
+/* Input Fields */
+.auth-form .form-group {
+  margin-bottom: 20px;
+}
+
+.auth-form input {
+  display: none;
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  outline: none;
+  transition: 0.3s;
+}
+
+.auth-form input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0,123,255,0.3);
+}
+
+/* Primary Login Button */
+.auth-btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: #007bff;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-bottom: 15px;
+  transition: 0.3s;
+}
+
+.auth-btn:hover {
+  background: #0056b3;
+}
+
+/* Social Buttons */
+.google-btn,
+.facebook-btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  transition: 0.3s;
+}
+
+/* Google Button */
+.google-btn {
+  background: #db4437;
+}
+
+.google-btn:hover {
+  background: #c1351d;
+}
+
+/* Facebook Button */
+.facebook-btn {
+  background: #4267B2;
+}
+
+.facebook-btn:hover {
+  background: #2d4a9b;
+}
+
+/* Icons */
+.google-btn i,
+.facebook-btn i {
+  font-size: 1.2rem;
+}
+/* Profile Header */
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  margin-bottom: 25px;
+}
+
+/* Profile Image */
+.profile-image {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #007bff;
+}
+
+/* Profile Info */
+.profile-info h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  color: #333;
+}
+
+.profile-info p {
+  margin: 5px 0 15px;
+  color: #666;
+  font-size: 1rem;
+}
+
+/* Buttons */
+.edit-profile-btn,
+.logout-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  margin-right: 10px;
+  transition: 0.3s;
+}
+
+.edit-profile-btn {
+  background: #007bff;
+  color: #fff;
+}
+
+.edit-profile-btn:hover {
+  background: #0056b3;
+}
+
+.logout-btn {
+  background: #dc3545;
+  color: #fff;
+}
+
+.logout-btn:hover {
+  background: #a71d2a;
+}
+
+/* Profile Sections */
+.profile-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.profile-section {
+  background: #f9f9f9;
+  padding: 15px 20px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.profile-section h3 {
+  margin: 0 0 5px;
+  color: #333;
+}
+
+.profile-section p {
+  margin: 0;
+  color: #666;
+  font-size: 0.95rem;
 }
