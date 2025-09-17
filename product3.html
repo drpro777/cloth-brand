@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products & Categories</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <style>
+    /* ===== Global Styles ===== */
+    :root {
+      --bg: #0f172a;
+      --card: #1e293b;
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --accent: #06b6d4;
+      --radius: 16px;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: "Poppins", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+    h1 {
+      text-align: center;
+      padding: 20px;
+      font-size: 2rem;
+      background: linear-gradient(90deg, #06b6d4, #3b82f6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: fadeInDown 1s ease-in-out;
+    }
+
+    /* ===== Category Filter ===== */
+    .categories {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin: 20px;
+      flex-wrap: wrap;
+    }
+    .categories button {
+      padding: 10px 18px;
+      border: none;
+      border-radius: var(--radius);
+      background: var(--card);
+      color: var(--text);
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .categories button.active,
+    .categories button:hover {
+      background: var(--accent);
+      color: #fff;
+      transform: scale(1.05);
+    }
+
+    /* ===== Product Grid ===== */
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 20px;
+      padding: 20px;
+      animation: fadeIn 1.2s ease-in-out;
+    }
+    .product-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 15px;
+      text-align: center;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.4);
+      transition: all 0.4s ease;
+      cursor: pointer;
+      overflow: hidden;
+      position: relative;
+    }
+    .product-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: var(--radius);
+      transition: transform 0.5s ease;
+    }
+    .product-card:hover img {
+      transform: scale(1.1);
+    }
+    .product-card h3 {
+      margin: 12px 0 6px;
+      font-size: 1.1rem;
+    }
+    .product-card p {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+    .product-card .price {
+      margin-top: 8px;
+      font-weight: bold;
+      color: var(--accent);
+    }
+
+    /* ===== Modal ===== */
+    .modal {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.7);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 0.5s ease;
+      z-index: 100;
+    }
+    .modal-content {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 20px;
+      width: 90%;
+      max-width: 500px;
+      text-align: center;
+      animation: scaleUp 0.5s ease;
+      position: relative;
+    }
+    .modal-content img {
+      width: 100%;
+      border-radius: var(--radius);
+      margin-bottom: 15px;
+    }
+    .modal-content h2 {
+      margin: 10px 0;
+    }
+    .modal-content p {
+      color: var(--muted);
+    }
+    .modal-content .price {
+      margin: 15px 0;
+      font-size: 1.3rem;
+      color: var(--accent);
+      font-weight: bold;
+    }
+    .close-btn {
+      position: absolute;
+      top: 10px; right: 15px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--muted);
+      transition: color 0.3s;
+    }
+    .close-btn:hover {
+      color: var(--accent);
+    }
+
+    /* ===== Animations ===== */
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+    @keyframes fadeInDown {
+      from {opacity: 0; transform: translateY(-30px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+    @keyframes scaleUp {
+      from {transform: scale(0.8);}
+      to {transform: scale(1);}
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Our Products</h1>
+
+  <!-- Category Filter -->
+  <div class="categories">
+    <button class="active" data-category="all">All</button>
+    <button data-category="clothing">Clothing</button>
+    <button data-category="electronics">Electronics</button>
+    <button data-category="accessories">Accessories</button>
+  </div>
+
+  <!-- Product Grid -->
+  <div class="products" id="productGrid">
+    <!-- Example products -->
+    <div class="product-card" data-category="clothing">
+      <img src="https://picsum.photos/300/200?random=1" alt="Product">
+      <h3>T-Shirt</h3>
+      <p>Comfortable cotton wear</p>
+      <div class="price">$25</div>
+    </div>
+    <div class="product-card" data-category="electronics">
+      <img src="https://picsum.photos/300/200?random=2" alt="Product">
+      <h3>Headphones</h3>
+      <p>Noise cancelling</p>
+      <div class="price">$80</div>
+    </div>
+    <div class="product-card" data-category="accessories">
+      <img src="https://picsum.photos/300/200?random=3" alt="Product">
+      <h3>Watch</h3>
+      <p>Stylish and modern</p>
+      <div class="price">$120</div>
+    </div>
+    <div class="product-card" data-category="clothing">
+      <img src="https://picsum.photos/300/200?random=4" alt="Product">
+      <h3>Jacket</h3>
+      <p>Winter collection</p>
+      <div class="price">$60</div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal" id="productModal">
+    <div class="modal-content">
+      <span class="close-btn" id="closeModal">&times;</span>
+      <img id="modalImg" src="" alt="Product Image">
+      <h2 id="modalTitle"></h2>
+      <p id="modalDesc"></p>
+      <div class="price" id="modalPrice"></div>
+    </div>
+  </div>
+
+  <script>
+    // ===== Category Filter =====
+    const categoryBtns = document.querySelectorAll('.categories button');
+    const productCards = document.querySelectorAll('.product-card');
+
+    categoryBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        categoryBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const category = btn.getAttribute('data-category');
+
+        productCards.forEach(card => {
+          card.style.display = (category === 'all' || card.dataset.category === category) ? 'block' : 'none';
+        });
+      });
+    });
+
+    // ===== Modal Logic =====
+    const modal = document.getElementById('productModal');
+    const closeModal = document.getElementById('closeModal');
+    const modalImg = document.getElementById('modalImg');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDesc = document.getElementById('modalDesc');
+    const modalPrice = document.getElementById('modalPrice');
+
+    document.querySelectorAll('.product-card').forEach(card => {
+      card.addEventListener('click', () => {
+        modal.style.display = 'flex';
+        modalImg.src = card.querySelector('img').src;
+        modalTitle.textContent = card.querySelector('h3').textContent;
+        modalDesc.textContent = card.querySelector('p').textContent;
+        modalPrice.textContent = card.querySelector('.price').textContent;
+      });
+    });
+
+    closeModal.addEventListener('click', () => modal.style.display = 'none');
+    window.addEventListener('click', e => {
+      if (e.target === modal) modal.style.display = 'none';
+    });
+  </script>
+
+</body>
+</html>

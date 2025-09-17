@@ -421,3 +421,4 @@ const productsData = [
         discount: 24
     },
 ];
+

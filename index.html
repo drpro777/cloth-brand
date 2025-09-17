@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ZERL'N - Premium Clothing Brand</title>
     <link rel="stylesheet" href="sty6le.css">
-    <link rel="icon" href="logoo.png" type="image/x-icon">
+    <link rel="icon" href="logoo.jpeg" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
@@ -32,7 +32,7 @@
                 </button>
             <!-- Logo -->
             <div class="nav-logo">
-                <img src="logoo.png" alt="ZERL'N Logo" class="logo-img">
+                <img src="logoo.jpeg" alt="ZERL'N Logo" class="logo-img">
                 <span class="logo-text">ZERLI'N</span>
             </div>
 
@@ -93,6 +93,7 @@
                 <span></span>
                 <span></span>
             </div>
+            
         </div>
 
         <!-- Settings Panel -->
@@ -190,7 +191,7 @@
     <h1>Frequently Asked Questions (FAQ)</h1>
     <div class="faq-item">
       <h3>1. How can I place an order?</h3>
-      <p>Simply browse products, add to cart, and proceed to checkout.</p>
+      <p>Simply browse products, add to bag, and proceed to checkout.</p>
     </div>
     <div class="faq-item">
       <h3>2. What payment methods do you accept?</h3>
@@ -240,6 +241,80 @@
                 <button class="slider-btn prev" onclick="prevSlide()">‹</button>
                 <button class="slider-btn next" onclick="nextSlide()">›</button>
             </section>
+            <!-- What's New Products Slider -->
+<section class="whats-new">
+  <h2>What's New</h2>
+  <div class="whats-new-slider">
+    <div class="whats-new-track">
+
+      <!-- Product Item -->
+      <a href="product3.html" class="product-item5">
+        <img src="https://images.pexels.com/photos/2983464/pexels-photo-2983464.jpeg?auto=compress&cs=tinysrgb&w=400" alt="New Jacket">
+        <div class="product-info5">
+          <h3>Classic Jacket</h3>
+          <p>$49.99</p>
+        </div>
+      </a>
+
+      <a class="product-item5" onclick="filterProducts('women')">
+        <img src="https://images.pexels.com/photos/298863/pexels-photo-298863.jpeg?auto=compress&cs=tinysrgb&w=400" alt="New Dress">
+        <div class="product-info5">
+          <h3>Summer Dress</h3>
+          <p>$39.99</p>
+        </div>
+      </a>
+
+      <a class="product-item5" onclick="filterProducts('women')">
+        <img src="https://images.pexels.com/photos/298864/pexels-photo-298864.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Shirt">
+        <div class="product-info5">
+          <h3>Casual Shirt</h3>
+          <p>$29.99</p>
+        </div>
+      </a>
+
+      <a class="product-item5" onclick="filterProducts('men')">
+        <img src="https://images.pexels.com/photos/994517/pexels-photo-994517.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Handbag">
+        <div class="product-info5">
+          <h3>Leather Handbag</h3>
+          <p>$59.99</p>
+        </div>
+      </a>
+<a class="product-item5" onclick="filterProducts('men')">
+        <img src="https://images.pexels.com/photos/2983464/pexels-photo-2983464.jpeg?auto=compress&cs=tinysrgb&w=400" alt="New Jacket">
+        <div class="product-info5">
+          <h3>Classic Jacket</h3>
+          <p>$49.99</p>
+        </div>
+      </a>
+
+      <a class="product-item5" onclick="filterProducts('accessories')">
+        <img src="https://images.pexels.com/photos/298863/pexels-photo-298863.jpeg?auto=compress&cs=tinysrgb&w=400" alt="New Dress">
+        <div class="product-info5">
+          <h3>Summer Dress</h3>
+          <p>$39.99</p>
+        </div>
+      </a>
+
+      <a class="product-item5">
+        <img src="https://images.pexels.com/photos/298864/pexels-photo-298864.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Shirt">
+        <div class="product-info5">
+          <h3>Casual Shirt</h3>
+          <p>$29.99</p>
+        </div>
+      </a>
+
+      <a href="product4.html" class="product-item5">
+        <img src="https://images.pexels.com/photos/994517/pexels-photo-994517.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Handbag">
+        <div class="product-info5">
+          <h3>Leather Handbag</h3>
+          <p>$59.99</p>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
 
             <!-- Featured Categories -->
             <section class="categories">
@@ -279,6 +354,9 @@
 
         <!-- Products Page -->
         <div id="productsPage" class="page">
+             <button class="go-back" onclick="showPage('home')">
+                        <span data-en="" data-ur="مصنوعات"></span>
+                    </button>
             <div class="products-header">
                 <h1>Our Products</h1>
                 
@@ -318,7 +396,6 @@
                 <!-- Product details will be loaded dynamically -->
                 
             </div>
-            
         </div>
 
         <!-- Cart Page -->
@@ -335,51 +412,43 @@
         </div>
 
         <!-- Login/Signup Page -->
-        <div id="loginPage" class="page">
-            <div class="auth-container">
-                <div class="auth-tabs">
-                    <button class="auth-tab active" onclick="switchAuthTab('login')">Login</button>
-                    <button class="auth-tab" onclick="switchAuthTab('signup')">Sign Up</button>
-                </div>
-                
-                <!-- Login Form -->
-                <form id="loginForm" class="auth-form active">
-                    <h2>Login to Your Account</h2>
-                    <div class="form-group">
-                        <input type="email" placeholder="Email" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="password" placeholder="Password" required>
-                    </div>
-                    <button type="submit" class="auth-btn">Login</button>
-                    <button type="button" class="google-btn" onclick="googleSignIn()">
-                        <i class="fab fa-google"></i> Sign in with Google
-                    </button>
-                </form>
 
-                <!-- Signup Form -->
-                <form id="signupForm" class="auth-form">
-                    <h2>Create Account</h2>
-                    <div class="form-group">
-                        <input type="text" placeholder="Full Name" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" placeholder="Email" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="password" placeholder="Password" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="profilePhoto">Profile Photo:</label>
-                        <input type="file" id="profilePhoto" accept="image/*">
-                    </div>
-                    <button type="submit" class="auth-btn">Sign Up</button>
-                    <button type="button" class="google-btn" onclick="googleSignIn()">
-                        <i class="fab fa-google"></i> Sign up with Google
-                    </button>
-                </form>
-            </div>
-        </div>
+
+    <div id="loginPage" class="page">
+  <div class="auth-container">
+    <div class="auth-tabs">
+      <button class="auth-tab active" onclick="switchAuthTab('login')">Login</button>
+      <button class="auth-tab" onclick="switchAuthTab('signup')">Sign Up</button>
+    </div>
+
+    <!-- Login Form -->
+    <form id="loginForm" class="auth-form active">
+      <h2>Login to Your Account</h2>
+      <div class="form-group">
+        <input type="email" id="loginEmail" placeholder="Email" required>
+      </div>
+      <div class="form-group">
+        <input type="password" id="loginPassword" placeholder="Password" required>
+      </div>
+      <button type="submit" class="auth-btn">Login</button>
+      <button type="button" class="google-btn" onclick="googleSignIn()">
+        <i class="fab fa-google"></i> Sign in with Google
+      </button>
+    </form>
+
+    <!-- Signup Form -->
+    <form id="signupForm" class="auth-form">
+      <h2>Create a New Account</h2>
+      <div class="form-group">
+        <input type="email" id="signupEmail" placeholder="Email" required>
+      </div>
+      <div class="form-group">
+        <input type="password" id="signupPassword" placeholder="Password" required>
+      </div>
+      <button type="submit" class="auth-btn">Sign Up</button>
+    </form>
+  </div>
+</div>
 
         <!-- Profile Page -->
         <div id="profilePage" class="page">
@@ -476,7 +545,6 @@
                         <div class="social-links">
                             <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
                             <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-                            <a href="#" target="_blank"><i class="fab fa-whatsapp"></i></a>
                         </div>
                     </div>
                     <form class="contact-form" id="contactForm">
@@ -498,49 +566,67 @@
             </div>
         </div>
 
-        <!-- Checkout Page -->
-        <div id="checkoutPage" class="page">
-            <div class="checkout-container">
-                <h1>Checkout</h1>
-                <form class="checkout-form" id="checkoutForm">
-                    <div class="checkout-section">
-                        <h3>Delivery Information</h3>
-                        <div class="form-group">
-                            <input type="text" placeholder="Full Name"required name="name">
-                        </div>
-                        <div class="form-group">
-                            <input type="tel" placeholder="Phone Number" required name="phone">
-                        </div>
-                        <div class="form-group">
-                            <input type="email" placeholder="Email"  required name="email">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" placeholder="City" required name="city">
-                        </div>
-                        <div class="form-group">
-                            <textarea placeholder="Complete Address" rows="3" required name="address"></textarea>
-                        </div>
-                    </div>
-                    
-                    <div class="checkout-section">
-                        <h3>Payment Method</h3>
-                        <div class="payment-options">
-                            <label><input type="radio" name="payment" value="cod" checked> Cash on Delivery</label>
-                            <label><input type="radio" name="payment" value="card"> Credit/Debit Card</label>
-                            <label><input type="radio" name="payment" value="bank"> Bank Transfer</label>
-                        </div>
-                    </div>
-                    
-                    <div class="order-summary" id="orderSummary">
-                        <!-- Order summary will be loaded dynamically -->
-                    </div>
-                    
-                    <button type="submit" class="place-order-btn">Place Order</button>
-                </form>
-            </div>
+       <!-- Checkout Page -->
+<div id="checkoutPage" class="page">
+            <button class="go-back" onclick="showPage('cart')">
+                        <span data-en="" data-ur="مصنوعات"></span>
+                    </button>
+  <div class="checkout-container">
+    <h1>Checkout</h1>
+    <form class="checkout-form" id="checkoutForm">
+      <div class="checkout-section">
+        <h3>Delivery Information</h3>
+
+        <div class="form-group">
+          <input type="text" placeholder="Full Name" required name="name">
         </div>
-    </main>
- 
+
+        <div class="form-group">
+          <!-- Pakistani phone number validation -->
+          <input 
+            type="tel" 
+            placeholder="Phone Number" 
+            required 
+            name="phone"
+            pattern="^(\+92[0-9]{10}|03[0-9]{9})$"
+            title="Enter valid Pakistani number: +923xxxxxxxxx or 03xxxxxxxxx">
+        </div>
+
+        <div class="form-group">
+          <input type="email" placeholder="Email" required name="email">
+        </div>
+
+        <div class="form-group">
+          <input type="text" placeholder="City" required name="city">
+        </div>
+
+        <div class="form-group">
+          <textarea placeholder="Complete Address" rows="3" required name="address"></textarea>
+        </div>
+      </div>
+      
+      <div class="checkout-section">
+        <h3>Payment Method</h3>
+        <div class="payment-options">
+          <label><input type="radio" name="payment" value="cod" checked> Cash on Delivery</label>
+          <label><input type="radio" name="payment" value="card"> Credit/Debit Card</label>
+          <label><input type="radio" name="payment" value="bank"> Bank Transfer</label>
+        </div>
+      </div>
+      
+      <div class="order-summary" id="orderSummary">
+        <!-- Order summary will be loaded dynamically -->
+      </div>
+      
+      <button type="submit" class="place-order-btn">Place Order</button>
+    </form>
+  </div>
+</div>
+
+    
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore-compat.js"></script>
@@ -565,7 +651,7 @@
         <div class="footer-content">
             <div class="footer-section">
                 <div class="footer-logo">
-                    <img src="logoo.png" alt="ZERL'N Logo">
+                    <img src="logoo.jpeg" alt="ZERL'N Logo">
                     <span class="logo-text">ZERLI'N</span>
                 </div>
                 <p>Elevating style with premium quality clothing for the modern individual. Crafted with excellence, designed for distinction.</p>

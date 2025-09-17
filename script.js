@@ -314,7 +314,7 @@ function createProductCard(product) {
                 </div>
                 <div class="product-actions">
                     <button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(${product.id})" ${product.stock === 0 ? 'disabled' : ''}>
-                        Add to Cart
+                        Add to bag
                     </button>
                     <button class="buy-now-btn" onclick="event.stopPropagation(); buyNow(${product.id})" ${product.stock === 0 ? 'disabled' : ''}>
                         Buy Now
@@ -328,14 +328,14 @@ function createProductCard(product) {
 function showProductDetail(productId) {
     const product = allProducts.find(p => p.id === productId);
     if (!product) return;
-    
+
     const container = document.getElementById('productDetail');
-    
+
     container.innerHTML = `
         <div class="product-images">
             <img src="${product.images[0]}" alt="${product.title}" class="main-image" id="mainImage" onclick="zoomImage(this.src)">
             <div class="thumbnail-images">
-                ${product.images.map(image => 
+                ${product.images.map(image =>
                     `<img src="${image}" alt="${product.title}" class="thumbnail" onclick="changeMainImage('${image}')">`
                 ).join('')}
             </div>
@@ -344,6 +344,7 @@ function showProductDetail(productId) {
         <div class="product-details">
             <h1>${product.title}</h1>
             <div class="price">PKR ${product.price.toLocaleString()}</div>
+            
             <div class="product-rating">
                 <div class="stars">
                     ${'★'.repeat(Math.floor(product.rating))}${'☆'.repeat(5 - Math.floor(product.rating))}
@@ -352,12 +353,22 @@ function showProductDetail(productId) {
             </div>
             
             <p class="product-description">${product.description}</p>
+
+            <!-- Offers Section -->
+            <ul class="product-offers">
+                <li>✔ Free Delivery on orders above PKR 3000</li>
+                <li>✔ 7-Day Easy Returns</li>
+                <li>✔ Cash on Delivery Available</li>
+                <li>✔ Secure Online Payments</li>
+                <li>✔ 6-Month Warranty</li>
+                <li>✔ Exclusive Member Discounts</li>
+            </ul>
             
             <div class="product-options">
                 <div class="option-group">
                     <label>Size:</label>
                     <div class="size-options">
-                        ${product.sizes.map(size => 
+                        ${product.sizes.map(size =>
                             `<button class="size-btn" onclick="selectSize('${size}', this)">${size}</button>`
                         ).join('')}
                     </div>
@@ -366,7 +377,7 @@ function showProductDetail(productId) {
                 <div class="option-group">
                     <label>Color:</label>
                     <div class="color-options">
-                        ${product.colors.map(color => 
+                        ${product.colors.map(color =>
                             `<button class="color-btn" onclick="selectColor('${color}', this)" style="background-color: ${color.toLowerCase()}"></button>`
                         ).join('')}
                     </div>
@@ -377,27 +388,85 @@ function showProductDetail(productId) {
                     <button class="quantity-btn" onclick="changeQuantity(-1)">-</button>
                     <input type="number" id="quantity" value="1" min="1" max="${product.stock}" class="quantity-input">
                     <button class="quantity-btn" onclick="changeQuantity(1)">+</button>
-                    <span class="stock-info">${product.stock} in stock</span>
+                    <span class="stock-info">${product.stock > 0 ? product.stock + ' in stock' : 'Out of Stock'}</span>
                 </div>
             </div>
             
             <div class="action-buttons">
                 <button class="add-to-cart-btn" onclick="addToCartWithOptions(${product.id})" ${product.stock === 0 ? 'disabled' : ''}>
-                    Add to Cart
+                    🛒 Add to bag
                 </button>
                 <button class="buy-now-btn" onclick="buyNowWithOptions(${product.id})" ${product.stock === 0 ? 'disabled' : ''}>
-                    Buy Now
+                    ⚡ Buy Now
                 </button>
             </div>
         </div>
+
+        <!-- Related Products Slider -->
+        <h2 class="related-heading">You may also like</h2>
+        <button id="toggleSliderBtn" class="toggle-slider">⏸ Pause</button>
+        <div class="related-slider">
+            <div class="related-track">
+                ${allProducts
+                    .filter(p => p.id !== productId)
+                    .slice(0, 10)
+                    .map(p => `
+                        <div class="related-item" onclick="showProductDetail(${p.id})">
+                            <img src="${p.images[0]}" alt="${p.title}">
+                            <h3>${p.title}</h3>
+                            <p>PKR ${p.price.toLocaleString()}</p>
+                            <button onclick="event.stopPropagation(); addToCartWithOptions(${p.id})">Add to Cart</button>
+                        </div>
+                    `).join('')}
+            </div>
+        </div>
+
+        <!-- Instruction Paragraph -->
+        <p class="slider-instruction">
+            ℹ️ If you want details about the slider product, just click the product and scroll upward to see your product details.
+        </p>
     `;
-    
+
     // Set first size and color as active
-    container.querySelector('.size-btn').classList.add('active');
-    container.querySelector('.color-btn').classList.add('active');
-    
+    container.querySelector('.size-btn')?.classList.add('active');
+    container.querySelector('.color-btn')?.classList.add('active');
+
+    // Start slider auto-scroll
+    startRelatedSlider();
+
     showPage('productDetail');
 }
+
+
+let sliderInterval;
+let sliderPaused = false;
+
+function startRelatedSlider() {
+    const track = document.querySelector('.related-track');
+    const btn = document.getElementById('toggleSliderBtn');
+    if (!track) return;
+
+    let scrollAmount = 0;
+
+    function animateSlider() {
+        if (sliderPaused) return; // stop if paused
+        scrollAmount += 200; // pixels per move
+        if (scrollAmount >= track.scrollWidth / 2) scrollAmount = 0;
+        track.style.transform = `translateX(-${scrollAmount}px)`;
+    }
+
+    clearInterval(sliderInterval);
+    sliderInterval = setInterval(() => {
+        animateSlider();
+    }, 2000); // 1s move + 1s wait
+
+    // Pause/Play Button
+    btn.onclick = () => {
+        sliderPaused = !sliderPaused;
+        btn.textContent = sliderPaused ? "▶ Play" : "⏸ Pause";
+    };
+}
+
 
 function changeMainImage(src) {
     document.getElementById('mainImage').src = src;
@@ -465,7 +534,7 @@ function addToCart(productId) {
     
     updateCartCount();
     saveCart();
-    showMessage('Product added to cart!', 'success');
+    showMessage('Product added to Bag!', 'success');
     animateCartButton();
 }
 
@@ -498,7 +567,7 @@ function addToCartWithOptions(productId) {
     
     updateCartCount();
     saveCart();
-    showMessage('Product added to cart!', 'success');
+    showMessage('Product added to Bag!', 'success');
     animateCartButton();
 }
 
@@ -532,11 +601,11 @@ function loadCart() {
 function displayCart() {
     const cartContent = document.getElementById('cartContent');
     const cartSummary = document.getElementById('cartSummary');
-    
+
     if (cart.length === 0) {
         cartContent.innerHTML = `
             <div class="empty-cart">
-                <h2>Your cart is empty</h2>
+                <h2>Your Bag is empty</h2>
                 <p>Add some products to get started!</p>
                 <button class="shop-now-btn" onclick="showPage('products')">Shop Now</button>
             </div>
@@ -544,7 +613,8 @@ function displayCart() {
         cartSummary.innerHTML = '';
         return;
     }
-    
+
+    // === CART ITEMS ===
     cartContent.innerHTML = cart.map(item => `
         <div class="cart-item">
             <img src="${item.images[0]}" alt="${item.title}">
@@ -552,6 +622,11 @@ function displayCart() {
                 <h3 class="cart-item-title">${item.title}</h3>
                 <p class="cart-item-price">PKR ${item.price.toLocaleString()}</p>
                 <p class="cart-item-options">Size: ${item.selectedSize}, Color: ${item.selectedColor}</p>
+                <p class="delivery-info">🚚 Delivery in 3–5 Business Days</p>
+                <p class="delivery-express">⚡ Express Shipping Available</p>
+                <p class="delivery-timer" id="deliveryTimer-${item.id}">
+                    ⏳ Ships in <span class="countdown">--d --h --m --s</span>
+                </p>
             </div>
             <div class="cart-item-quantity">
                 <button class="quantity-btn" onclick="updateCartQuantity(${item.id}, -1, '${item.selectedSize}', '${item.selectedColor}')">-</button>
@@ -561,9 +636,68 @@ function displayCart() {
             <button class="remove-btn" onclick="removeFromCart(${item.id}, '${item.selectedSize}', '${item.selectedColor}')">Remove</button>
         </div>
     `).join('');
-    
-    displayCartSummary();
+
+    // === CART SUMMARY ===
+    let subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+    let freeDeliveryThreshold = 5000;
+    let deliveryFee = subtotal >= freeDeliveryThreshold ? 0 : 299;
+
+    cartSummary.innerHTML = `
+        <div class="cart-summary-box">
+            <h3>Order Summary</h3>
+            <p>Subtotal: <span>PKR ${subtotal.toLocaleString()}</span></p>
+            <p>Delivery: <span>${deliveryFee === 0 ? "🎉 Free" : "PKR " + deliveryFee}</span></p>
+            <p><strong>Total: <span>PKR ${(subtotal + deliveryFee).toLocaleString()}</span></strong></p>
+
+            <!-- Bus Animation -->
+            <div class="bus-track">
+                <div class="bus">🚌</div>
+            </div>
+
+            <!-- Services -->
+            <div class="cart-services">
+                <p>✅ Free Delivery over PKR ${freeDeliveryThreshold.toLocaleString()}</p>
+                <p>💳 Cash on Delivery</p>
+                <p>↩️ Easy Returns</p>
+                <p>🌍 Nationwide Shipping</p>
+            </div>
+
+            <button class="checkout-btn" onclick="proceedToCheckout()">Checkout</button>
+        </div>
+    `;
+
+    startDeliveryCountdown(8);
 }
+
+// Countdown Timer (up to N days)
+function startDeliveryCountdown(maxDays) {
+    const deadline = new Date();
+    deadline.setDate(deadline.getDate() + maxDays);
+
+    function updateCountdown() {
+        let now = new Date().getTime();
+        let t = deadline - now;
+
+        let days = Math.floor(t / (1000 * 60 * 60 * 24));
+        let hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+        let minutes = Math.floor((t / (1000 * 60)) % 60);
+        let seconds = Math.floor((t / 1000) % 60);
+
+        const timers = document.querySelectorAll(".delivery-timer .countdown");
+        timers.forEach(timer => {
+            timer.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+        });
+
+        if (t <= 0) {
+            timers.forEach(timer => { timer.textContent = "Expired"; });
+            clearInterval(timerInterval);
+        }
+    }
+
+    updateCountdown();
+    const timerInterval = setInterval(updateCountdown, 1000);
+}
+
 
 function updateCartQuantity(productId, change, size, color) {
     const itemIndex = cart.findIndex(item => 
@@ -597,7 +731,7 @@ function removeFromCart(productId, size, color) {
         updateCartCount();
         saveCart();
         displayCart();
-        showMessage('Item removed from cart', 'success');
+        showMessage('Item removed from Bag', 'success');
     }
 }
 
@@ -632,7 +766,7 @@ function displayCartSummary() {
 
 function proceedToCheckout() {
     if (cart.length === 0) {
-        showMessage('Your cart is empty!', 'error');
+        showMessage('Your Bag is empty!', 'error');
         return;
     }
     
@@ -751,32 +885,32 @@ function switchAuthTab(tab) {
     document.getElementById(tab + 'Form').classList.add('active');
 }
 
-function googleSignIn() {
-    // Implement Google Sign-In
-    if (typeof firebase !== 'undefined' && firebase.auth) {
-        const provider = new firebase.auth.GoogleAuthProvider();
-        firebase.auth().signInWithPopup(provider)
-            .then((result) => {
-                currentUser = result.user;
-                showMessage('Signed in successfully!', 'success');
-                showPage('profile');
-                updateUserInterface();
-            })
-            .catch((error) => {
-                showMessage('Sign in failed: ' + error.message, 'error');
-            });
-    } else {
-        // Mock Google sign-in for demo
-        currentUser = {
-            displayName: 'Demo User',
-            email: 'demo@example.com',
-            photoURL: 'https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop'
-        };
-        showMessage('Signed in successfully! (Demo)', 'success');
-        showPage('profile');
-        updateUserInterface();
-    }
-}
+// function googleSignIn() {
+//     // Implement Google Sign-In
+//     if (typeof firebase !== 'undefined' && firebase.auth) {
+//         const provider = new firebase.auth.GoogleAuthProvider();
+//         firebase.auth().signInWithPopup(provider)
+//             .then((result) => {
+//                 currentUser = result.user;
+//                 showMessage('Signed in successfully!', 'success');
+//                 showPage('profile');
+//                 updateUserInterface();
+//             })
+//             .catch((error) => {
+//                 showMessage('Sign in failed: ' + error.message, 'error');
+//             });
+//     } else {
+//         // Mock Google sign-in for demo
+//         currentUser = {
+//             displayName: 'Demo User',
+//             email: 'demo@example.com',
+//             photoURL: 'https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop'
+//         };
+//         showMessage('Signed in successfully! (Demo)', 'success');
+//         showPage('profile');
+//         updateUserInterface();
+//     }
+// }
 
 function displayProfile() {
     const container = document.getElementById('profileContainer');
@@ -873,17 +1007,79 @@ function loadReviews() {
     `).join('');
 }
 
-// Forms
-document.getElementById('loginForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    // Handle login
-    showMessage('Login functionality will be implemented with Firebase', 'warning');
+
+ function displayProfile() {
+    const container = document.getElementById('profileContainer');
+    if (!currentUser) {
+      container.innerHTML = `
+        <div class="auth-required">
+          <h2>Please Sign In</h2>
+          <p>You need to sign in to view your profile.</p>
+          <button class="auth-btn" onclick="showPage('login')">Sign In</button>
+        </div>`;
+      return;
+    }
+
+    container.innerHTML = `
+      <div class="profile-header">
+        <img src="${currentUser.photoURL || 'https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&w=120&h=120&fit=crop'}" alt="Profile" class="profile-image">
+        <div class="profile-info">
+          <h1>${currentUser.displayName || 'User'}</h1>
+          <p>${currentUser.email}</p>
+          <button class="edit-profile-btn" onclick="editProfile()">Edit Profile</button>
+        </div>
+      </div>
+      <div class="profile-sections">
+        <div class="profile-section"><h3>Order History</h3><p>View your past orders and track current ones.</p></div>
+        <div class="profile-section"><h3>Favorites</h3><p>Manage your favorite products.</p></div>
+        <div class="profile-section"><h3>Settings</h3><p>Update your preferences and account settings.</p></div>
+      </div>`;
+  }
+  // Email/Password Signup
+document.getElementById("loginForm").addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const email = document.getElementById("loginEmail").value;
+  const password = document.getElementById("loginPassword").value;
+
+  auth.signInWithEmailAndPassword(email, password)
+    .then((result) => {
+      currentUser = result.user;
+      showMessage(`Welcome back ${currentUser.email}!`, "success");
+      showPage("profile"); // go to profile page
+      updateUserInterface();
+    })
+    .catch((error) => {
+      console.error("Login error:", error);
+      showMessage(error.message, "error");
+    });
 });
 
-document.getElementById('signupForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    // Handle signup
-    showMessage('Signup functionality will be implemented with Firebase', 'warning');
+// Handle Signup form
+document.getElementById("signupForm").addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const email = document.getElementById("signupEmail").value;
+  const password = document.getElementById("signupPassword").value;
+
+  auth.createUserWithEmailAndPassword(email, password)
+    .then((result) => {
+      currentUser = result.user;
+
+      // Save user data to Firestore
+      saveUserData(currentUser.uid, {
+        email: currentUser.email,
+        createdAt: new Date().toISOString(),
+      });
+
+      showMessage(`Account created for ${currentUser.email}!`, "success");
+      showPage("profile");
+      updateUserInterface();
+    })
+    .catch((error) => {
+      console.error("Signup error:", error);
+      showMessage(error.message, "error");
+    });
 });
 
  (function() {
@@ -918,53 +1114,72 @@ document.getElementById('signupForm').addEventListener('submit', function(e) {
     document.body.appendChild(msgBox);
     setTimeout(() => msgBox.remove(), 3000);
   }
-// Product emailjs order form
- (function() {
-    emailjs.init("ZKJrFdtrTk4pQYv1j"); 
-  })();
+// ✅ Initialize Firebase
+const app = firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
 
-  document.getElementById('checkoutForm').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    
-    const formData = new FormData(e.target);
-    const orderData = {
-        name: formData.get('name'),
-        phone: formData.get('phone'),
-        email: formData.get('email'),
-        city: formData.get('city'),
-        address: formData.get('address'),
-        payment: formData.get('payment'),
-        items: cart.map(item => `${item.title} x${item.quantity}`).join(", "),
-        total: cart.reduce((total, item) => total + (item.price * item.quantity), 0)
-    };
+// ✅ Handle checkout form submit
+document.getElementById('checkoutForm').addEventListener('submit', async function (e) {
+  e.preventDefault();
 
-    try {
-      await emailjs.send(
-        "service_2m9hw9p",     
-        "template_14kaace",   
-        orderData             
-      );
+  const formData = new FormData(e.target);
 
-      showMessage('✅ Order placed successfully!', 'success');
-      cart = [];
-      updateCartCount();
-      saveCart();
-      showPage('home');
-    } catch (error) {
-      console.error("❌ EmailJS Error:", error);
-      showMessage('⚠️ Failed to place order. Please try again.', 'error');
-    }
-  });
+  // Build orderData with all product details
+  const orderData = {
+    name: formData.get('name'),
+    phone: formData.get('phone'),
+    email: formData.get('email'),
+    city: formData.get('city'),
+    address: formData.get('address'),
+    payment: formData.get('payment'),
 
-  // Example message popup
-  function showMessage(message, type) {
-    const msg = document.createElement("div");
-    msg.textContent = message;
-    msg.className = type === "success" ? "msg-success" : "msg-error";
-    document.body.appendChild(msg);
-    setTimeout(() => msg.remove(), 3000);
+    // 🛒 Full cart details
+    items: cart.map(item => ({
+      id: item.id,
+      title: item.title,
+      quantity: item.quantity,
+      price: item.price,
+      color: item.selectedColor || null,   // ✅ save selected color
+      size: item.selectedSize || null,     // ✅ save selected size
+      category: item.category || null,
+      stock: item.stock,
+      discount: item.discount,
+      image: item.images ? item.images[0] : null, // first product image
+      subtotal: item.price * item.quantity
+    })),
+
+    // 💰 Order summary
+    total: cart.reduce((total, item) => total + (item.price * item.quantity), 0),
+
+    createdAt: new Date().toISOString()
+  };
+
+  try {
+    // ✅ Save to Firestore under "orders" collection
+    await db.collection("orders").add(orderData);
+
+    showMessage('✅ Order send successfully!', 'success');
+
+    // Reset cart
+    cart = [];
+    updateCartCount();
+    saveCart();
+    showPage('home');
+
+  } catch (error) {
+    console.error("❌ Firebase Error:", error);
+    showMessage('⚠️ Failed to save order. Please try again.', 'error');
   }
+});
 
+// ✅ Example message popup
+function showMessage(message, type) {
+  const msg = document.createElement("div");
+  msg.textContent = message;
+  msg.className = type === "success" ? "msg-success" : "msg-error";
+  document.body.appendChild(msg);
+  setTimeout(() => msg.remove(), 3000);
+}
 
 // Utility Functions
 function showMessage(message, type = 'info') {
@@ -1004,3 +1219,29 @@ window.addEventListener('error', function(e) {
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/sw.js').catch(console.error);
 }
+function switchAuthTab(tab) {
+  const loginForm = document.getElementById("loginForm");
+  const signupForm = document.getElementById("signupForm");
+  const tabs = document.querySelectorAll(".auth-tab");
+
+  if (tab === "login") {
+    loginForm.classList.add("active");
+    signupForm.classList.remove("active");
+    tabs[0].classList.add("active");
+    tabs[1].classList.remove("active");
+  } else {
+    signupForm.classList.add("active");
+    loginForm.classList.remove("active");
+    tabs[1].classList.add("active");
+    tabs[0].classList.remove("active");
+  }
+}
+document.getElementById("checkoutForm").addEventListener("submit", function(e) {
+  const phoneInput = this.phone.value.trim();
+  const phoneRegex = /^(\+92[0-9]{10}|03[0-9]{9})$/;
+
+  if (!phoneRegex.test(phoneInput)) {
+    e.preventDefault(); // stop form
+    alert("Please enter a valid Pakistani phone number (e.g. +923001234567 or 03001234567).");
+  }
+});
