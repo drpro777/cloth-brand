@@ -43,15 +43,12 @@ function googleSignIn() {
   auth.signInWithPopup(provider)
     .then((result) => {
       currentUser = result.user;
-
-      // Save Google user to Firestore
       saveUserData(currentUser.uid, {
         name: currentUser.displayName,
         email: currentUser.email,
         photo: currentUser.photoURL,
         provider: "google",
       });
-
       showMessage(`Welcome ${currentUser.displayName}!`, "success");
       showPage("profile");
       updateUserInterface();
@@ -61,6 +58,7 @@ function googleSignIn() {
       showMessage(error.message, "error");
     });
 }
+
 
 // Logout function
 function logout() {
@@ -74,17 +72,6 @@ function logout() {
     .catch((error) => {
       console.error("Sign-out error:", error);
     });
-}
-function updateUserInterface() {
-  const logoutBtn = document.getElementById("logoutBtn");
-
-  if (currentUser) {
-    // Show logout button when signed in
-    if (logoutBtn) logoutBtn.style.display = "inline-block";
-  } else {
-    // Hide logout button when signed out
-    if (logoutBtn) logoutBtn.style.display = "none";
-  }
 }
 
 // Database functions
