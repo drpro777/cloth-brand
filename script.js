@@ -71,7 +71,6 @@ function hideLoadingScreen() {
     const loadingScreen = document.getElementById('loading-screen');
     loadingScreen.classList.add('hidden');
 }
-
 // Navigation
 function showPage(pageId) {
     // Hide all pages
@@ -85,10 +84,8 @@ function showPage(pageId) {
     if (targetPage) {
         targetPage.classList.add('active');
         
-        // Update navigation
         updateNavigation(pageId);
         
-        // Load page-specific content
         if (pageId === 'products') {
             displayProducts(allProducts);
         } else if (pageId === 'cart') {
@@ -96,8 +93,16 @@ function showPage(pageId) {
         } else if (pageId === 'profile') {
             displayProfile();
         }
+
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: "instant" // change to "smooth" for animation
+        });
     }
 }
+
+
 
 function updateNavigation(activePageId) {
     // Update desktop nav
