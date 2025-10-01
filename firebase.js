@@ -1,12 +1,13 @@
 // Firebase Configuration
 // Replace with your Firebase config
 const firebaseConfig = {
-  apiKey: "AIzaSyAj-s6Xxfy1ZBWOf1_2WcIgabmOLyR4SVk",
-  authDomain: "zerlinn-c876d.firebaseapp.com",
-  projectId: "zerlinn-c876d",
-  storageBucket: "zerlinn-c876d.firebasestorage.app",
-  messagingSenderId: "456270612012",
-  appId: "1:456270612012:web:daf9514dd4b5f722ddb389",
+  apiKey: "AIzaSyCD6q5420HsR8ajgGWzCOCNijJ2wOhyG7E",
+  authDomain: "zerlin-df3d6.firebaseapp.com",
+  projectId: "zerlin-df3d6",
+  storageBucket: "zerlin-df3d6.firebasestorage.app",
+  messagingSenderId: "910306711663",
+  appId: "1:910306711663:web:bd70a8da8676647fb0559a",
+  measurementId: "G-6L46PFP8JM"
 };
 
 // Initialize Firebase

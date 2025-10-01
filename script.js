@@ -426,10 +426,7 @@ function showProductDetail(productId) {
             </div>
         </div>
 
-        <!-- Instruction Paragraph -->
-        <p class="slider-instruction">
-            ℹ️ If you want details about the slider product, just click the product and scroll upward to see your product details.
-        </p>
+      
     `;
 
     // Set first size and color as active
@@ -930,37 +927,268 @@ function displayProfile() {
         `;
         return;
     }
-    
-container.innerHTML = `
-    <div class="profile-header">
-        <img src="${currentUser.photoURL || 'https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&w=120&h=120&fit=crop'}" alt="Profile" class="profile-image">
-        <div class="profile-info">
-            <h1>${currentUser.displayName || 'User'}</h1>
-            <p>${currentUser.email}</p>
-            <button class="edit-profile-btn" onclick="editProfile()">Edit Profile</button>
-            <button class="logout-btn" onclick="logout()">Logout</button>
-        </div>
-    </div>
-    
-    <div class="profile-sections">
-        <div class="profile-section">
-            <h3>Order History</h3>
-            <p>View your past orders and track current ones.</p>
-        </div>
-        
-        <div class="profile-section">
-            <h3>Favorites</h3>
-            <p>Manage your favorite products.</p>
-        </div>
-        
-        <div class="profile-section">
-            <h3>Settings</h3>
-            <p>Update your preferences and account settings.</p>
-        </div>
-    </div>
-`;
 
+    container.innerHTML = `
+        <div class="profile-header">
+            <img src="${currentUser.photoURL || 
+                'https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&w=120&h=120&fit=crop'}" 
+                alt="Profile" class="profile-image">
+            <div class="profile-info">
+                <h1>${currentUser.displayName || 'User'}</h1>
+                <p>${currentUser.email}</p>
+                <button class="edit-profile-btn" onclick="editProfile()">Edit Profile</button>
+                <button class="logout-btn" onclick="logout()">Logout</button>
+            </div>
+        </div>
+        
+        <div class="profile-sections">
+            <div class="profile-section">
+                <h3>Order History</h3>
+                <p>View your past orders and track current ones.</p>
+            </div>
+            
+            <div class="profile-section">
+                <h3>Favorites</h3>
+                <p>Manage your favorite products.</p>
+            </div>
+            
+            <div class="profile-section" id="settingsSection">
+                <h3 onclick="toggleSettings()" style="cursor:pointer;">
+                   <i class="fas fa-cog"></i> Settings 
+                </h3>
+                <div class="settings-content">
+                    
+                    <!-- Theme -->
+                    <div class="setting-item">
+                        <label>Theme:</label>
+                        <button class="theme-toggle" onclick="toggleTheme()">
+                            <i class="fas fa-moon" id="themeIcon"></i>
+                        </button>
+                    </div>
+
+                    <!-- Language -->
+                    <div class="setting-item">
+                        <label>Language:</label>
+                        <select onchange="changeLanguage(this.value)" id="languageSelect">
+                            <option value="en">English</option>
+                            <option value="ur">اردو</option>
+                        </select>
+                          <label>Admin:</label>
+  <button onclick="openAdminLogin()">Admin Panel</button>
+                    </div>
+
+                    <!-- Personal Information -->
+                    <div class="setting-item">
+                        <label>Personal Info:</label>
+                        <button onclick="editProfile()">Update Info</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+
+    loadSettings();
+
+    if (currentTheme === 'dark') {
+        document.body.setAttribute('data-theme', 'dark');
+        document.getElementById('themeIcon').className = 'fas fa-sun';
+    }
+
+    if (currentLanguage) {
+        document.getElementById('languageSelect').value = currentLanguage;
+        changeLanguage(currentLanguage);
+    }
 }
+
+// ✅ Toggle Settings with animation
+function toggleSettings() {
+    const settingsContent = document.querySelector(".settings-content");
+    settingsContent.classList.toggle("active");
+}
+
+
+
+function editProfile() {
+  if (!currentUser) {
+    showMessage('Please sign in to edit profile.', 'error');
+    showPage('login');
+    return;
+  }
+
+  // Prevent duplicate modal
+  if (document.getElementById('profileEditModal')) return;
+
+  const modal = document.createElement('div');
+  modal.id = 'profileEditModal';
+  modal.className = 'modal-overlay';
+  modal.innerHTML = `
+    <div class="modal-card">
+      <h2>Edit Profile</h2>
+      <form id="profileEditForm" class="profile-edit-form">
+        <div class="form-group">
+          <label for="editName">Full Name</label>
+          <input id="editName" name="name" type="text" value="${escapeHtml(currentUser.displayName || '')}" required>
+        </div>
+        <div class="form-group">
+          <label for="editEmail">Email</label>
+          <input id="editEmail" name="email" type="email" value="${escapeHtml(currentUser.email || '')}" required>
+        </div>
+        <div class="form-group">
+          <label for="editPhoto">Photo URL</label>
+          <input id="editPhoto" name="photo" type="url" value="${escapeHtml(currentUser.photoURL || '')}">
+        </div>
+        <div class="form-group">
+          <label for="editPhone">Phone</label>
+          <input id="editPhone" name="phone" type="tel" value="${escapeHtml(currentUser.phone || '') || ''}">
+        </div>
+        <div class="modal-actions">
+          <button type="submit" class="btn save-btn">Save</button>
+          <button type="button" class="btn cancel-btn" id="cancelEditProfile">Cancel</button>
+        </div>
+      </form>
+    </div>
+  `;
+
+  document.body.appendChild(modal);
+
+  // Focus first field
+  document.getElementById('editName').focus();
+
+  // Handlers
+  document.getElementById('profileEditForm').addEventListener('submit', saveProfileChanges);
+  document.getElementById('cancelEditProfile').addEventListener('click', closeProfileModal);
+
+  // close on overlay click (but not when clicking card)
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeProfileModal();
+  });
+  // close on Esc
+  window.addEventListener('keydown', handleEscClose);
+
+  function handleEscClose(e) {
+    if (e.key === 'Escape') closeProfileModal();
+  }
+
+  function closeProfileModal() {
+    const m = document.getElementById('profileEditModal');
+    if (m) {
+      // remove listeners
+      try {
+        document.getElementById('profileEditForm').removeEventListener('submit', saveProfileChanges);
+        document.getElementById('cancelEditProfile').removeEventListener('click', closeProfileModal);
+      } catch (err) {}
+      window.removeEventListener('keydown', handleEscClose);
+      m.remove();
+    }
+  }
+
+  // make closeProfileModal available for inner scope
+  window.closeProfileModal = closeProfileModal;
+}
+
+// Save changes from modal
+// Save changes from modal
+async function saveProfileChanges(e) {
+  e.preventDefault();
+  const saveBtn = document.querySelector('#profileEditForm .save-btn');
+  saveBtn.disabled = true;
+  saveBtn.textContent = 'Saving...';
+
+  const name = document.getElementById('editName').value.trim();
+  const email = document.getElementById('editEmail').value.trim();
+  const photo = document.getElementById('editPhoto').value.trim();
+  const phone = document.getElementById('editPhone').value.trim();
+
+  if (!currentUser) {
+    showMessage('No user signed in.', 'error');
+    saveBtn.disabled = false;
+    saveBtn.textContent = 'Save';
+    return;
+  }
+
+  const hasFirebase = typeof firebase !== 'undefined' && firebase.auth;
+  const firebaseUser = hasFirebase ? firebase.auth().currentUser : null;
+
+  try {
+    if (firebaseUser) {
+      // ✅ Update displayName / photoURL
+      const profileUpdate = {};
+      if (name && name !== (firebaseUser.displayName || '')) profileUpdate.displayName = name;
+      if (photo && photo !== (firebaseUser.photoURL || '')) profileUpdate.photoURL = photo;
+
+      if (Object.keys(profileUpdate).length > 0) {
+        await firebaseUser.updateProfile(profileUpdate);
+      }
+
+      // ✅ Handle email update (with re-authentication if needed)
+      if (email && email !== (firebaseUser.email || '')) {
+        try {
+          await firebaseUser.updateEmail(email);
+        } catch (updateEmailError) {
+          if (updateEmailError.code === 'auth/requires-recent-login') {
+            // 🔑 Ask for password inside the modal
+            const password = prompt("Please re-enter your password to confirm email change:");
+            if (password) {
+              const cred = firebase.auth.EmailAuthProvider.credential(firebaseUser.email, password);
+              await firebaseUser.reauthenticateWithCredential(cred);
+              await firebaseUser.updateEmail(email); // retry
+              showMessage("Email updated after re-authentication.", "success");
+            } else {
+              showMessage("Email update canceled (password required).", "error");
+            }
+          } else {
+            showMessage(updateEmailError.message || 'Failed to update email.', 'error');
+          }
+        }
+      }
+
+      // ✅ Update phone in Firestore if available
+      if (typeof db !== 'undefined' && db.collection) {
+        const userDoc = { name, photoURL: photo || null, phone: phone || null, email: firebaseUser.email || email };
+        await db.collection('users').doc(firebaseUser.uid).set(userDoc, { merge: true });
+      }
+
+      // Refresh currentUser object
+      currentUser = {
+        displayName: firebaseUser.displayName || name,
+        email: firebaseUser.email || email,
+        photoURL: firebaseUser.photoURL || photo,
+        phone: phone || (currentUser.phone || '')
+      };
+
+    } else {
+      // Fallback if no Firebase
+      currentUser = { ...currentUser, displayName: name, email, photoURL: photo, phone };
+      localStorage.setItem('currentUser', JSON.stringify(currentUser));
+    }
+
+    updateUserInterface();
+    displayProfile();
+    showMessage('Profile updated successfully!', 'success');
+
+    if (typeof closeProfileModal === 'function') closeProfileModal();
+
+  } catch (err) {
+    console.error('Profile update error:', err);
+    showMessage(err.message || 'Failed to update profile.', 'error');
+  } finally {
+    saveBtn.disabled = false;
+    saveBtn.textContent = 'Save';
+  }
+}
+
+
+// small helper: sanitize string for injection into value attributes
+function escapeHtml(str) {
+  if (!str) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/"/g, '&quot;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+}
+
+
 
 function updateUserInterface() {
     const loginBtn = document.querySelector('.login-btn span');

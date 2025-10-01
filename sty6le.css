@@ -687,7 +687,6 @@ body {
 
 .product-image img {
   width: 100%;
-  height: 200%;
   object-fit: cover;
   transition: var(--transition);
 }
@@ -797,7 +796,7 @@ body {
 .product-detail {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 20px 20px;
+  padding: 20px 10px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 50px;
@@ -1282,6 +1281,7 @@ body {
   padding: 30px;
   background: var(--surface-color);
   border-radius: var(--border-radius);
+  margin-top: 100px;
 }
 
 .profile-image {
@@ -2133,7 +2133,7 @@ body {
   }
   
   .main-image {
-    height: 850px;
+    height: 700px;
   }
   
   .thumbnail {
@@ -3611,4 +3611,144 @@ border: none;
   margin: 0;
   color: #666;
   font-size: 0.95rem;
+}
+/* ============================
+   Edit Profile Modal (Animated)
+   ============================ */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.4);
+  z-index: 9999;
+  opacity: 0;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+.modal-card {
+  width: 100%;
+  max-width: 480px;
+  background: var(--card-bg, #fff);
+  color: var(--text-color, #111);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+  transform: scale(0.85) translateY(30px);
+  opacity: 0;
+  animation: popUp 0.35s ease forwards;
+}
+
+.modal-card h2 {
+  margin: 0 0 16px;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--text-color, #111);
+}
+
+.profile-edit-form .form-group {
+  margin-bottom: 14px;
+}
+
+.profile-edit-form label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-bottom: 6px;
+  color: var(--text-color, #333);
+}
+
+.profile-edit-form input[type="text"],
+.profile-edit-form input[type="email"],
+.profile-edit-form input[type="url"],
+.profile-edit-form input[type="tel"] {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 0.95rem;
+  transition: all 0.25s ease;
+  outline: none;
+  box-sizing: border-box;
+}
+
+/* Glow on focus */
+.profile-edit-form input:focus {
+  border-color: #0b74de;
+  box-shadow: 0 0 8px rgba(11, 116, 222, 0.3);
+  transform: translateY(-1px);
+}
+
+.modal-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+
+.btn {
+  padding: 10px 18px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.25s ease;
+}
+
+/* Save Button */
+.save-btn {
+  background: linear-gradient(135deg, #0b74de, #005bb5);
+  color: white;
+  box-shadow: 0 4px 12px rgba(11, 116, 222, 0.3);
+}
+.save-btn:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 6px 16px rgba(11, 116, 222, 0.4);
+}
+
+/* Cancel Button */
+.cancel-btn {
+  background: #f0f0f0;
+  color: #444;
+}
+.cancel-btn:hover {
+  background: #e0e0e0;
+  transform: translateY(-2px);
+}
+
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+@keyframes popUp {
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+.settings-content {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 0.4s ease-in-out;
+}
+.settings-content.active {
+    max-height: 500px;
+    opacity: 1;
+}
+.setting-item {
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.setting-item.danger button {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
 }
