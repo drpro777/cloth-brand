@@ -146,3 +146,14 @@ function getOrders(userId) {
     orders.filter((order) => order.customer.userId === userId)
   );
 }
+
+
+function displayFeaturedProducts() {
+  const container = document.getElementById('featuredProducts');
+  const featuredProducts = allProducts.filter(p => p.featured).slice(0, 8);
+
+  container.innerHTML = featuredProducts.map(p => createProductCard(p)).join('');
+}
+
+const featured = document.getElementById('np_featured').checked;
+const productObj = { title, description, price, category, stock, discount, sizes, colors, images: imageURLs, featured, createdAt: new Date().toISOString() };

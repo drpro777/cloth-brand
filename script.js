@@ -361,17 +361,12 @@ function showProductDetail(productId) {
 
             <!-- Offers Section -->
             <ul class="product-offers">
-                <li>✔ Free Delivery on orders above PKR 3000</li>
-                <li>✔ 7-Day Easy Returns</li>
-                <li>✔ Cash on Delivery Available</li>
-                <li>✔ Secure Online Payments</li>
-                <li>✔ 6-Month Warranty</li>
-                <li>✔ Exclusive Member Discounts</li>
+             
             </ul>
             
             <div class="product-options">
                 <div class="option-group">
-                    <label>Size:</label>
+                    <label>Volume:</label>
                     <div class="size-options">
                         ${product.sizes.map(size =>
                             `<button class="size-btn" onclick="selectSize('${size}', this)">${size}</button>`
@@ -852,28 +847,48 @@ function applyFilters() {
     filteredProducts = filtered;
     displayProducts(filteredProducts);
 }
+// Toggle search panel
+const searchToggle = document.getElementById('searchToggle');
+const searchPanel = document.getElementById('searchPanel');
+const searchInput = document.getElementById('searchInput');
 
-// Search
+searchToggle.addEventListener('click', () => {
+  searchPanel.classList.toggle('active');
+
+  if (searchPanel.classList.contains('active')) {
+    setTimeout(() => searchInput.focus(), 200);
+  }
+});
+
+// Close when clicking outside
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.search-container')) {
+    searchPanel.classList.remove('active');
+  }
+});
+
+// 🔍 Your existing search logic (unchanged)
 function initializeSearch() {
-    const searchInput = document.getElementById('searchInput');
-    
-    searchInput.addEventListener('input', function(e) {
-        const query = e.target.value.toLowerCase().trim();
-        
-        if (query === '') {
-            displayProducts(allProducts);
-            return;
-        }
-        
-        const searchResults = allProducts.filter(product => 
-            product.title.toLowerCase().includes(query) ||
-            product.description.toLowerCase().includes(query) ||
-            product.category.toLowerCase().includes(query)
-        );
-        
-        displayProducts(searchResults);
-    });
+  searchInput.addEventListener('input', function (e) {
+    const query = e.target.value.toLowerCase().trim();
+
+    if (query === '') {
+      displayProducts(allProducts);
+      return;
+    }
+
+    const searchResults = allProducts.filter(product =>
+      product.title.toLowerCase().includes(query) ||
+      product.description.toLowerCase().includes(query) ||
+      product.category.toLowerCase().includes(query)
+    );
+
+    displayProducts(searchResults);
+  });
 }
+
+initializeSearch();
+
 
 // Authentication
 function switchAuthTab(tab) {
@@ -1478,4 +1493,46 @@ function logout() {
         .catch((error) => {
             console.error('Logout error:', error);
         });
+}
+function openCategory(category) {
+  // 1. Open products page
+  showPage('products');
+
+  // 2. Set dropdown filter
+  const categoryFilter = document.getElementById('categoryFilter');
+  categoryFilter.value = category;
+
+  // 3. Apply filtering
+  applyFilters();
+}
+const counters = document.querySelectorAll('.counter');
+
+const animateCounters = () => {
+  counters.forEach(counter => {
+    const target = +counter.dataset.target;
+    let count = 0;
+    const speed = target / 100;
+
+    const update = () => {
+      count += speed;
+      if (count < target) {
+        counter.innerText = Math.floor(count);
+        requestAnimationFrame(update);
+      } else {
+        counter.innerText = target;
+      }
+    };
+    update();
+  });
+};
+
+/* Trigger when page loads */
+animateCounters();
+let slideOffset = 0;
+
+function slidePolicy(direction) {
+  const track = document.getElementById("policyTrack");
+  slideOffset += direction * 200;
+  track.style.transform = `translateX(${slideOffset}px)`;
+  track.style.animation = "none";
 }

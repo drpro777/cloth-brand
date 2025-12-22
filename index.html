@@ -1,782 +1,889 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZERL'N - Premium Clothing Brand</title>
-    <link rel="stylesheet" href="sty6le.css">
-    <link rel="icon" href="logoo.jpeg" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>M.R Perfumes- Premium Perfumes  Brand</title>
+  <link rel="stylesheet" href="sty6le.css">
+  <link rel="stylesheet" href="style2.css">
+  <link rel="icon" href="logoo.jpeg" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
 </head>
+
 <body>
-    <!-- Loading Screen with Wooden Door Animation -->
-    <div id="loading-screen" class="loading-screen">
-        <div class="wooden-door">
-            <div class="door-left">
-                <div class="door-handle"></div>
-            </div>
-            <div class="door-right">
-                <div class="door-handle"></div>
-            </div>
+  <!-- Loading Screen with Wooden Door Animation -->
+  <div id="loading-screen" class="loading-screen">
+    <div class="wooden-door">
+      <div class="door-left">
+        <div class="door-handle"></div>
+      </div>
+      <div class="door-right">
+        <div class="door-handle"></div>
+      </div>
+    </div>
+    <div class="loading-text">MR Perfumes</div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <div class="hamburger" onclick="toggleMobileMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="nav-logo">
+        <img src="web  logo .png" alt="ZERL'N Logo" class="logo-img">
+        <span class="logo-text">M.R Perfumes</span>
+      </div>
+
+      <button class="cart-btn1" onclick="showPage('cart')">
+        <i class="fa-solid fa-basket-shopping"></i>
+        <span class="cart-count1" id="cartCount">0</span>
+      </button>
+      <!-- Logo -->
+
+      <!-- Desktop Navigation -->
+      <ul class="nav-menu" id="nav-menu">
+        <div class="nav-logo">
+          <span class="logo-text1">Menu</span>
         </div>
-        <div class="loading-text">ZERLI'N</div>
+
+        <li class="nav-item">
+          <a href="#" class="nav-link active" onclick="showPage('home')">
+            <span data-en="Home" data-ur="گھر">Home</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link" onclick="showPage('products')">
+            <span data-en="Shop" data-ur="مصنوعات">Shop</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link" onclick="showPage('about')">
+            <span data-en="About Us" data-ur="ہمارے بارے میں">About Us</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link" onclick="showPage('services')">
+            <span data-en="Services" data-ur="خدمات">Services</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link" onclick="showPage('contact')">
+            <span data-en="Contact Us" data-ur="رابطہ">Contact Us</span>
+          </a>
+        </li>
+        <button class="settings-btn1" onclick="toggleSettings()">
+          <i class="fas fa-cog"></i>
+        </button>
+
+      </ul>
+
+
+      <div class="nav-right">
+        <div class="search-container">
+          <i class="fas fa-search search-icon" id="searchToggle"></i>
+
+          <div class="search-panel" id="searchPanel">
+            <input type="text" class="search-input" placeholder="Search products..." id="searchInput">
+          </div>
+        </div>
+        <button class="login-btn" onclick="showPage('login')">
+          <i class="fa-solid fa-user"></i>
+        </button>
+        <button class="settings-btn" onclick="toggleSettings()">
+          <i class="fas fa-cog"></i>
+        </button>
+
+        <button class="cart-btn" onclick="showPage('cart')">
+          <i class="fa-solid fa-basket-shopping"></i>
+        </button>
+
+
+      </div>
+
+      <!-- Mobile Menu Toggle -->
+
     </div>
 
-    <!-- Navigation -->
-    <nav class="navbar" id="navbar">
-        <div class="nav-container">
-               <button class="cart-btn1" onclick="showPage('cart')">
-                    <i class="fas fa-shopping-cart"></i>
-                    <span class="cart-count1" id="cartCount">0</span>
-                </button>
-            <!-- Logo -->
-            <div class="nav-logo">
-                <img src="logoo.jpeg" alt="ZERL'N Logo" class="logo-img">
-                <span class="logo-text">ZERLI'N</span>
-            </div>
+    <!-- Settings Panel -->
+    <div class="settings-panel" id="settingsPanel">
+      <button class="settings-btn2" onclick="toggleSettings()">
+        <i class="fas fa-times"></i>
+      </button>
+      <h3>Settings</h3>
+      <div class="setting-item">
 
-            <!-- Desktop Navigation -->
-            <ul class="nav-menu" id="nav-menu">
-                          <div class="nav-logo">
-                <span class="logo-text1">ZERLI'N</span>
-                <p>Luxury in every thread</p>
-            </div>
-                
-                <li class="nav-item">
-                    <a href="#" class="nav-link active" onclick="showPage('home')">
-                        <span data-en="Home" data-ur="گھر">Home</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link" onclick="showPage('products')">
-                        <span data-en="Products" data-ur="مصنوعات">Products</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link" onclick="showPage('services')">
-                        <span data-en="Services" data-ur="خدمات">Services</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link" onclick="showPage('contact')">
-                        <span data-en="Contact" data-ur="رابطہ">Contact</span>
-                    </a>
-                </li>
-                  <button class="settings-btn1" onclick="toggleSettings()">
-                    <i class="fas fa-cog"></i>
-                </button>
-            </ul>
-            
+        <div class="setting-item">
+          <label>Language:</label>
+          <select onchange="changeLanguage(this.value)" id="languageSelect">
+            <option value="en">English</option>
+            <option value="ur">اردو</option>
+          </select>
 
-            <!-- Right Side Icons -->
-            <div class="nav-right">
-                <div class="search-container">
-                    <input type="text" class="search-input" placeholder="Search products..." id="searchInput">
-                    <i class="fas fa-search search-icon"></i>
-                </div>
-                
-           <button class="settings-btn" onclick="toggleSettings()">
-                    <i class="fas fa-cog"></i>
-                </button>
-                
-                <button class="cart-btn" onclick="showPage('cart')">
-                    <i class="fas fa-shopping-cart"></i>
-                    <span class="cart-count" id="cartCount">0</span>
-                </button>
-                
-                <button class="login-btn" onclick="showPage('login')">
-                    <i class="fas fa-user"></i>
-                    <span data-en="Login" data-ur="لاگ ان">Login</span>
-                </button>
-            </div>
 
-            <!-- Mobile Menu Toggle -->
-            <div class="hamburger" onclick="toggleMobileMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            
+  </nav>
+
+  <!-- Mobile Bottom Navigation -->
+  <div class="bottom-nav" id="bottomNav">
+    <button onclick="showPage('home')" class="bottom-nav-btn active">
+      <i class="fas fa-home"></i>
+      <span>Home</span>
+    </button>
+    <button onclick="showPage('login')" class="bottom-nav-btn">
+      <i class="fa-solid fa-user"></i>
+      <span>Account</span>
+    </button>
+    <button onclick="showPage('products')" class="bottom-nav-btn">
+      <i class="fa-solid fa-store"></i>
+      <span>Shop</span>
+    </button>
+    <button onclick="showPage('cart')" class="bottom-nav-btn">
+      <i class="fa-solid fa-basket-shopping "></i>
+      <span>Cart</span>
+    </button>
+    <button onclick="showPage('contact')" class="bottom-nav-btn">
+      <i class="fa-regular fa-address-book"></i>
+      <span>Contact</span>
+    </button>
+  </div>
+
+<div id="aboutPage" class="page">
+  <!-- About Us Section -->
+  <section class="about-us">
+    <div class="about-hero">
+      <h1>Welcome to the M.R Perfumes</h1>
+      <p class="subtitle">
+        More than just a Perfume Brand <br>
+        It’s a movement driven by passion, performance, and a deep love for scent.
+      </p>
+    </div>
+
+    <div class="about-image">
+      <img src="about.png" alt="Perfume Collection">
+    </div>
+
+    <div class="about-stats">
+      <div class="stat">
+        <div class="icon">🍾</div>
+        <h2><span class="counter" data-target="1500">0</span>+</h2>
+        <p>Bottles Sold</p>
+      </div>
+
+      <div class="stat featured">
+        <div class="icon">🙋🏻</div>
+        <h2><span class="counter" data-target="1000">0</span>+</h2>
+        <p>Happy Customers</p>
+        <span class="rating">★★★★★</span>
+      </div>
+
+      <div class="stat">
+        <div class="icon">🏆</div>
+        <h2><span class="counter" data-target="1600">0</span>+</h2>
+        <p>Product Ratings</p>
+      </div>
+    </div>
+
+    <div class="about-text">
+      <p>
+        At <strong>M.R Perfumes</strong>, fragrance is not just worn — it is experienced.
+        Every creation is designed to express individuality, confidence, and timeless elegance.
+        Our dedication to quality and craftsmanship ensures each bottle leaves a lasting impression.
+      </p>
+    </div>
+  </section>
+</div>
+
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- Terms & Conditions Page -->
+    <div id="termsPage" class="page">
+      <div class="info-container">
+        <h1>Terms & Conditions</h1>
+        <p>Welcome to Zerli’n. By accessing or using our website, you agree to comply with the following terms and
+          conditions...</p>
+        <ul>
+          <li>Use of our website is for lawful purposes only.</li>
+          <li>All products are subject to availability.</li>
+          <li>We reserve the right to update these terms anytime.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Privacy Policy Page -->
+    <div id="privacyPage" class="page">
+      <div class="info-container">
+        <h1>Privacy Policy</h1>
+        <p>Your privacy is important to us. This policy explains how we collect, use, and protect your data...</p>
+        <h3>Information We Collect</h3>
+        <p>Name, email, phone, and order details for processing your purchases.</p>
+        <h3>How We Use Information</h3>
+        <p>To process orders, improve services, and send updates with your consent.</p>
+        <h3>Data Protection</h3>
+        <p>We use secure systems to protect your personal information.</p>
+      </div>
+    </div>
+
+    <!-- FAQ Page -->
+    <div id="faqPage" class="page">
+      <div class="info-container">
+        <h1>Frequently Asked Questions (FAQ)</h1>
+        <div class="faq-item">
+          <h3>1. How can I place an order?</h3>
+          <p>Simply browse products, add to bag, and proceed to checkout.</p>
         </div>
-
-        <!-- Settings Panel -->
-        <div class="settings-panel" id="settingsPanel">
-            <button class="settings-btn2" onclick="toggleSettings()">
-                <i class="fas fa-times"></i>
-                </button>
-            <h3>Settings</h3>
-            <div class="setting-item">
-                <label>Theme:</label>
-                <button class="theme-toggle" onclick="toggleTheme()">
-                    <i class="fas fa-moon" id="themeIcon"></i>
-                </button>
-            </div>
-            <div class="setting-item">
-                <label>Language:</label>
-                <select onchange="changeLanguage(this.value)" id="languageSelect">
-                    <option value="en">English</option>
-                    <option value="ur">اردو</option>
-                </select>
-                
-            </div>                       <!-- Add inside your Navigation Menu (Desktop Nav) -->
-<li class="nav-item">
-  <a href="#" class="nav-link" onclick="showPage('faq')">
-    <span data-en="FAQ" data-ur="سوالات">FAQ</span>
-  </a>
-</li>
-<li class="nav-item">
-  <a href="#" class="nav-link" onclick="showPage('terms')">
-    <span data-en="Terms & Conditions" data-ur="شرائط">Terms & Conditions</span>
-  </a>
-</li>
-<li class="nav-item">
-  <a href="#" class="nav-link" onclick="showPage('privacy')">
-    <span data-en="Privacy" data-ur="رازداری">Privacy</span>
-  </a>
-</li>
+        <div class="faq-item">
+          <h3>2. What payment methods do you accept?</h3>
+          <p>We accept Cash on Delivery, Credit/Debit Card, and Bank Transfer.</p>
         </div>
+        <div class="faq-item">
+          <h3>3. How long does delivery take?</h3>
+          <p>Orders are usually delivered within 3–5 business days across Pakistan.</p>
+        </div>
+        <div class="faq-item">
+          <h3>4. Can I return a product?</h3>
+          <p>Yes, we offer a 30-day easy return policy.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Home Page -->
+    <div id="homePage" class="page active">
+      <!-- Hero Section -->
+      <section class="hero">
+        <div class="hero-slider" id="heroSlider">
+          <div class="slide active">
+            <img
+              src="https://images.squarespace-cdn.com/content/v1/5f0b9657b648c20c629e4a5e/1600214885856-B9JXV65UIXABKWH5S9GE/Mensfragrances.jpg"
+              alt="Fashion Collection">
+            <div class="slide-content">
+              <h1>Conquer with Confidence</h1>
+              <p>Discover the Perfumes & Others</p>
+              <button class="cta-btn" onclick="showPage('products')">Shop Now</button>
+            </div>
+          </div>
+          <div class="slide">
+            <img
+              src="https://9f8e62d4.delivery.rocketcdn.me/wp-content/uploads/2025/09/15-Amazing-Fall-Fragrances-For-Men-At-Every-Budget-600x600.jpg"
+              alt="Men's Fashion">
+            <div class="slide-content">
+              <h1>Pour Homme</h1>
+              <p>All type of perfumes</p>
+              <button class="cta-btn" onclick="showPage('products')">Explore</button>
+            </div>
+          </div>
+          <div class="slide">
+            <img src="https://edenrobe.com/cdn/shop/files/TimeusCreative.webp?v=1748587032" alt="Women's Fashion">
+            <div class="slide-content">
+              <h1>Pour Femme</h1>
+              <p>Elegant and trendy Products</p>
+              <button class="cta-btn" onclick="showPage('products')">Women Collections</button>
+            </div>
+          </div>
+        </div>
+        <button class="slider-btn prev" onclick="prevSlide()">‹</button>
+        <button class="slider-btn next" onclick="nextSlide()">›</button>
+
+      </section>
+      <!-- Top Policy Slider -->
+<div class="top-slider">
+  <button class="slider-control left" onclick="slidePolicy(-1)">‹</button>
+
+  <div class="slider-viewport">
+    <div class="slider-track" id="policyTrack">
+      <span>🚚 Free Delivery on Orders Over Rs. 3000</span>
+      <span>🔄 30 Days Easy Return Policy</span>
+      <span>💳 Secure Payments & COD Available</span>
+      <span>⭐ Premium Quality Guaranteed</span>
+    </div>
+  </div>
+
+  <button class="slider-control right" onclick="slidePolicy(1)">›</button>
+</div>
+      <!-- What's New Products Slider -->
+      <section class="whats-new">
+        <h2>What's New</h2>
+        <div class="whats-new-slider">
+          <div class="whats-new-track">
+
+            <!-- Product Item -->
+            <a href="product3.html" class="product-item5">
+              <img
+                src="https://images.pexels.com/photos/2983464/pexels-photo-2983464.jpeg?auto=compress&cs=tinysrgb&w=400"
+                alt="New Jacket">
+              <div class="product-info5">
+                <h3>Classic Jacket</h3>
+                <p>$49.99</p>
+              </div>
+            </a>
+
+            <a class="product-item5" onclick="filterProducts('women')">
+              <img
+                src="https://images.pexels.com/photos/298863/pexels-photo-298863.jpeg?auto=compress&cs=tinysrgb&w=400"
+                alt="New Dress">
+              <div class="product-info5">
+                <h3>Summer Dress</h3>
+                <p>$39.99</p>
+              </div>
+            </a>
+
+            <a class="product-item5" onclick="filterProducts('women')">
+              <img
+                src="https://images.pexels.com/photos/298864/pexels-photo-298864.jpeg?auto=compress&cs=tinysrgb&w=400"
+                alt="Shirt">
+              <div class="product-info5">
+                <h3>Casual Shirt</h3>
+                <p>$29.99</p>
+              </div>
+            </a>
+
+            <a class="product-item5" onclick="filterProducts('men')">
+              <img
+                src="https://images.pexels.com/photos/994517/pexels-photo-994517.jpeg?auto=compress&cs=tinysrgb&w=400"
+                alt="Handbag">
+              <div class="product-info5">
+                <h3>Leather Handbag</h3>
+                <p>$59.99</p>
+              </div>
+            </a>
+            <a class="product-item5" onclick="filterProducts('men')">
+              <img
+                src="https://images.pexels.com/photos/2983464/pexels-photo-2983464.jpeg?auto=compress&cs=tinysrgb&w=400"
+                alt="New Jacket">
+              <div class="product-info5">
+                <h3>Classic Jacket</h3>
+                <p>$49.99</p>
+              </div>
+            </a>
+
+            <a class="product-item5" onclick="filterProducts('accessories')">
+              <img
+                src="https://images.pexels.com/photos/298863/pexels-photo-298863.jpeg?auto=compress&cs=tinysrgb&w=400"
+                alt="New Dress">
+              <div class="product-info5">
+                <h3>Summer Dress</h3>
+                <p>$39.99</p>
+              </div>
+            </a>
+
+            <a class="product-item5">
+              <img
+                src="https://images.pexels.com/photos/298864/pexels-photo-298864.jpeg?auto=compress&cs=tinysrgb&w=400"
+                alt="Shirt">
+              <div class="product-info5">
+                <h3>Casual Shirt</h3>
+                <p>$29.99</p>
+              </div>
+            </a>
+
+            <a href="product4.html" class="product-item5">
+              <img
+                src="https://images.pexels.com/photos/994517/pexels-photo-994517.jpeg?auto=compress&cs=tinysrgb&w=400"
+                alt="Handbag">
+              <div class="product-info5">
+                <h3>Leather Handbag</h3>
+                <p>$59.99</p>
+              </div>
+            </a>
+
+          </div>
+        </div>
+      </section>
+
+
+      <!-- Featured Categories -->
+      <section class="categories">
+        <h2>Shop by Category</h2>
+        <div class="category-grid">
+          <div class="category-card" onclick="openCategory('men')">
+            <img src="men.png">
+            <h3>Pour Homme</h3>
+          </div>
+
+          <div class="category-card" onclick="openCategory('Unisex')">
+            <img src="unisex.png">
+            <h3>Unisex</h3>
+          </div>
+
+          <div class="category-card" onclick="openCategory('women')">
+            <img src="pour feme.png">
+            <h3>Pour Femme</h3>
+          </div>
+
+          <div class="category-card" onclick="openCategory('accessories')">
+            <img src="acces.png">
+            <h3>Accessories</h3>
+          </div>
+          <div class="category-card" onclick="openCategory('Islamic Books')">
+            <img src="islami.png">
+            <h3>Islamic Books</h3>
+          </div>
+          <div class="category-card" onclick="openCategory('Itar')">
+            <img src="itar.png">
+            <h3>Itar</h3>
+          </div>
+
+      </section>
+
+
+      <!-- Featured Products -->
+      <section class="featured-products">
+        <h2>Featured Products</h2>
+        <div class="products-grid" id="featuredProducts">
+          <!-- Products will be loaded dynamically -->
+        </div>
+      </section>
+
+      <!-- Customer Reviews -->
+      <section class="reviews">
+        <h2>What Our Customers Say</h2>
+        <div class="reviews-container" id="reviewsContainer">
+          <!-- Reviews will be loaded dynamically -->
+        </div>
+      </section>
+    </div>
+
+    <!-- Products Page -->
+    <div id="productsPage" class="page">
+      <button class="go-back" onclick="showPage('home')">
+        <span data-en="" data-ur="مصنوعات"></span>
+      </button>
+      <!-- Navigation Links (auto-created with JS) -->
+      <div id="productsNav" class="products-nav"></div>
+    
+      <div class="products-header">
         
-    </nav>
-
-    <!-- Mobile Bottom Navigation -->
-    <div class="bottom-nav" id="bottomNav">
-        <button onclick="showPage('home')" class="bottom-nav-btn active">
-            <i class="fas fa-home"></i>
-            <span>Home</span>
-        </button>
-        <button onclick="showPage('products')" class="bottom-nav-btn">
-            <i class="fas fa-shopping-bag"></i>
-            <span>Shop</span>
-        </button>
-        <button onclick="showPage('cart')" class="bottom-nav-btn">
-            <i class="fas fa-shopping-cart"></i>
-            <span>Cart</span>
-        </button>
-      <button onclick="showPage('profile')" class="bottom-nav-btn">
-    <i class="fas fa-user"></i>
-    <span>Profile</span>
-</button>
-    </div>
-
-    <!-- Main Content -->
-    <main class="main-content">
-        <!-- Terms & Conditions Page -->
-<div id="termsPage" class="page">
-  <div class="info-container">
-    <h1>Terms & Conditions</h1>
-    <p>Welcome to Zerli’n. By accessing or using our website, you agree to comply with the following terms and conditions...</p>
-    <ul>
-      <li>Use of our website is for lawful purposes only.</li>
-      <li>All products are subject to availability.</li>
-      <li>We reserve the right to update these terms anytime.</li>
-    </ul>
-  </div>
-</div>
-
-<!-- Privacy Policy Page -->
-<div id="privacyPage" class="page">
-  <div class="info-container">
-    <h1>Privacy Policy</h1>
-    <p>Your privacy is important to us. This policy explains how we collect, use, and protect your data...</p>
-    <h3>Information We Collect</h3>
-    <p>Name, email, phone, and order details for processing your purchases.</p>
-    <h3>How We Use Information</h3>
-    <p>To process orders, improve services, and send updates with your consent.</p>
-    <h3>Data Protection</h3>
-    <p>We use secure systems to protect your personal information.</p>
-  </div>
-</div>
-
-<!-- FAQ Page -->
-<div id="faqPage" class="page">
-  <div class="info-container">
-    <h1>Frequently Asked Questions (FAQ)</h1>
-    <div class="faq-item">
-      <h3>1. How can I place an order?</h3>
-      <p>Simply browse products, add to bag, and proceed to checkout.</p>
-    </div>
-    <div class="faq-item">
-      <h3>2. What payment methods do you accept?</h3>
-      <p>We accept Cash on Delivery, Credit/Debit Card, and Bank Transfer.</p>
-    </div>
-    <div class="faq-item">
-      <h3>3. How long does delivery take?</h3>
-      <p>Orders are usually delivered within 3–5 business days across Pakistan.</p>
-    </div>
-    <div class="faq-item">
-      <h3>4. Can I return a product?</h3>
-      <p>Yes, we offer a 30-day easy return policy.</p>
-    </div>
-  </div>
-</div>
-
-        <!-- Home Page -->
-        <div id="homePage" class="page active">
-            <!-- Hero Section -->
-            <section class="hero">
-                <div class="hero-slider" id="heroSlider">
-                    <div class="slide active">
-                        <img src="https://images.pexels.com/photos/996329/pexels-photo-996329.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop" alt="Fashion Collection">
-                        <div class="slide-content">
-                            <h1>Zerli'n</h1>
-                            <p>Discover the latest trends in fashion</p>
-                            <button class="cta-btn" onclick="showPage('products')">Shop Now</button>
-                        </div>
-                    </div>
-                    <div class="slide">
-                        <img src="https://images.pexels.com/photos/1040945/pexels-photo-1040945.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop" alt="Men's Fashion">
-                        <div class="slide-content">
-                            <h1>Men's Fashion</h1>
-                            <p>Stylish and comfortable clothing</p>
-                            <button class="cta-btn" onclick="showPage('products')">Explore</button>
-                        </div>
-                    </div>
-                    <div class="slide">
-                        <img src="https://images.pexels.com/photos/1549200/pexels-photo-1549200.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop" alt="Women's Fashion">
-                        <div class="slide-content">
-                            <h1>Women's Collection</h1>
-                            <p>Elegant and trendy designs</p>
-                            <button class="cta-btn" onclick="showPage('products')">Shop Women</button>
-                        </div>
-                    </div>
-                </div>
-                <button class="slider-btn prev" onclick="prevSlide()">‹</button>
-                <button class="slider-btn next" onclick="nextSlide()">›</button>
-            </section>
-            <!-- What's New Products Slider -->
-<section class="whats-new">
-  <h2>What's New</h2>
-  <div class="whats-new-slider">
-    <div class="whats-new-track">
-
-      <!-- Product Item -->
-      <a href="product3.html" class="product-item5">
-        <img src="https://images.pexels.com/photos/2983464/pexels-photo-2983464.jpeg?auto=compress&cs=tinysrgb&w=400" alt="New Jacket">
-        <div class="product-info5">
-          <h3>Classic Jacket</h3>
-          <p>$49.99</p>
-        </div>
-      </a>
-
-      <a class="product-item5" onclick="filterProducts('women')">
-        <img src="https://images.pexels.com/photos/298863/pexels-photo-298863.jpeg?auto=compress&cs=tinysrgb&w=400" alt="New Dress">
-        <div class="product-info5">
-          <h3>Summer Dress</h3>
-          <p>$39.99</p>
-        </div>
-      </a>
-
-      <a class="product-item5" onclick="filterProducts('women')">
-        <img src="https://images.pexels.com/photos/298864/pexels-photo-298864.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Shirt">
-        <div class="product-info5">
-          <h3>Casual Shirt</h3>
-          <p>$29.99</p>
-        </div>
-      </a>
-
-      <a class="product-item5" onclick="filterProducts('men')">
-        <img src="https://images.pexels.com/photos/994517/pexels-photo-994517.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Handbag">
-        <div class="product-info5">
-          <h3>Leather Handbag</h3>
-          <p>$59.99</p>
-        </div>
-      </a>
-<a class="product-item5" onclick="filterProducts('men')">
-        <img src="https://images.pexels.com/photos/2983464/pexels-photo-2983464.jpeg?auto=compress&cs=tinysrgb&w=400" alt="New Jacket">
-        <div class="product-info5">
-          <h3>Classic Jacket</h3>
-          <p>$49.99</p>
-        </div>
-      </a>
-
-      <a class="product-item5" onclick="filterProducts('accessories')">
-        <img src="https://images.pexels.com/photos/298863/pexels-photo-298863.jpeg?auto=compress&cs=tinysrgb&w=400" alt="New Dress">
-        <div class="product-info5">
-          <h3>Summer Dress</h3>
-          <p>$39.99</p>
-        </div>
-      </a>
-
-      <a class="product-item5">
-        <img src="https://images.pexels.com/photos/298864/pexels-photo-298864.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Shirt">
-        <div class="product-info5">
-          <h3>Casual Shirt</h3>
-          <p>$29.99</p>
-        </div>
-      </a>
-
-      <a href="product4.html" class="product-item5">
-        <img src="https://images.pexels.com/photos/994517/pexels-photo-994517.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Handbag">
-        <div class="product-info5">
-          <h3>Leather Handbag</h3>
-          <p>$59.99</p>
-        </div>
-      </a>
-
-    </div>
-  </div>
-</section>
-
-
-            <!-- Featured Categories -->
-            <section class="categories">
-                <h2>Shop by Category</h2>
-                <div class="category-grid">
-                    <div class="category-card" onclick="filterProducts('men')">
-                        <img src="https://images.pexels.com/photos/1040945/pexels-photo-1040945.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" alt="Men's Clothing">
-                        <h3>Men's Fashion</h3>
-                    </div>
-                    <div class="category-card" onclick="filterProducts('women')">
-                        <img src="https://images.pexels.com/photos/1549200/pexels-photo-1549200.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" alt="Women's Clothing">
-                        <h3>Women's Fashion</h3>
-                    </div>
-                    <div class="category-card" onclick="filterProducts('accessories')">
-                        <img src="https://images.pexels.com/photos/1152077/pexels-photo-1152077.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" alt="Accessories">
-                        <h3>Accessories</h3>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Featured Products -->
-            <section class="featured-products">
-                <h2>Featured Products</h2>
-                <div class="products-grid" id="featuredProducts">
-                    <!-- Products will be loaded dynamically -->
-                </div>
-            </section>
-
-            <!-- Customer Reviews -->
-            <section class="reviews">
-                <h2>What Our Customers Say</h2>
-                <div class="reviews-container" id="reviewsContainer">
-                    <!-- Reviews will be loaded dynamically -->
-                </div>
-            </section>
-        </div>
-
-        <!-- Products Page -->
-        <div id="productsPage" class="page">
-             <button class="go-back" onclick="showPage('home')">
-                        <span data-en="" data-ur="مصنوعات"></span>
-                    </button>
-                       <!-- Navigation Links (auto-created with JS) -->
-    <div id="productsNav" class="products-nav"></div>
-
-    <div class="products-header">
         <h1>Our Products</h1>
-                
-                <div class="filters">
-                    <select id="categoryFilter" onchange="applyFilters()">
-                        <option value="">All Categories</option>
-                        <option value="men">Men's Fashion</option>
-                        <option value="women">Women's Fashion</option>
-                        <option value="accessories">Accessories</option>
-                    </select>
-                    <select id="priceFilter" onchange="applyFilters()">
-                        <option value="">All Prices</option>
-                        <option value="low">Low to High</option>
-                        <option value="high">High to Low</option>
-                    </select>
-                    <select id="stockFilter" onchange="applyFilters()">
-                        <option value="">All Stock</option>
-                        <option value="instock">In Stock</option>
-                        <option value="outstock">Out of Stock</option>
-                    </select>
-                </div>
-            </div>
-            <div class="products-grid" id="allProducts">
-                <!-- Products will be loaded dynamically -->
-            </div>
+
+      <div class="filters">
+  <select id="categoryFilter" class="filter-select" onchange="applyFilters()">
+    <option value="" class="filter-option">All Categories</option>
+    <option value="men" class="filter-option">Pour Homme</option>
+    <option value="women" class="filter-option">Pour Femme</option>
+    <option value="Unisex" class="filter-option">Unisex</option>
+    <option value="Itar" class="filter-option">Itar</option>
+    <option value="accessories" class="filter-option">Accessories</option>
+    <option value="Islamic Books" class="filter-option">Islamic Books</option>
+  </select>
+
+  <select id="priceFilter" class="filter-select" onchange="applyFilters()">
+    <option value="" class="filter-option">All Prices</option>
+    <option value="low" class="filter-option">Low to High</option>
+    <option value="high" class="filter-option">High to Low</option>
+  </select>
+
+  <select id="stockFilter" class="filter-select" onchange="applyFilters()">
+    <option value="" class="filter-option">Stock Status</option>
+    <option value="instock" class="filter-option">In Stock</option>
+    <option value="outstock" class="filter-option">Out of Stock</option>
+  </select>
+</div>
+
+
+      </div>
+
+      <div class="products-grid" id="allProducts">
+        <!-- Products will be loaded dynamically -->
+      </div>
+    </div>
+
+
+
+    <!-- Product Detail Page -->
+    <div id="productDetailPage" class="page">
+      <button class="go-back" onclick="showPage('products')">
+        <span data-en="" data-ur="مصنوعات"></span>
+      </button>
+      <div class="product-detail" id="productDetail">
+
+        <!-- Product details will be loaded dynamically -->
+
+      </div>
+    </div>
+
+    <!-- Cart Page -->
+    <div id="cartPage" class="page">
+      <div class="cart-container">
+        <h1>Shopping Cart</h1>
+        <div class="cart-content" id="cartContent">
+          <!-- Cart items will be loaded dynamically -->
         </div>
-
-        
-
-        <!-- Product Detail Page -->
-        <div id="productDetailPage" class="page">
-            <button class="go-back" onclick="showPage('products')">
-                        <span data-en="" data-ur="مصنوعات"></span>
-                    </button>
-            <div class="product-detail" id="productDetail">
-                
-                <!-- Product details will be loaded dynamically -->
-                
-            </div>
+        <div class="cart-summary" id="cartSummary">
+          <!-- Cart summary will be loaded dynamically -->
         </div>
+      </div>
+    </div>
 
-        <!-- Cart Page -->
-        <div id="cartPage" class="page">
-            <div class="cart-container">
-                <h1>Shopping Cart</h1>
-                <div class="cart-content" id="cartContent">
-                    <!-- Cart items will be loaded dynamically -->
-                </div>
-                <div class="cart-summary" id="cartSummary">
-                    <!-- Cart summary will be loaded dynamically -->
-                </div>
-            </div>
-        </div>
-
-        <!-- Login/Signup Page -->
+    <!-- Login/Signup Page -->
 
 
     <div id="loginPage" class="page">
-  <div class="auth-container">
-    <div class="auth-tabs">
-      <button class="auth-tab active" onclick="switchAuthTab('login')">Login</button>
-      <button class="auth-tab" onclick="switchAuthTab('signup')">Sign Up</button>
-    </div>
-
-    <!-- Login Form -->
-    <form id="loginForm" class="auth-form active">
-      <h2>Login to Your Account</h2>
-      <div class="form-group">
-        <input type="email" id="loginEmail" placeholder="Email" required>
-      </div>
-      <div class="form-group">
-        <input type="password" id="loginPassword" placeholder="Password" required>
-      </div>
-      <button type="submit" class="auth-btn">Login</button>
-      <button type="button" class="google-btn" onclick="googleSignIn()">
-        <i class="fab fa-google"></i> Sign in with Google
-      </button>
-        <button type="button" class="facebook-btn" onclick="facebookSignIn()">
-    <i class="fab fa-facebook-f"></i> Sign in with Facebook
-  </button>
-    </form>
-
-    <!-- Signup Form -->
-    <form id="signupForm" class="auth-form">
-      <h2>Create a New Account</h2>
-      <div class="form-group">
-        <input type="email" id="signupEmail" placeholder="Email" required>
-      </div>
-      <div class="form-group">
-        <input type="password" id="signupPassword" placeholder="Password" required>
-      </div>
-      <button type="submit" class="auth-btn">Sign Up</button>
-    </form>
-  </div>
-</div>
-
-        <!-- Profile Page -->
-        <div id="profilePage" class="page">
-            <div class="profile-container" id="profileContainer">
-                <!-- Profile content will be loaded dynamically -->
-            </div>
-            
+      <div class="auth-container">
+        <div class="auth-tabs">
+          <button class="auth-tab active" onclick="switchAuthTab('login')">Login</button>
         </div>
 
-        <!-- Services Page -->
-        <div id="servicesPage" class="page">
-            <div class="services-container">
-                <h1>Our Services</h1>
-                <div class="services-grid">
-                    <div class="service-card">
-                        <i class="fas fa-shipping-fast"></i>
-                        <h3>Fast Delivery</h3>
-                        <p>Quick and reliable delivery across Pakistan</p>
-                    </div>
-                    <div class="service-card">
-                        <i class="fas fa-undo"></i>
-                        <h3>Easy Returns</h3>
-                        <p>30-day return policy for your convenience</p>
-                    </div>
-                    <div class="service-card">
-                        <i class="fas fa-headset"></i>
-                        <h3>24/7 Support</h3>
-                        <p>Round the clock customer support</p>
-                    </div>
-                    <div class="service-card">
-                        <i class="fas fa-shield-alt"></i>
-                        <h3>Secure Payment</h3>
-                        <p>Safe and secure payment methods</p>
-                    </div>
-                </div>
-       
+        <!-- Login Form -->
+        <form id="loginForm" class="auth-form active">
+          <h2>Login to Your Account</h2>
+          <div class="form-group">
+            <input type="email" id="loginEmail" placeholder="Email" required>
+          </div>
+          <div class="form-group">
+            <input type="password" id="loginPassword" placeholder="Password" required>
+          </div>
+          <button type="submit" class="auth-btn">Login</button>
+          <button type="button" class="google-btn" onclick="googleSignIn()">
+            <i class="fab fa-google"></i> Sign in with Google
+          </button>
+          <button type="button" class="facebook-btn" onclick="facebookSignIn()">
+            <i class="fab fa-facebook-f"></i> Sign in with Facebook
+          </button>
+        </form>
+
+        <!-- Signup Form -->
+        <form id="signupForm" class="auth-form">
+          <h2>Create a New Account</h2>
+          <div class="form-group">
+            <input type="email" id="signupEmail" placeholder="Email" required>
+          </div>
+          <div class="form-group">
+            <input type="password" id="signupPassword" placeholder="Password" required>
+          </div>
+          <button type="submit" class="auth-btn">Sign Up</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Profile Page -->
+    <div id="profilePage" class="page">
+      <div class="profile-container" id="profileContainer">
+        <!-- Profile content will be loaded dynamically -->
+      </div>
+
+    </div>
+
+
+
+    <!-- Services Page -->
+    <div id="servicesPage" class="page">
+      <div class="services-container">
+        <h1>Our Services</h1>
+        <div class="services-grid">
+          <div class="service-card">
+            <i class="fas fa-shipping-fast"></i>
+            <h3>Fast Delivery</h3>
+            <p>Quick and reliable delivery across Pakistan</p>
+          </div>
+          <div class="service-card">
+            <i class="fas fa-undo"></i>
+            <h3>Easy Returns</h3>
+            <p>30-day return policy for your convenience</p>
+          </div>
+          <div class="service-card">
+            <i class="fas fa-headset"></i>
+            <h3>24/7 Support</h3>
+            <p>Round the clock customer support</p>
+          </div>
+          <div class="service-card">
+            <i class="fas fa-shield-alt"></i>
+            <h3>Secure Payment</h3>
+            <p>Safe and secure payment methods</p>
+          </div>
+        </div>
+
         <!-- Product + Service Showcase -->
         <div class="service-showcase">
-            <h2>Our Services with Products</h2>
-            <div class="showcase-grid">
-                <div class="showcase-item">
-                    <h3>Best Collections</h3>
-                    <p>Made with premium fabric for style & comfort.</p>
-                    <img src="https://cdn.shopify.com/s/files/1/2995/1158/files/GREEN_FLORAL_PRINT_GEORGETTE_SALWAR_SUIT_480x480.jpg" alt="Custom Jacket">
-                </div>
-                <div class="showcase-item">
-                    <h3>All Varities</h3>
-                    <p>Perfect packaging with home delivery.</p>
-                    <img src="https://i.pinimg.com/736x/21/63/bd/2163bd15f8459a0955a9a36fd57b92dc.jpg" alt="Gift Box">
-                </div>
+          <h2>Our Services with Products</h2>
+          <div class="showcase-grid">
+            <div class="showcase-item">
+              <h3>Best Collections</h3>
+              <p>Made with premium fabric for style & comfort.</p>
+              <img
+                src="https://cdn.shopify.com/s/files/1/2995/1158/files/GREEN_FLORAL_PRINT_GEORGETTE_SALWAR_SUIT_480x480.jpg"
+                alt="Custom Jacket">
             </div>
+            <div class="showcase-item">
+              <h3>All Varities</h3>
+              <p>Perfect packaging with home delivery.</p>
+              <img src="https://i.pinimg.com/736x/21/63/bd/2163bd15f8459a0955a9a36fd57b92dc.jpg" alt="Gift Box">
+            </div>
+          </div>
         </div>
 
         <!-- FAQ Section -->
         <div class="faq">
-            <h2>Frequently Asked Questions</h2>
-            <div class="faq-item">
-                <h4>How long does delivery take?</h4>
-                <p>Usually within 7 to 9 days for major cities in Pakistan.</p>
-            </div>
-            <div class="faq-item">
-                <h4>Can I exchange my product?</h4>
-                <p>Yes, we offer easy exchanges within 3 days.</p>
-            </div>
-            <div class="faq-item">
-                <h4>Do you ship internationally?</h4>
-                <p>Currently, we only ship within Pakistan, but international shipping is coming soon!</p>
-            </div>
+          <h2>Frequently Asked Questions</h2>
+          <div class="faq-item">
+            <h4>How long does delivery take?</h4>
+            <p>Usually within 7 to 9 days for major cities in Pakistan.</p>
+          </div>
+          <div class="faq-item">
+            <h4>Can I exchange my product?</h4>
+            <p>Yes, we offer easy exchanges within 3 days.</p>
+          </div>
+          <div class="faq-item">
+            <h4>Do you ship internationally?</h4>
+            <p>Currently, we only ship within Pakistan, but international shipping is coming soon!</p>
+          </div>
         </div>
+      </div>
     </div>
-</div>
+    </div>
+    </div>
+
+
+    <!-- Contact Page -->
+    <div id="contactPage" class="page">
+      <div class="contact-container">
+        <h1>Contact Us</h1>
+        <div class="contact-content">
+          <div class="contact-info">
+            <h3>Get in Touch</h3>
+            <div class="contact-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Gujrat, Pakistan</span>
             </div>
-        </div>
-        
-
-        <!-- Contact Page -->
-        <div id="contactPage" class="page">
-            <div class="contact-container">
-                <h1>Contact Us</h1>
-                <div class="contact-content">
-                    <div class="contact-info">
-                        <h3>Get in Touch</h3>
-                        <div class="contact-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Lahore, Pakistan</span>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-phone"></i>
-                            <span>+92 300 1234567</span>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <span>info@zerln.com</span>
-                        </div>
-                        <div class="social-links">
-                            <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
-                            <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                    <form class="contact-form" id="contactForm">
-                        <div class="form-group">
-                            <input type="text" placeholder="Your Name"  required name="name">
-                        </div>
-                        <div class="form-group">
-                            <input type="email" placeholder="Your Email" required name="email">
-                        </div>
-                        <div class="form-group">
-                            <input type="tel" placeholder="Phone Number"required name="phone">
-                        </div>
-                        <div class="form-group">
-                            <textarea placeholder="Your Message" rows="5"  required name="message"></textarea>
-                        </div>
-                        <button type="submit" class="contact-btn">Send Message</button>
-                    </form>
-                </div>
+            <div class="contact-item">
+              <i class="fas fa-phone"></i>
+              <span>+92 300 1234567</span>
             </div>
-        </div>
-
-       <!-- Checkout Page -->
-<div id="checkoutPage" class="page">
-            <button class="go-back" onclick="showPage('cart')">
-                        <span data-en="" data-ur="مصنوعات"></span>
-                    </button>
-  <div class="checkout-container">
-    <h1>Checkout</h1>
-    <form class="checkout-form" id="checkoutForm">
-      <div class="checkout-section">
-        <h3>Delivery Information</h3>
-
-        <div class="form-group">
-          <input type="text" placeholder="Full Name" required name="name">
-        </div>
-
-        <div class="form-group">
-          <!-- Pakistani phone number validation -->
-          <input 
-            type="tel" 
-            placeholder="Phone Number" 
-            required 
-            name="phone"
-            pattern="^(\+92[0-9]{10}|03[0-9]{9})$"
-            title="Enter valid Pakistani number: +923xxxxxxxxx or 03xxxxxxxxx">
-        </div>
-
-        <div class="form-group">
-          <input type="email" placeholder="Email" required name="email">
-        </div>
-
-        <div class="form-group">
-          <input type="text" placeholder="City" required name="city">
-        </div>
-
-        <div class="form-group">
-          <textarea placeholder="Complete Address" rows="3" required name="address"></textarea>
+            <div class="contact-item">
+              <i class="fas fa-envelope"></i>
+              <span>info@M.R Perfumes.com</span>
+            </div>
+            <div class="social-links">
+              <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+              <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+          <form class="contact-form" id="contactForm">
+            <div class="form-group">
+              <input type="text" placeholder="Your Name" required name="name">
+            </div>
+            <div class="form-group">
+              <input type="email" placeholder="Your Email" required name="email">
+            </div>
+            <div class="form-group">
+              <input type="tel" placeholder="Phone Number" required name="phone">
+            </div>
+            <div class="form-group">
+              <textarea placeholder="Your Message" rows="5" required name="message"></textarea>
+            </div>
+            <button type="submit" class="contact-btn">Send Message</button>
+          </form>
         </div>
       </div>
-      
-      <div class="checkout-section">
-        <h3>Payment Method</h3>
-        <div class="payment-options">
-          <label><input type="radio" name="payment" value="cod" checked> Cash on Delivery</label>
-          <label><input type="radio" name="payment" value="card"> Credit/Debit Card</label>
-          <label><input type="radio" name="payment" value="bank"> Bank Transfer</label>
-        </div>
-      </div>
-      
-      <div class="order-summary" id="orderSummary">
-        <!-- Order summary will be loaded dynamically -->
-      </div>
-      
-      <button type="submit" class="place-order-btn">Place Order</button>
-    </form>
-  </div>
-</div>
+    </div>
 
-    
-<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <!-- Checkout Page -->
+    <div id="checkoutPage" class="page">
+      <button class="go-back" onclick="showPage('cart')">
+        <span data-en="" data-ur="مصنوعات"></span>
+      </button>
+      <div class="checkout-container">
+        <h1>Checkout</h1>
+        <form class="checkout-form" id="checkoutForm">
+          <div class="checkout-section">
+            <h3>Delivery Information</h3>
+
+            <div class="form-group">
+              <input type="text" placeholder="Full Name" required name="name">
+            </div>
+
+            <div class="form-group">
+              <!-- Pakistani phone number validation -->
+              <input type="tel" placeholder="Phone Number" required name="phone" pattern="^(\+92[0-9]{10}|03[0-9]{9})$"
+                title="Enter valid Pakistani number: +923xxxxxxxxx or 03xxxxxxxxx">
+            </div>
+
+            <div class="form-group">
+              <input type="email" placeholder="Email" required name="email">
+            </div>
+
+            <div class="form-group">
+              <input type="text" placeholder="City" required name="city">
+            </div>
+
+            <div class="form-group">
+              <textarea placeholder="Complete Address" rows="3" required name="address"></textarea>
+            </div>
+          </div>
+
+          <div class="checkout-section">
+            <h3>Payment Method</h3>
+            <div class="payment-options">
+              <label><input type="radio" name="payment" value="cod" checked> Cash on Delivery</label>
+              <label><input type="radio" name="payment" value="card"> Credit/Debit Card</label>
+              <label><input type="radio" name="payment" value="bank"> Bank Transfer</label>
+            </div>
+          </div>
+
+          <div class="order-summary" id="orderSummary">
+            <!-- Order summary will be loaded dynamically -->
+          </div>
+
+          <button type="submit" class="place-order-btn">Place Order</button>
+        </form>
+      </div>
+    </div>
+
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore-compat.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script src="firebase.js"></script>
     <script src="product.js"></script>
-    <script src="script.js" ></script>
-    <script src="dashboard.js"></script>
-      <footer class="site-footer">
-        <div class="footer-wave">
-            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
-                <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="shape-fill"></path>
-                <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" class="shape-fill"></path>
-                <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="shape-fill"></path>
-            </svg>
+    <script src="script.js"></script>
+    <footer class="site-footer">
+      <div class="footer-wave">
+        <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path
+            d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
+            opacity=".25" class="shape-fill"></path>
+          <path
+            d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z"
+            opacity=".5" class="shape-fill"></path>
+          <path
+            d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"
+            class="shape-fill"></path>
+        </svg>
+      </div>
+
+      <!-- Floating elements for background -->
+      <div class="floating-element float-1"></div>
+      <div class="floating-element float-2"></div>
+      <div class="floating-element float-3"></div>
+
+      <div class="footer-content">
+        <div class="footer-section">
+          <div class="footer-logo">
+            <img src="web  logo .png" alt="MR Perfumes Logo">
+            <span class="logo-text">M.R Perfumes</span>
+          </div>
+          <p>Elevating style with premium quality clothing for the modern individual. Crafted with excellence, designed
+            for distinction.</p>
+          <div class="footer-social">
+            <a href="#" class="social-icon">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="social-icon">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="social-icon">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="social-icon">
+              <i class="fab fa-pinterest-p"></i>
+            </a>
+            <a href="#" class="social-icon">
+              <i class="fab fa-youtube"></i>
+            </a>
+          </div>
         </div>
-        
-        <!-- Floating elements for background -->
-        <div class="floating-element float-1"></div>
-        <div class="floating-element float-2"></div>
-        <div class="floating-element float-3"></div>
-        
-        <div class="footer-content">
-            <div class="footer-section">
-                <div class="footer-logo">
-                    <img src="logoo.jpeg" alt="ZERL'N Logo">
-                    <span class="logo-text">ZERLI'N</span>
-                </div>
-                <p>Elevating style with premium quality clothing for the modern individual. Crafted with excellence, designed for distinction.</p>
-                <div class="footer-social">
-                    <a href="#" class="social-icon">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="#" class="social-icon">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="#" class="social-icon">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="#" class="social-icon">
-                        <i class="fab fa-pinterest-p"></i>
-                    </a>
-                    <a href="#" class="social-icon">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                </div>
-            </div>
-            
-            <div class="footer-section">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="#">New Arrivals</a></li>
-                    <li><a href="#">Best Sellers</a></li>
-                    <li><a href="#">Seasonal Collections</a></li>
-                    <li><a href="#">Limited Editions</a></li>
-                    <li><a href="#">Lookbook</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-section">
-                <h3>Customer Service</h3>
-                <ul>
-                    <li><a href="#">Size Guide</a></li>
-                    <li><a href="#">Shipping & Returns</a></li>
-                    <li> <a href="#" class="nav-link" onclick="showPage('terms')"><span data-en="Terms & Conditions" data-ur="شرائط">Terms & Conditions</span></a></li>
-                    <li><a href="#" class="nav-link" onclick="showPage('faq')"><span data-en="FAQ" data-ur="سوالات">FAQ</span></a></li>
-                    <li> <a href="#" class="nav-link" onclick="showPage('privacy')"><span data-en="Privacy & policy" data-ur="رازداری">Privacy & Policy</span></a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-section">
-                <h3>Newsletter</h3>
-                <p>Subscribe to get exclusive updates, early access to new collections, and special offers.</p>
-                <form class="newsletter-form">
-                    <input type="email" placeholder="Your email address" required>
-                    <button type="submit">Subscribe</button>
-                </form>
-                
-                <!-- Creator Profile -->
-                <div class="creator-profile">
-                    <div class="creator-avatar">
-                        <img src="ali.JPG" alt="Creator">
-                    </div>
-                    <div class="creator-info">
-                        <h4>Muhammad ALi</h4>
-                        <p>Founder & Creative Director</p>
-                        <div class="creator-social">
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                            <a href="#"><i class="fab fa-facebook"></i></a>
-                         
-                        </div>
-                    </div>
-                </div>
-            </div>
+
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#">New Arrivals</a></li>
+            <li><a href="#">Best Sellers</a></li>
+            <li><a href="#">Seasonal Collections</a></li>
+            <li><a href="#">Limited Editions</a></li>
+            <li><a href="#">Lookbook</a></li>
+          </ul>
         </div>
-        
-        <div class="footer-bottom">
-            <p>&copy; 2025 ZERLI'N. All rights reserved. Created with excellence.</p>
-            <div class="payment-methods">
-                <i class="fab fa-cc-visa"></i>
-                <i class="fab fa-cc-mastercard"></i>
-                <i class="fab fa-cc-amex"></i>
-                <i class="fab fa-cc-paypal"></i>
-                <i class="fab fa-cc-apple-pay"></i>
-            </div>
+
+        <div class="footer-section">
+          <h3>Customer Service</h3>
+          <ul>
+            <li><a href="#">Size Guide</a></li>
+            <li><a href="#">Shipping & Returns</a></li>
+            <li> <a href="#" class="nav-link" onclick="showPage('terms')"><span data-en="Terms & Conditions"
+                  data-ur="شرائط">Terms & Conditions</span></a></li>
+            <li><a href="#" class="nav-link" onclick="showPage('faq')"><span data-en="FAQ"
+                  data-ur="سوالات">FAQ</span></a></li>
+            <li> <a href="#" class="nav-link" onclick="showPage('privacy')"><span data-en="Privacy & policy"
+                  data-ur="رازداری">Privacy & Policy</span></a></li>
+          </ul>
         </div>
+
+        <div class="footer-section">
+          <h3>Newsletter</h3>
+          <p>Subscribe to get exclusive updates, early access to new collections, and special offers.</p>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Your email address" required>
+            <button type="submit">Subscribe</button>
+          </form>
+
+          <!-- Creator Profile -->
+          <div class="creator-profile">
+            <div class="creator-avatar">
+              <img src="Muhammad logo.png" alt="Creator">
+            </div>
+            <div class="creator-info">
+              <h4>Muhammad ALi</h4>
+              <p>Founder & Creator of this website </p>
+              <div class="creator-social">
+                <a href="https://www.instagram.com/drpro77/?utm_source=ig_web_button_share_sheet"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.instagram.com/drpro77/?utm_source=ig_web_button_share_sheet"><i class="fab fa-facebook"></i></a>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2025 M.R Perfumes. All rights reserved. Created with excellence.</p>
+        <div class="payment-methods">
+          <i class="fab fa-cc-visa"></i>
+          <i class="fab fa-cc-mastercard"></i>
+          <i class="fab fa-cc-amex"></i>
+          <i class="fab fa-cc-paypal"></i>
+          <i class="fab fa-cc-apple-pay"></i>
+        </div>
+      </div>
     </footer>
     <!-- WhatsApp Contact Button -->
-<a href="https://wa.me/923001234567" 
-   class="whatsapp-btn" 
-   target="_blank" 
-   aria-label="Chat on WhatsApp">
-  <i class="fab fa-whatsapp"></i>
-</a>
+    <a href="https://wa.me/+923256261212" class="whatsapp-btn" target="_blank" aria-label="Chat on WhatsApp">
+      <i class="fab fa-whatsapp"></i>
+    </a>
 
     <!-- Scroll to Top Button -->
-<button id="scrollTopBtn" class="scroll-top-btn">
-  <i class="fas fa-arrow-up"></i>
-</button>
-<script>
-    // Scroll to Top Button
-const scrollTopBtn = document.getElementById("scrollTopBtn");
+    <button id="scrollTopBtn" class="scroll-top-btn">
+      <i class="fa-solid fa-angles-up"></i>
+    </button>
+    <script>
+      // Scroll to Top Button
+      const scrollTopBtn = document.getElementById("scrollTopBtn");
 
-// Show button when scrolling down
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 300) {
-    scrollTopBtn.style.display = "flex";
-  } else {
-    scrollTopBtn.style.display = "none";
-  }
-});
+      // Show button when scrolling down
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 300) {
+          scrollTopBtn.style.display = "flex";
+        } else {
+          scrollTopBtn.style.display = "none";
+        }
+      });
 
-// Smooth scroll to top when clicked
-scrollTopBtn.addEventListener("click", () => {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-  });
-});
+      // Smooth scroll to top when clicked
+      scrollTopBtn.addEventListener("click", () => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
+      });
 
-</script>
+    </script>
 </body>
+
 </html>

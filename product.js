@@ -1,25 +1,27 @@
 // Products Data
 const productsData = [
-    {
-        id: 1,
-        title: "Premium Cotton T-Shirt",
-        description: "High-quality cotton t-shirt with comfortable fit and stylish design. Perfect for casual wear and everyday comfort.",
-        price: 2500,
-        originalPrice: 3500,
-        images: [
-            "https://drpro777.github.io/photo-driver/1.webp",
-            "https://images.pexels.com/photos/8532617/pexels-photo-8532617.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
-            "https://images.pexels.com/photos/8532618/pexels-photo-8532618.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
-            "https://images.pexels.com/photos/8532619/pexels-photo-8532619.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
-        ],
-        category: "men",
-        rating: 4.5,
-        reviews: 120,
-        sizes: ["S", "M", "L", "XL", "XXL"],
-        colors: ["Black", "White", "Navy", "Gray"],
-        stock: 50,
-        discount: 35
-    },
+ {
+  id: 1,
+  title: "Premium Cotton T-Shirt",
+  description: "High-quality cotton t-shirt with comfortable fit and stylish design. Perfect for casual wear and everyday comfort.",
+  price: 2500,
+  originalPrice: 3500,
+
+  images: [
+    "https://images.pexels.com/photos/8532617/pexels-photo-8532617.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+    "https://images.pexels.com/photos/8532618/pexels-photo-8532618.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+    "https://images.pexels.com/photos/8532619/pexels-photo-8532619.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
+  ],
+
+  category: "men",
+  rating: 4.5,
+  reviews: 120,
+
+  sizes: ["30Ml", "50Ml",],
+  colors: ["Black", "White", "Navy", "Gray"],
+  stock: 50,
+  discount: 35
+},
     {
         id: 2,
         title: "Elegant Maxi Dress",
@@ -27,7 +29,6 @@ const productsData = [
         price: 4500,
         originalPrice: 6000,
         images: [
-            "https://drpro777.github.io/photo-driver/2.jpg",
             "https://images.pexels.com/photos/1536620/pexels-photo-1536620.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
             "https://images.pexels.com/photos/1536621/pexels-photo-1536621.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
             "https://images.pexels.com/photos/1536622/pexels-photo-1536622.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
@@ -47,7 +48,6 @@ const productsData = [
         price: 3500,
         originalPrice: null,
         images: [
-            "https://drpro777.github.io/photo-driver/3.jpg",
             "https://images.pexels.com/photos/1598508/pexels-photo-1598508.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
             "https://images.pexels.com/photos/1598509/pexels-photo-1598509.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
             "https://images.pexels.com/photos/1598510/pexels-photo-1598510.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
@@ -67,7 +67,6 @@ const productsData = [
         price: 3200,
         originalPrice: 4000,
         images: [
-            "https://drpro777.github.io/photo-driver/4.webp",
             "https://images.pexels.com/photos/1152078/pexels-photo-1152078.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
             "https://images.pexels.com/photos/1152079/pexels-photo-1152079.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
             "https://images.pexels.com/photos/1152080/pexels-photo-1152080.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
@@ -87,7 +86,6 @@ const productsData = [
         price: 2800,
         originalPrice: null,
         images: [
-            "https://drpro777.github.io/photo-driver/5.jpg",
             "https://images.pexels.com/photos/1040946/pexels-photo-1040946.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
             "https://images.pexels.com/photos/1040947/pexels-photo-1040947.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
             "https://images.pexels.com/photos/1040948/pexels-photo-1040948.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
@@ -107,7 +105,6 @@ const productsData = [
         price: 2200,
         originalPrice: 3000,
         images: [
-            "https://drpro777.github.io/photo-driver/6.webp",
             "https://images.pexels.com/photos/1549201/pexels-photo-1549201.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
             "https://images.pexels.com/photos/1549202/pexels-photo-1549202.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
             "https://images.pexels.com/photos/1549203/pexels-photo-1549203.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
@@ -127,7 +124,6 @@ const productsData = [
         price: 1800,
         originalPrice: null,
         images: [
-            "https://drpro777.github.io/photo-driver/8.jpeg",
             "https://images.pexels.com/photos/1599821/pexels-photo-1599821.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
             "https://images.pexels.com/photos/1599822/pexels-photo-1599822.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
             "https://images.pexels.com/photos/1599823/pexels-photo-1599823.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
@@ -147,7 +143,6 @@ const productsData = [
         price: 6500,
         originalPrice: 8500,
         images: [
-            "https://drpro777.github.io/photo-driver/9.webp",
             "https://images.pexels.com/photos/996330/pexels-photo-996330.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
             "https://images.pexels.com/photos/996331/pexels-photo-996331.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
             "https://images.pexels.com/photos/996332/pexels-photo-996332.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
@@ -167,7 +162,6 @@ const productsData = [
         price: 4200,
         originalPrice: 5500,
         images: [
-            "https://drpro777.github.io/photo-driver/10.webp",
             "https://images.pexels.com/photos/2529149/pexels-photo-2529149.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
             "https://images.pexels.com/photos/2529150/pexels-photo-2529150.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
             "https://images.pexels.com/photos/2529151/pexels-photo-2529151.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
@@ -180,6 +174,7 @@ const productsData = [
         stock: 45,
         discount: 24
     },
+    // Females
     {
         id: 10,
         title: "Evening Gown",
@@ -187,7 +182,6 @@ const productsData = [
         price: 8500,
         originalPrice: 12000,
         images: [
-            "https://drpro777.github.io/photo-driver/12.jpg",
             "https://images.pexels.com/photos/1721559/pexels-photo-1721559.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
             "https://images.pexels.com/photos/1721560/pexels-photo-1721560.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
             "https://images.pexels.com/photos/1721561/pexels-photo-1721561.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
@@ -207,7 +201,6 @@ const productsData = [
         price: 3800,
         originalPrice: null,
         images: [
-            "https://drpro777.github.io/photo-driver/11.jpg",
             "https://images.pexels.com/photos/277320/pexels-photo-277320.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
             "https://images.pexels.com/photos/277321/pexels-photo-277321.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
             "https://images.pexels.com/photos/277322/pexels-photo-277322.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
@@ -227,7 +220,6 @@ const productsData = [
         price: 5500,
         originalPrice: 7500,
         images: [
-            "https://drpro777.github.io/photo-driver/13.jpg",
             "https://images.pexels.com/photos/1080697/pexels-photo-1080697.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
             "https://images.pexels.com/photos/1080698/pexels-photo-1080698.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
             "https://images.pexels.com/photos/1080699/pexels-photo-1080699.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
@@ -247,7 +239,6 @@ const productsData = [
         price: 2800,
         originalPrice: 3500,
         images: [
-            "https://drpro777.github.io/photo-driver/14.jpg",
             "https://images.pexels.com/photos/1488464/pexels-photo-1488464.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
             "https://images.pexels.com/photos/1488465/pexels-photo-1488465.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
             "https://images.pexels.com/photos/1488466/pexels-photo-1488466.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
@@ -267,7 +258,6 @@ const productsData = [
         price: 1800,
         originalPrice: null,
         images: [
-            "https://drpro777.github.io/photo-driver/15.jpg",
             "https://images.pexels.com/photos/1598506/pexels-photo-1598506.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
             "https://images.pexels.com/photos/1598507/pexels-photo-1598507.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
             "https://images.pexels.com/photos/1598508/pexels-photo-1598508.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
@@ -287,7 +277,6 @@ const productsData = [
         price: 3200,
         originalPrice: 4200,
         images: [
-            "https://drpro777.github.io/photo-driver/16.jpg",
             "https://images.pexels.com/photos/1536620/pexels-photo-1536620.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
             "https://images.pexels.com/photos/1536621/pexels-photo-1536621.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
             "https://images.pexels.com/photos/1536622/pexels-photo-1536622.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
@@ -307,7 +296,6 @@ const productsData = [
         price: 2500,
         originalPrice: 3200,
         images: [
-            "https://drpro777.github.io/photo-driver/17.jpg",
             "https://images.pexels.com/photos/1499328/pexels-photo-1499328.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
             "https://images.pexels.com/photos/1499329/pexels-photo-1499329.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
             "https://images.pexels.com/photos/1499330/pexels-photo-1499330.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
@@ -327,7 +315,6 @@ const productsData = [
         price: 3500,
         originalPrice: null,
         images: [
-            "https://drpro777.github.io/photo-driver/18.jpg",
             "https://images.pexels.com/photos/8532617/pexels-photo-8532617.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
             "https://images.pexels.com/photos/8532618/pexels-photo-8532618.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
             "https://images.pexels.com/photos/8532619/pexels-photo-8532619.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
@@ -347,7 +334,6 @@ const productsData = [
         price: 4500,
         originalPrice: 6000,
         images: [
-            "https://drpro777.github.io/photo-driver/18.jpg",
             "https://images.pexels.com/photos/1464626/pexels-photo-1464626.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
             "https://images.pexels.com/photos/1464627/pexels-photo-1464627.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
             "https://images.pexels.com/photos/1464628/pexels-photo-1464628.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
@@ -367,7 +353,6 @@ const productsData = [
         price: 1200,
         originalPrice: 1500,
         images: [
-            "https://drpro777.github.io/photo-driver/19.webp",
             "https://images.pexels.com/photos/1124063/pexels-photo-1124063.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
             "https://images.pexels.com/photos/1124064/pexels-photo-1124064.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
             "https://images.pexels.com/photos/1124065/pexels-photo-1124065.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
@@ -387,7 +372,6 @@ const productsData = [
         price: 4200,
         originalPrice: 5500,
         images: [
-            "https://drpro777.github.io/photo-driver/20.jpg",
             "https://images.pexels.com/photos/1549201/pexels-photo-1549201.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
             "https://images.pexels.com/photos/1549202/pexels-photo-1549202.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
             "https://images.pexels.com/photos/1549203/pexels-photo-1549203.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
@@ -400,6 +384,7 @@ const productsData = [
         stock: 0, 
         discount: 24
     },
+        // Unisex
       {
         id: 21,
         title: "Cardigan Sweater",
@@ -407,12 +392,11 @@ const productsData = [
         price: 4200,
         originalPrice: 5500,
         images: [
-            "https://drpro777.github.io/photo-driver/20.jpg",
             "https://images.pexels.com/photos/1549201/pexels-photo-1549201.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
             "https://images.pexels.com/photos/1549202/pexels-photo-1549202.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
             "https://images.pexels.com/photos/1549203/pexels-photo-1549203.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
         ],
-        category: "women",
+        category: "Unisex",
         rating: 4.4,
         reviews: 110,
         sizes: ["XS", "S", "M", "L", "XL"],
@@ -420,5 +404,743 @@ const productsData = [
         stock: 2, 
         discount: 24
     },
+       {
+        id: 22,
+        title: "Cardigan Sweater",
+        description: "Cozy cardigan sweater perfect for layering. Soft knit fabric with classic button-up design.",
+        price: 4200,
+        originalPrice: 5500,
+        images: [
+            "https://images.pexels.com/photos/1549201/pexels-photo-1549201.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549202/pexels-photo-1549202.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549203/pexels-photo-1549203.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
+        ],
+        category: "Unisex",
+        rating: 4.4,
+        reviews: 110,
+        sizes: ["XS", "S", "M", "L", "XL"],
+        colors: ["Beige", "Gray", "Pink", "Navy"],
+        stock: 2, 
+        discount: 24
+    },
+       {
+        id: 23,
+        title: "Cardigan Sweater",
+        description: "Cozy cardigan sweater perfect for layering. Soft knit fabric with classic button-up design.",
+        price: 4200,
+        originalPrice: 5500,
+        images: [
+            "https://images.pexels.com/photos/1549201/pexels-photo-1549201.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549202/pexels-photo-1549202.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549203/pexels-photo-1549203.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
+        ],
+        category: "Unisex",
+        rating: 4.4,
+        reviews: 110,
+        sizes: ["XS", "S", "M", "L", "XL"],
+        colors: ["Beige", "Gray", "Pink", "Navy"],
+        stock: 2, 
+        discount: 24
+    },
+       {
+        id: 24,
+        title: "Cardigan Sweater",
+        description: "Cozy cardigan sweater perfect for layering. Soft knit fabric with classic button-up design.",
+        price: 4200,
+        originalPrice: 5500,
+        images: [
+            "https://images.pexels.com/photos/1549201/pexels-photo-1549201.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549202/pexels-photo-1549202.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549203/pexels-photo-1549203.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
+        ],
+        category: "Unisex",
+        rating: 4.4,
+        reviews: 110,
+        sizes: ["XS", "S", "M", "L", "XL"],
+        colors: ["Beige", "Gray", "Pink", "Navy"],
+        stock: 2, 
+        discount: 24
+    },
+       {
+        id: 25,
+        title: "Cardigan Sweater",
+        description: "Cozy cardigan sweater perfect for layering. Soft knit fabric with classic button-up design.",
+        price: 4200,
+        originalPrice: 5500,
+        images: [
+            "https://images.pexels.com/photos/1549201/pexels-photo-1549201.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549202/pexels-photo-1549202.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549203/pexels-photo-1549203.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
+        ],
+        category: "Unisex",
+        rating: 4.4,
+        reviews: 110,
+        sizes: ["XS", "S", "M", "L", "XL"],
+        colors: ["Beige", "Gray", "Pink", "Navy"],
+        stock: 2, 
+        discount: 24
+    },
+       {
+        id: 26,
+        title: "Cardigan Sweater",
+        description: "Cozy cardigan sweater perfect for layering. Soft knit fabric with classic button-up design.",
+        price: 4200,
+        originalPrice: 5500,
+        images: [
+            "https://images.pexels.com/photos/1549201/pexels-photo-1549201.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549202/pexels-photo-1549202.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549203/pexels-photo-1549203.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
+        ],
+        category: "Unisex",
+        rating: 4.4,
+        reviews: 110,
+        sizes: ["XS", "S", "M", "L", "XL"],
+        colors: ["Beige", "Gray", "Pink", "Navy"],
+        stock: 2, 
+        discount: 24
+    },
+       {
+        id: 27,
+        title: "Cardigan Sweater",
+        description: "Cozy cardigan sweater perfect for layering. Soft knit fabric with classic button-up design.",
+        price: 4200,
+        originalPrice: 5500,
+        images: [
+            "https://images.pexels.com/photos/1549201/pexels-photo-1549201.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549202/pexels-photo-1549202.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549203/pexels-photo-1549203.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
+        ],
+        category: "Unisex",
+        rating: 4.4,
+        reviews: 110,
+        sizes: ["XS", "S", "M", "L", "XL"],
+        colors: ["Beige", "Gray", "Pink", "Navy"],
+        stock: 2, 
+        discount: 24
+    },
+       {
+        id: 28,
+        title: "Cardigan Sweater",
+        description: "Cozy cardigan sweater perfect for layering. Soft knit fabric with classic button-up design.",
+        price: 4200,
+        originalPrice: 5500,
+        images: [
+            "https://images.pexels.com/photos/1549201/pexels-photo-1549201.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549202/pexels-photo-1549202.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549203/pexels-photo-1549203.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
+        ],
+        category: "Unisex",
+        rating: 4.4,
+        reviews: 110,
+        sizes: ["XS", "S", "M", "L", "XL"],
+        colors: ["Beige", "Gray", "Pink", "Navy"],
+        stock: 2, 
+        discount: 24
+    },
+       {
+        id: 29,
+        title: "Cardigan Sweater",
+        description: "Cozy cardigan sweater perfect for layering. Soft knit fabric with classic button-up design.",
+        price: 4200,
+        originalPrice: 5500,
+        images: [
+            "https://images.pexels.com/photos/1549201/pexels-photo-1549201.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549202/pexels-photo-1549202.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549203/pexels-photo-1549203.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
+        ],
+        category: "Unisex",
+        rating: 4.4,
+        reviews: 110,
+        sizes: ["XS", "S", "M", "L", "XL"],
+        colors: ["Beige", "Gray", "Pink", "Navy"],
+        stock: 2, 
+        discount: 24
+    },
+       {
+        id: 30,
+        title: "Cardigan Sweater",
+        description: "Cozy cardigan sweater perfect for layering. Soft knit fabric with classic button-up design.",
+        price: 4200,
+        originalPrice: 5500,
+        images: [
+            "https://images.pexels.com/photos/1549201/pexels-photo-1549201.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549202/pexels-photo-1549202.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549203/pexels-photo-1549203.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
+        ],
+        category: "Unisex",
+        rating: 4.4,
+        reviews: 110,
+        sizes: ["XS", "S", "M", "L", "XL"],
+        colors: ["Beige", "Gray", "Pink", "Navy"],
+        stock: 2, 
+        discount: 24
+    },
+    // Accesories
+       {
+        id: 31,
+        title: "Cardigan Sweater",
+        description: "Cozy cardigan sweater perfect for layering. Soft knit fabric with classic button-up design.",
+        price: 4200,
+        originalPrice: 5500,
+        images: [
+            "https://images.pexels.com/photos/1549201/pexels-photo-1549201.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549202/pexels-photo-1549202.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549203/pexels-photo-1549203.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
+        ],
+        category: "accessories",
+        rating: 4.4,
+        reviews: 110,
+        sizes: ["XS", "S", "M", "L", "XL"],
+        colors: ["Beige", "Gray", "Pink", "Navy"],
+        stock: 2, 
+        discount: 24
+    },
+         {
+        id: 32,
+        title: "Cardigan Sweater",
+        description: "Cozy cardigan sweater perfect for layering. Soft knit fabric with classic button-up design.",
+        price: 4200,
+        originalPrice: 5500,
+        images: [
+            "https://images.pexels.com/photos/1549201/pexels-photo-1549201.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549202/pexels-photo-1549202.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549203/pexels-photo-1549203.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
+        ],
+        category: "accessories",
+        rating: 4.4,
+        reviews: 110,
+        sizes: ["XS", "S", "M", "L", "XL"],
+        colors: ["Beige", "Gray", "Pink", "Navy"],
+        stock: 2, 
+        discount: 24
+    },
+         {
+        id: 33,
+        title: "Cardigan Sweater",
+        description: "Cozy cardigan sweater perfect for layering. Soft knit fabric with classic button-up design.",
+        price: 4200,
+        originalPrice: 5500,
+        images: [
+            "https://images.pexels.com/photos/1549201/pexels-photo-1549201.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549202/pexels-photo-1549202.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549203/pexels-photo-1549203.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
+        ],
+        category: "accessories",
+        rating: 4.4,
+        reviews: 110,
+        sizes: ["XS", "S", "M", "L", "XL"],
+        colors: ["Beige", "Gray", "Pink", "Navy"],
+        stock: 2, 
+        discount: 24
+    },
+         {
+        id: 34,
+        title: "Cardigan Sweater",
+        description: "Cozy cardigan sweater perfect for layering. Soft knit fabric with classic button-up design.",
+        price: 4200,
+        originalPrice: 5500,
+        images: [
+            "https://images.pexels.com/photos/1549201/pexels-photo-1549201.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549202/pexels-photo-1549202.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549203/pexels-photo-1549203.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
+        ],
+        category: "accessories",
+        rating: 4.4,
+        reviews: 110,
+        sizes: ["XS", "S", "M", "L", "XL"],
+        colors: ["Beige", "Gray", "Pink", "Navy"],
+        stock: 2, 
+        discount: 24
+    },
+         {
+        id: 35,
+        title: "Cardigan Sweater",
+        description: "Cozy cardigan sweater perfect for layering. Soft knit fabric with classic button-up design.",
+        price: 4200,
+        originalPrice: 5500,
+        images: [
+            "https://images.pexels.com/photos/1549201/pexels-photo-1549201.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549202/pexels-photo-1549202.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549203/pexels-photo-1549203.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
+        ],
+        category: "accessories",
+        rating: 4.4,
+        reviews: 110,
+        sizes: ["XS", "S", "M", "L", "XL"],
+        colors: ["Beige", "Gray", "Pink", "Navy"],
+        stock: 2, 
+        discount: 24
+    },
+         {
+        id: 36,
+        title: "Cardigan Sweater",
+        description: "Cozy cardigan sweater perfect for layering. Soft knit fabric with classic button-up design.",
+        price: 4200,
+        originalPrice: 5500,
+        images: [
+            "https://images.pexels.com/photos/1549201/pexels-photo-1549201.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549202/pexels-photo-1549202.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549203/pexels-photo-1549203.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
+        ],
+        category: "accessories",
+        rating: 4.4,
+        reviews: 110,
+        sizes: ["XS", "S", "M", "L", "XL"],
+        colors: ["Beige", "Gray", "Pink", "Navy"],
+        stock: 2, 
+        discount: 24
+    },
+         {
+        id: 37,
+        title: "Cardigan Sweater",
+        description: "Cozy cardigan sweater perfect for layering. Soft knit fabric with classic button-up design.",
+        price: 4200,
+        originalPrice: 5500,
+        images: [
+            "https://images.pexels.com/photos/1549201/pexels-photo-1549201.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549202/pexels-photo-1549202.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549203/pexels-photo-1549203.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
+        ],
+        category: "accessories",
+        rating: 4.4,
+        reviews: 110,
+        sizes: ["XS", "S", "M", "L", "XL"],
+        colors: ["Beige", "Gray", "Pink", "Navy"],
+        stock: 2, 
+        discount: 24
+    },
+         {
+        id: 38,
+        title: "Cardigan Sweater",
+        description: "Cozy cardigan sweater perfect for layering. Soft knit fabric with classic button-up design.",
+        price: 4200,
+        originalPrice: 5500,
+        images: [
+            "https://images.pexels.com/photos/1549201/pexels-photo-1549201.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549202/pexels-photo-1549202.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549203/pexels-photo-1549203.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
+        ],
+        category: "accessories",
+        rating: 4.4,
+        reviews: 110,
+        sizes: ["XS", "S", "M", "L", "XL"],
+        colors: ["Beige", "Gray", "Pink", "Navy"],
+        stock: 2, 
+        discount: 24
+    },
+         {
+        id: 39,
+        title: "Cardigan Sweater",
+        description: "Cozy cardigan sweater perfect for layering. Soft knit fabric with classic button-up design.",
+        price: 4200,
+        originalPrice: 5500,
+        images: [
+            "https://images.pexels.com/photos/1549201/pexels-photo-1549201.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549202/pexels-photo-1549202.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549203/pexels-photo-1549203.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
+        ],
+        category: "accessories",
+        rating: 4.4,
+        reviews: 110,
+        sizes: ["XS", "S", "M", "L", "XL"],
+        colors: ["Beige", "Gray", "Pink", "Navy"],
+        stock: 2, 
+        discount: 24
+    },
+         {
+        id: 40,
+        title: "Cardigan Sweater",
+        description: "Cozy cardigan sweater perfect for layering. Soft knit fabric with classic button-up design.",
+        price: 4200,
+        originalPrice: 5500,
+        images: [
+            "https://images.pexels.com/photos/1549201/pexels-photo-1549201.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549202/pexels-photo-1549202.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549203/pexels-photo-1549203.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
+        ],
+        category: "accessories",
+        rating: 4.4,
+        reviews: 110,
+        sizes: ["XS", "S", "M", "L", "XL"],
+        colors: ["Beige", "Gray", "Pink", "Navy"],
+        stock: 2, 
+        discount: 24
+    },
+    // Islamic Books
+         {
+        id: 41,
+        title: "Cardigan Sweater",
+        description: "Cozy cardigan sweater perfect for layering. Soft knit fabric with classic button-up design.",
+        price: 4200,
+        originalPrice: 5500,
+        images: [
+            "https://images.pexels.com/photos/1549201/pexels-photo-1549201.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549202/pexels-photo-1549202.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549203/pexels-photo-1549203.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
+        ],
+        category: "Islamic Books",
+        rating: 4.4,
+        reviews: 110,
+        sizes: ["XS", "S", "M", "L", "XL"],
+        colors: ["Beige", "Gray", "Pink", "Navy"],
+        stock: 2, 
+        discount: 24
+    },
+         {
+        id: 42,
+        title: "Cardigan Sweater",
+        description: "Cozy cardigan sweater perfect for layering. Soft knit fabric with classic button-up design.",
+        price: 4200,
+        originalPrice: 5500,
+        images: [
+            "https://images.pexels.com/photos/1549201/pexels-photo-1549201.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549202/pexels-photo-1549202.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549203/pexels-photo-1549203.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
+        ],
+        category: "Islamic Books",
+        rating: 4.4,
+        reviews: 110,
+        sizes: ["XS", "S", "M", "L", "XL"],
+        colors: ["Beige", "Gray", "Pink", "Navy"],
+        stock: 2, 
+        discount: 24
+    },
+         {
+        id: 43,
+        title: "Cardigan Sweater",
+        description: "Cozy cardigan sweater perfect for layering. Soft knit fabric with classic button-up design.",
+        price: 4200,
+        originalPrice: 5500,
+        images: [
+            "https://images.pexels.com/photos/1549201/pexels-photo-1549201.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549202/pexels-photo-1549202.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549203/pexels-photo-1549203.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
+        ],
+        category: "Islamic Books",
+        rating: 4.4,
+        reviews: 110,
+        sizes: ["XS", "S", "M", "L", "XL"],
+        colors: ["Beige", "Gray", "Pink", "Navy"],
+        stock: 2, 
+        discount: 24
+    },
+         {
+        id: 44,
+        title: "Cardigan Sweater",
+        description: "Cozy cardigan sweater perfect for layering. Soft knit fabric with classic button-up design.",
+        price: 4200,
+        originalPrice: 5500,
+        images: [
+            "https://images.pexels.com/photos/1549202/pexels-photo-1549202.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549203/pexels-photo-1549203.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
+        ],
+        category: "Islamic Books",
+        rating: 4.4,
+        reviews: 110,
+        sizes: ["XS", "S", "M", "L", "XL"],
+        colors: ["Beige", "Gray", "Pink", "Navy"],
+        stock: 2, 
+        discount: 24
+    },
+         {
+        id: 45,
+        title: "Cardigan Sweater",
+        description: "Cozy cardigan sweater perfect for layering. Soft knit fabric with classic button-up design.",
+        price: 4200,
+        originalPrice: 5500,
+        images: [
+            "https://images.pexels.com/photos/1549201/pexels-photo-1549201.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549202/pexels-photo-1549202.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549203/pexels-photo-1549203.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
+        ],
+        category: "Islamic Books",
+        rating: 4.4,
+        reviews: 110,
+        sizes: ["XS", "S", "M", "L", "XL"],
+        colors: ["Beige", "Gray", "Pink", "Navy"],
+        stock: 2, 
+        discount: 24
+    },
+         {
+        id: 46,
+        title: "Cardigan Sweater",
+        description: "Cozy cardigan sweater perfect for layering. Soft knit fabric with classic button-up design.",
+        price: 4200,
+        originalPrice: 5500,
+        images: [
+            "https://images.pexels.com/photos/1549201/pexels-photo-1549201.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549202/pexels-photo-1549202.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549203/pexels-photo-1549203.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
+        ],
+        category: "Islamic Books",
+        rating: 4.4,
+        reviews: 110,
+        sizes: ["XS", "S", "M", "L", "XL"],
+        colors: ["Beige", "Gray", "Pink", "Navy"],
+        stock: 2, 
+        discount: 24
+    },
+         {
+        id: 47,
+        title: "Cardigan Sweater",
+        description: "Cozy cardigan sweater perfect for layering. Soft knit fabric with classic button-up design.",
+        price: 4200,
+        originalPrice: 5500,
+        images: [
+            "https://images.pexels.com/photos/1549201/pexels-photo-1549201.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549202/pexels-photo-1549202.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549203/pexels-photo-1549203.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
+        ],
+        category: "Islamic Books",
+        rating: 4.4,
+        reviews: 110,
+        sizes: ["XS", "S", "M", "L", "XL"],
+        colors: ["Beige", "Gray", "Pink", "Navy"],
+        stock: 2, 
+        discount: 24
+    },
+         {
+        id: 48,
+        title: "Cardigan Sweater",
+        description: "Cozy cardigan sweater perfect for layering. Soft knit fabric with classic button-up design.",
+        price: 4200,
+        originalPrice: 5500,
+        images: [
+            "https://images.pexels.com/photos/1549201/pexels-photo-1549201.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549202/pexels-photo-1549202.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549203/pexels-photo-1549203.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
+        ],
+        category: "Islamic Books",
+        rating: 4.4,
+        reviews: 110,
+        sizes: ["XS", "S", "M", "L", "XL"],
+        colors: ["Beige", "Gray", "Pink", "Navy"],
+        stock: 2, 
+        discount: 24
+    },
+         {
+        id: 49,
+        title: "Cardigan Sweater",
+        description: "Cozy cardigan sweater perfect for layering. Soft knit fabric with classic button-up design.",
+        price: 4200,
+        originalPrice: 5500,
+        images: [
+            "https://images.pexels.com/photos/1549201/pexels-photo-1549201.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549202/pexels-photo-1549202.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549203/pexels-photo-1549203.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
+        ],
+        category: "Islamic Books",
+        rating: 4.4,
+        reviews: 110,
+        sizes: ["XS", "S", "M", "L", "XL"],
+        colors: ["Beige", "Gray", "Pink", "Navy"],
+        stock: 2, 
+        discount: 24
+    },
+         {
+        id: 50,
+        title: "Cardigan Sweater",
+        description: "Cozy cardigan sweater perfect for layering. Soft knit fabric with classic button-up design.",
+        price: 4200,
+        originalPrice: 5500,
+        images: [
+            "https://images.pexels.com/photos/1549201/pexels-photo-1549201.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549202/pexels-photo-1549202.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549203/pexels-photo-1549203.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
+        ],
+        category: "Islamic Books",
+        rating: 4.4,
+        reviews: 110,
+        sizes: ["XS", "S", "M", "L", "XL"],
+        colors: ["Beige", "Gray", "Pink", "Navy"],
+        stock: 2, 
+        discount: 24
+    },
+
+         {
+        id: 51,
+        title: "Cardigan Sweater",
+        description: "Cozy cardigan sweater perfect for layering. Soft knit fabric with classic button-up design.",
+        price: 4200,
+        originalPrice: 5500,
+        images: [
+            "https://images.pexels.com/photos/1549201/pexels-photo-1549201.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549202/pexels-photo-1549202.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549203/pexels-photo-1549203.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
+        ],
+        category: "Islamic Books",
+        rating: 4.4,
+        reviews: 110,
+        sizes: ["XS", "S", "M", "L", "XL"],
+        colors: ["Beige", "Gray", "Pink", "Navy"],
+        stock: 0, 
+        discount: 24
+    },
+//  Itar 
+     {
+        id: 52,
+        title: "Cardigan Sweater",
+        description: "Cozy cardigan sweater perfect for layering. Soft knit fabric with classic button-up design.",
+        price: 4200,
+        originalPrice: 5500,
+        images: [
+            "https://images.pexels.com/photos/1549201/pexels-photo-1549201.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549202/pexels-photo-1549202.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549203/pexels-photo-1549203.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
+        ],
+        category: "Itar",
+        rating: 4.4,
+        reviews: 110,
+        sizes: ["XS", "S", "M", "L", "XL"],
+        colors: ["Beige", "Gray", "Pink", "Navy"],
+        stock: 0, 
+        discount: 24
+    },
+ {
+        id: 53,
+        title: "Cardigan Sweater",
+        description: "Cozy cardigan sweater perfect for layering. Soft knit fabric with classic button-up design.",
+        price: 4200,
+        originalPrice: 5500,
+        images: [
+            "https://images.pexels.com/photos/1549201/pexels-photo-1549201.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549202/pexels-photo-1549202.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549203/pexels-photo-1549203.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
+        ],
+        category: "Itar",
+        rating: 4.4,
+        reviews: 110,
+        sizes: ["XS", "S", "M", "L", "XL"],
+        colors: ["Beige", "Gray", "Pink", "Navy"],
+        stock: 0, 
+        discount: 24
+    }, {
+        id: 54,
+        title: "Cardigan Sweater",
+        description: "Cozy cardigan sweater perfect for layering. Soft knit fabric with classic button-up design.",
+        price: 4200,
+        originalPrice: 5500,
+        images: [
+            "https://images.pexels.com/photos/1549201/pexels-photo-1549201.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549202/pexels-photo-1549202.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549203/pexels-photo-1549203.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
+        ],
+        category: "Itar",
+        rating: 4.4,
+        reviews: 110,
+        sizes: ["XS", "S", "M", "L", "XL"],
+        colors: ["Beige", "Gray", "Pink", "Navy"],
+        stock: 0, 
+        discount: 24
+    }, {
+        id: 55,
+        title: "Cardigan Sweater",
+        description: "Cozy cardigan sweater perfect for layering. Soft knit fabric with classic button-up design.",
+        price: 4200,
+        originalPrice: 5500,
+        images: [
+            "https://images.pexels.com/photos/1549201/pexels-photo-1549201.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549202/pexels-photo-1549202.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549203/pexels-photo-1549203.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
+        ],
+        category: "Itar",
+        rating: 4.4,
+        reviews: 110,
+        sizes: ["XS", "S", "M", "L", "XL"],
+        colors: ["Beige", "Gray", "Pink", "Navy"],
+        stock: 0, 
+        discount: 24
+    }, {
+        id: 56,
+        title: "Cardigan Sweater",
+        description: "Cozy cardigan sweater perfect for layering. Soft knit fabric with classic button-up design.",
+        price: 4200,
+        originalPrice: 5500,
+        images: [
+            "https://images.pexels.com/photos/1549201/pexels-photo-1549201.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549202/pexels-photo-1549202.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549203/pexels-photo-1549203.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
+        ],
+        category: "Itar",
+        rating: 4.4,
+        reviews: 110,
+        sizes: ["XS", "S", "M", "L", "XL"],
+        colors: ["Beige", "Gray", "Pink", "Navy"],
+        stock: 9, 
+        discount: 24
+    }, {
+        id: 57,
+        title: "Cardigan Sweater",
+        description: "Cozy cardigan sweater perfect for layering. Soft knit fabric with classic button-up design.",
+        price: 4200,
+        originalPrice: 5500,
+        images: [
+            "https://images.pexels.com/photos/1549201/pexels-photo-1549201.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549202/pexels-photo-1549202.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549203/pexels-photo-1549203.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
+        ],
+        category: "Itar",
+        rating: 4.4,
+        reviews: 110,
+        sizes: ["XS", "S", "M", "L", "XL"],
+        colors: ["Beige", "Gray", "Pink", "Navy"],
+        stock: 0, 
+        discount: 24
+    }, {
+        id: 58,
+        title: "Cardigan Sweater",
+        description: "Cozy cardigan sweater perfect for layering. Soft knit fabric with classic button-up design.",
+        price: 4200,
+        originalPrice: 5500,
+        images: [
+            "https://images.pexels.com/photos/1549201/pexels-photo-1549201.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549202/pexels-photo-1549202.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549203/pexels-photo-1549203.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
+        ],
+        category: "Itar",
+        rating: 4.4,
+        reviews: 110,
+        sizes: ["XS", "S", "M", "L", "XL"],
+        colors: ["Beige", "Gray", "Pink", "Navy"],
+        stock: 1, 
+        discount: 24
+    }, {
+        id: 59,
+        title: "Cardigan Sweater",
+        description: "Cozy cardigan sweater perfect for layering. Soft knit fabric with classic button-up design.",
+        price: 4200,
+        originalPrice: 5500,
+        images: [
+            "https://images.pexels.com/photos/1549201/pexels-photo-1549201.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549202/pexels-photo-1549202.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549203/pexels-photo-1549203.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
+        ],
+        category: "Itar",
+        rating: 4.4,
+        reviews: 110,
+        sizes: ["XS", "S", "M", "L", "XL"],
+        colors: ["Beige", "Gray", "Pink", "Navy"],
+        stock: 4, 
+        discount: 24
+    }, {
+        id: 60,
+        title: "Cardigan Sweater",
+        description: "Cozy cardigan sweater perfect for layering. Soft knit fabric with classic button-up design.",
+        price: 4200,
+        originalPrice: 5500,
+        images: [
+            "https://images.pexels.com/photos/1549201/pexels-photo-1549201.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549202/pexels-photo-1549202.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "https://images.pexels.com/photos/1549203/pexels-photo-1549203.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
+        ],
+        category: "Itar",
+        rating: 4.4,
+        reviews: 110,
+        sizes: ["XS", "S", "M", "L", "XL"],
+        colors: ["Beige", "Gray", "Pink", "Navy"],
+        stock: 5, 
+        discount: 24
+    },
+
 ];
 
