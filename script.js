@@ -1,3 +1,4 @@
+
 // Global Variables
 let currentUser = null;
 let cart = [];
@@ -19,7 +20,15 @@ async function initializeApp() {
     // Load saved settings
     loadSettings();
     
-
+    // Initialize Firebase (if config is available)
+    try {
+        if (typeof initFirebase === 'function') {
+            await initFirebase();
+        }
+    } catch (error) {
+        console.log('Firebase not configured, using local storage');
+    }
+    
     // Load products
     await loadProducts();
     
@@ -280,45 +289,10 @@ function displayFeaturedProducts() {
     container.innerHTML = featuredProducts.map(product => createProductCard(product)).join('');
 }
 
-let visibleCount = 0;
-const PRODUCTS_PER_LOAD = 6;
-let currentProducts = []; // 🔥 important
-
 function displayProducts(products) {
-    visibleCount = 0;
-    currentProducts = products; // store filtered products
-
     const container = document.getElementById('allProducts');
-    container.innerHTML = '';
-
-    document.getElementById('showMoreBtn').style.display = 'block';
-
-    showMoreProducts();
+    container.innerHTML = products.map(product => createProductCard(product)).join('');
 }
-
-function showMoreProducts() {
-    const container = document.getElementById('allProducts');
-
-    const nextBatch = currentProducts.slice(
-        visibleCount,
-        visibleCount + PRODUCTS_PER_LOAD
-    );
-
-    nextBatch.forEach(product => {
-        container.insertAdjacentHTML(
-            'beforeend',
-            createProductCard(product)
-        );
-    });
-
-    visibleCount += PRODUCTS_PER_LOAD;
-
-    if (visibleCount >= currentProducts.length) {
-        document.getElementById('showMoreBtn').style.display = 'none';
-    }
-}
-
-
 
 function createProductCard(product) {
     const discountBadge = product.discount > 0 ? `<div class="product-badge">${product.discount}% OFF</div>` : '';
@@ -326,45 +300,29 @@ function createProductCard(product) {
     const originalPrice = product.originalPrice ? `<span class="original-price">PKR ${product.originalPrice}</span>` : '';
     
     return `
-        <div class="product-card ${product.stock === 0 ? 'out-of-stock' : ''}">
-            
+        <div class="product-card ${product.stock === 0 ? 'out-of-stock' : ''}" onclick="showProductDetail(${product.id})">
             <div class="product-image">
-                <img src="${product.images[0]}" alt="${product.title}" loading="lazy"
-                     onclick="showProductDetail(${product.id})">
+                <img src="${product.images[0]}" alt="${product.title}" loading="lazy">
                 ${discountBadge}
                 ${stockBadge}
-
-                <!-- QUICK VIEW BUTTON -->
-                <button class="quick-view-btn"
-                        onclick="event.stopPropagation(); showProductDetail(${product.id})">
-                    👁 Quick View
-                </button>
             </div>
-
-            <div class="product-info" onclick="showProductDetail(${product.id})">
+            <div class="product-info">
                 <h3 class="product-title">${product.title}</h3>
                 <div class="product-price">
                     PKR ${product.price.toLocaleString()}
                     ${originalPrice}
                 </div>
-
                 <div class="product-rating">
                     <div class="stars">
                         ${'★'.repeat(Math.floor(product.rating))}${'☆'.repeat(5 - Math.floor(product.rating))}
                     </div>
                     <span class="rating-text">${product.rating} (${product.reviews} reviews)</span>
                 </div>
-
                 <div class="product-actions">
-                    <button class="add-to-cart-btn"
-                            onclick="event.stopPropagation(); addToCart(${product.id})"
-                            ${product.stock === 0 ? 'disabled' : ''}>
+                    <button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(${product.id})" ${product.stock === 0 ? 'disabled' : ''}>
                         Add to bag
                     </button>
-
-                    <button class="buy-now-btn"
-                            onclick="event.stopPropagation(); buyNow(${product.id})"
-                            ${product.stock === 0 ? 'disabled' : ''}>
+                    <button class="buy-now-btn" onclick="event.stopPropagation(); buyNow(${product.id})" ${product.stock === 0 ? 'disabled' : ''}>
                         Buy Now
                     </button>
                 </div>
@@ -372,7 +330,6 @@ function createProductCard(product) {
         </div>
     `;
 }
-
 
 function showProductDetail(productId) {
     const product = allProducts.find(p => p.id === productId);
@@ -405,12 +362,17 @@ function showProductDetail(productId) {
 
             <!-- Offers Section -->
             <ul class="product-offers">
-             
+                <li>✔ Free Delivery on orders above PKR 3000</li>
+                <li>✔ 7-Day Easy Returns</li>
+                <li>✔ Cash on Delivery Available</li>
+                <li>✔ Secure Online Payments</li>
+                <li>✔ 6-Month Warranty</li>
+                <li>✔ Exclusive Member Discounts</li>
             </ul>
             
             <div class="product-options">
                 <div class="option-group">
-                    <label>Volume:</label>
+                    <label>Size:</label>
                     <div class="size-options">
                         ${product.sizes.map(size =>
                             `<button class="size-btn" onclick="selectSize('${size}', this)">${size}</button>`
@@ -681,7 +643,7 @@ function displayCart() {
     // === CART SUMMARY ===
     let subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
     let freeDeliveryThreshold = 5000;
-    let deliveryFee = subtotal >= freeDeliveryThreshold ? 0 : 150;
+    let deliveryFee = subtotal >= freeDeliveryThreshold ? 0 : 299;
 
     cartSummary.innerHTML = `
         <div class="cart-summary-box">
@@ -777,39 +739,31 @@ function removeFromCart(productId, size, color) {
 }
 
 function displayCartSummary() {
-    const subtotal = cart.reduce(
-        (total, item) => total + (item.price * item.quantity),
-        0
-    );
-
-    // 🚚 Delivery charges
-    const deliveryCharges = subtotal > 5000 ? 0 : 200;
-
-    // 💰 Final total (NO TAX)
-    const total = subtotal + deliveryCharges;
+    const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+    const deliveryCharges = subtotal > 5000 ? 0 : 200; // Free delivery over PKR 5000
+    const tax = Math.round(subtotal * 0.05); // 5% tax
+    const total = subtotal + deliveryCharges + tax;
     
     const cartSummary = document.getElementById('cartSummary');
     cartSummary.innerHTML = `
         <h3>Order Summary</h3>
-
         <div class="summary-row">
             <span>Subtotal:</span>
             <span>PKR ${subtotal.toLocaleString()}</span>
         </div>
-
         <div class="summary-row">
             <span>Delivery:</span>
             <span>PKR ${deliveryCharges.toLocaleString()}</span>
         </div>
-
+        <div class="summary-row">
+            <span>Tax:</span>
+            <span>PKR ${tax.toLocaleString()}</span>
+        </div>
         <div class="summary-row">
             <strong>Total:</strong>
             <strong>PKR ${total.toLocaleString()}</strong>
         </div>
-
-        <button class="checkout-btn" onclick="proceedToCheckout()">
-            Proceed to Checkout
-        </button>
+        <button class="checkout-btn" onclick="proceedToCheckout()">Proceed to Checkout</button>
     `;
 }
 
@@ -824,20 +778,14 @@ function proceedToCheckout() {
 }
 
 function displayOrderSummary() {
-    const subtotal = cart.reduce(
-        (total, item) => total + (item.price * item.quantity),
-        0
-    );
-
+    const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
     const deliveryCharges = subtotal > 5000 ? 0 : 200;
-
-    // 💰 Final total (NO TAX)
-    const total = subtotal + deliveryCharges;
+    const tax = Math.round(subtotal * 0.05);
+    const total = subtotal + deliveryCharges + tax;
     
     const orderSummary = document.getElementById('orderSummary');
     orderSummary.innerHTML = `
         <h3>Order Summary</h3>
-
         <div class="order-items">
             ${cart.map(item => `
                 <div class="order-item">
@@ -846,17 +794,18 @@ function displayOrderSummary() {
                 </div>
             `).join('')}
         </div>
-
         <div class="summary-row">
             <span>Subtotal:</span>
             <span>PKR ${subtotal.toLocaleString()}</span>
         </div>
-
         <div class="summary-row">
             <span>Delivery:</span>
             <span>PKR ${deliveryCharges.toLocaleString()}</span>
         </div>
-
+        <div class="summary-row">
+            <span>Tax:</span>
+            <span>PKR ${tax.toLocaleString()}</span>
+        </div>
         <div class="summary-row">
             <strong>Total:</strong>
             <strong>PKR ${total.toLocaleString()}</strong>
@@ -968,6 +917,7 @@ function googleSignIn() {
                 currentUser = result.user;
                 showMessage('Signed in successfully!', 'success');
                 showPage('profile');
+                updateUserInterface();
             })
             .catch((error) => {
                 showMessage('Sign in failed: ' + error.message, 'error');
@@ -981,6 +931,7 @@ function googleSignIn() {
         };
         showMessage('Signed in successfully! (Demo)', 'success');
         showPage('profile');
+        updateUserInterface();
     }
 }
 
@@ -1012,33 +963,11 @@ function displayProfile() {
         </div>
         
         <div class="profile-sections">
-          <div class="profile-section">
-    <h3>Reviews</h3>
-
-    <!-- Review Form -->
-    <form id="reviewForm">
-        <input type="text" id="reviewName" placeholder="Your Name" required />
-
-        <select id="reviewRating" required>
-            <option value="">Rating</option>
-            <option value="1">⭐ 1</option>
-            <option value="2">⭐ 2</option>
-            <option value="3">⭐ 3</option>
-            <option value="4">⭐ 4</option>
-            <option value="5">⭐ 5</option>
-        </select>
-
-        <textarea id="reviewDescription" placeholder="Write your review..." required></textarea>
-
-        <input type="file" id="reviewImages" multiple accept="image/*" />
-
-        <button type="submit">Submit Review</button>
-    </form>
-
-    <!-- Reviews List -->
-    <div id="reviewsList"></div>
-</div>
-
+            <div class="profile-section">
+                <h3>Order History</h3>
+                <p>View your past orders and track current ones.</p>
+            </div>
+            
             <div class="profile-section">
                 <h3>Favorites</h3>
                 <p>Manage your favorite products.</p>
@@ -1254,6 +1183,7 @@ async function saveProfileChanges(e) {
       localStorage.setItem('currentUser', JSON.stringify(currentUser));
     }
 
+    updateUserInterface();
     displayProfile();
     showMessage('Profile updated successfully!', 'success');
 
@@ -1281,6 +1211,17 @@ function escapeHtml(str) {
 
 
 
+function updateUserInterface() {
+    const loginBtn = document.querySelector('.login-btn span');
+    if (currentUser) {
+        loginBtn.textContent = currentUser.displayName || 'Profile';
+        loginBtn.parentElement.onclick = () => showPage('profile');
+    } else {
+        loginBtn.textContent = 'Login';
+        loginBtn.parentElement.onclick = () => showPage('login');
+    }
+}
+
 // Reviews
 function loadReviews() {
     const reviewsContainer = document.getElementById('reviewsContainer');
@@ -1294,7 +1235,7 @@ function loadReviews() {
         },
         {
             name: 'Muhammad ALi',
-            avatar: '',
+            avatar: 'ali.JPG',
             rating: 4,
             text: 'Great products and excellent customer service. Highly recommended!'
         },
@@ -1323,133 +1264,144 @@ function loadReviews() {
 }
 
 
-// 🔑 Initialize EmailJS (ONLY ONCE)
-(function () {
-  emailjs.init("ENUvqSFos6c2_DKVB"); // your EmailJS public key
-})();
 
-document.getElementById('contactForm')?.addEventListener('submit', async function (e) {
+  
+  // Email/Password Signup
+document.getElementById("loginForm").addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const email = document.getElementById("loginEmail").value;
+  const password = document.getElementById("loginPassword").value;
+
+  auth.signInWithEmailAndPassword(email, password)
+    .then((result) => {
+      currentUser = result.user;
+      showMessage(`Welcome back ${currentUser.email}!`, "success");
+      showPage("profile"); // go to profile page
+      updateUserInterface();
+    })
+    .catch((error) => {
+      console.error("Login error:", error);
+      showMessage(error.message, "error");
+    });
+});
+
+// Handle Signup form
+document.getElementById("signupForm").addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const email = document.getElementById("signupEmail").value;
+  const password = document.getElementById("signupPassword").value;
+
+  auth.createUserWithEmailAndPassword(email, password)
+    .then((result) => {
+      currentUser = result.user;
+
+      // Save user data to Firestore
+      saveUserData(currentUser.uid, {
+        email: currentUser.email,
+        createdAt: new Date().toISOString(),
+      });
+
+      showMessage(`Account created for ${currentUser.email}!`, "success");
+      showPage("profile");
+      updateUserInterface();
+    })
+    .catch((error) => {
+      console.error("Signup error:", error);
+      showMessage(error.message, "error");
+    });
+});
+
+ (function() {
+    emailjs.init("ZKJrFdtrTk4pQYv1j"); // replace with your actual public key
+  })();
+
+  document.getElementById('contactForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const formData = new FormData(e.target);
+    const data = {
+        name: formData.get('name'),
+        email: formData.get('email'),
+        phone: formData.get('phone'),
+        message: formData.get('message')
+    };
+
+    try {
+        await emailjs.send('service_2m9hw9p', 'template_y345958', data);
+        showMessage('✅ Message sent successfully!', 'success');
+        e.target.reset();
+    } catch (error) {
+        console.error('EmailJS error:', error);
+        showMessage('❌ Failed to send message. Please try again.', 'error');
+    }
+  });
+
+  function showMessage(message, type) {
+    const msgBox = document.createElement("div");
+    msgBox.textContent = message;
+    msgBox.className = type === "success" ? "msg-success" : "msg-error";
+    document.body.appendChild(msgBox);
+    setTimeout(() => msgBox.remove(), 3000);
+  }
+// ✅ Initialize Firebase
+const app = firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+
+// ✅ Handle checkout form submit
+document.getElementById('checkoutForm').addEventListener('submit', async function (e) {
   e.preventDefault();
 
   const formData = new FormData(e.target);
 
-  const data = {
+  // Build orderData with all product details
+  const orderData = {
     name: formData.get('name'),
-    email: formData.get('email'),
     phone: formData.get('phone'),
-    message: formData.get('message')
+    email: formData.get('email'),
+    city: formData.get('city'),
+    address: formData.get('address'),
+    payment: formData.get('payment'),
+
+    // 🛒 Full cart details
+    items: cart.map(item => ({
+      id: item.id,
+      title: item.title,
+      quantity: item.quantity,
+      price: item.price,
+      color: item.selectedColor || null,   // ✅ save selected color
+      size: item.selectedSize || null,     // ✅ save selected size
+      category: item.category || null,
+      stock: item.stock,
+      discount: item.discount,
+      image: item.images ? item.images[0] : null, // first product image
+      subtotal: item.price * item.quantity
+    })),
+
+    // 💰 Order summary
+    total: cart.reduce((total, item) => total + (item.price * item.quantity), 0),
+
+    createdAt: new Date().toISOString()
   };
 
   try {
-    await emailjs.send(
-      'service_2m9hw9p',
-      'template_y345958',
-      data
-    );
+    // ✅ Save to Firestore under "orders" collection
+    await db.collection("orders").add(orderData);
 
-    showMessage('✅ Message sent successfully!', 'success');
-    e.target.reset();
+    showMessage('✅ Order send successfully!', 'success');
 
-  } catch (err) {
-    console.error("Contact Email Error:", err);
-    showMessage('❌ Failed to send message.', 'error');
-  }
-});
-
-document.getElementById("checkoutForm")?.addEventListener("submit", async function (e) {
-  e.preventDefault();
-
-  if (!cart || cart.length === 0) {
-    showMessage("⚠️ Cart is empty!", "error");
-    return;
-  }
-
-const formData = new FormData(e.target);
-
-// 🆔 Order ID & Date
-const orderId = "ORD-" + Date.now();
-const orderDate = new Date().toLocaleString("en-PK", {
-  dateStyle: "medium",
-  timeStyle: "short"
-});
-
-// 🛒 Cart items (clean text format)
-const cartHTML = cart.map(item =>
-  "Product: " + item.title + "\n" +
-  "Color: " + (item.selectedColor || "-") + "\n" +
-  "Size: " + (item.selectedSize || "-") + "\n" +
-  "Quantity: " + item.quantity + "\n" +
-  "Item Total: Rs. " + (item.price * item.quantity) + "\n" +
-  "----------------------------"
-).join("\n");
-
-
-const totalAmount = cart.reduce(
-  (total, item) => total + (Number(item.price) * Number(item.quantity)),
-  0
-);
-
-const baseParams = {
-  order_id: orderId,
-  order_date: orderDate,
-
-  customer_name: formData.get("name")?.trim() || "N/A",
-  customer_email: formData.get("email")?.trim() || "",
-  to_email: formData.get("email")?.trim() || "",
-
-  customer_phone: formData.get("phone")?.trim() || "",
-  city: formData.get("city")?.trim() || "",
-  address: formData.get("address")?.trim() || "",
-
-  payment_method: formData.get("payment") || "COD",
-  order_items: cartHTML,
-  order_total: "Rs. " + totalAmount
-};
-
-
-  try {
-    // 📧 Send ADMIN email
-    await emailjs.send(
-      "service_qfbyrve",
-      "template_hbxooll",
-      baseParams
-    );
-
-    // 📩 Send CUSTOMER confirmation
-    await emailjs.send(
-      "service_05nlr2k",
-      "template_108y5qe",
-      baseParams
-    );
-
-    showMessage("✅ Order placed successfully!", "success");
-
+    // Reset cart
     cart = [];
-    saveCart();
     updateCartCount();
-    showPage("home");
+    saveCart();
+    showPage('home');
 
-  } catch (err) {
-    console.error("EmailJS Order Error:", err);
-    showMessage("❌ Order failed. Please try again.", "error");
+  } catch (error) {
+    console.error("❌ Firebase Error:", error);
+    showMessage('⚠️ Failed to save order. Please try again.', 'error');
   }
 });
-
-
-function showMessage(text, type = "info") {
-  const box = document.createElement("div");
-  box.className = `msg ${type}`;
-  box.textContent = text;
-
-  document.body.appendChild(box);
-
-  setTimeout(() => box.classList.add("show"), 50);
-  setTimeout(() => {
-    box.classList.remove("show");
-    setTimeout(() => box.remove(), 300);
-  }, 3000);
-}
-
 
 // ✅ Example message popup
 function showMessage(message, type) {
@@ -1494,7 +1446,10 @@ window.addEventListener('error', function(e) {
     showMessage('Something went wrong. Please refresh the page.', 'error');
 });
 
-
+// Service Worker Registration (for PWA features)
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js').catch(console.error);
+}
 function switchAuthTab(tab) {
   const loginForm = document.getElementById("loginForm");
   const signupForm = document.getElementById("signupForm");
@@ -1544,46 +1499,4 @@ function logout() {
         .catch((error) => {
             console.error('Logout error:', error);
         });
-}
-function openCategory(category) {
-  // 1. Open products page
-  showPage('products');
-
-  // 2. Set dropdown filter
-  const categoryFilter = document.getElementById('categoryFilter');
-  categoryFilter.value = category;
-
-  // 3. Apply filtering
-  applyFilters();
-}
-const counters = document.querySelectorAll('.counter');
-
-const animateCounters = () => {
-  counters.forEach(counter => {
-    const target = +counter.dataset.target;
-    let count = 0;
-    const speed = target / 100;
-
-    const update = () => {
-      count += speed;
-      if (count < target) {
-        counter.innerText = Math.floor(count);
-        requestAnimationFrame(update);
-      } else {
-        counter.innerText = target;
-      }
-    };
-    update();
-  });
-};
-
-/* Trigger when page loads */
-animateCounters();
-let slideOffset = 0;
-
-function slidePolicy(direction) {
-  const track = document.getElementById("policyTrack");
-  slideOffset += direction * 200;
-  track.style.transform = `translateX(${slideOffset}px)`;
-  track.style.animation = "none";
 }
