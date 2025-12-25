@@ -41,7 +41,6 @@
 
 body {
   font-family: 'Poppins', sans-serif;
-  line-height: 1.6;
   color: var(--text-color);
   background-color: var(--bg-color);
   transition: var(--transition);
@@ -681,7 +680,7 @@ body {
 
 /* Categories */
 .categories {
-  padding: 80px 20px;
+  padding: 80px 10px;
   max-width: 1400px;
   margin: 0 auto;
 }
@@ -739,7 +738,7 @@ body {
 
 /* Products */
 .featured-products {
-  background: var(--surface-color);
+  background: white;
 }
 
 .featured-products h2 {
@@ -776,10 +775,9 @@ body {
   margin: 0 auto;
   padding: 0 20px;
 }
-
 .product-card {
   background: var(--bg-color);
-  border-radius: 2%;
+  border-radius: 4%;
   overflow: hidden;
   box-shadow: var(--shadow-light);
   transition: var(--transition);
@@ -797,21 +795,24 @@ body {
   filter: grayscale(50%);
 }
 
+/* IMAGE WRAPPER */
 .product-image {
-  border-radius: 2%;
   position: relative;
   width: 100%;
   height: 250px;
   overflow: hidden;
 }
 
+/* IMAGE */
 .product-image img {
-  border-radius: 2%;
   width: 100%;
-  object-fit: cover;
-  transition: var(--transition);
+  height: 100%;
+  object-fit: cover; /* 🔥 fills all sides */
+  display: block;    /* removes bottom spacing */
+  transition: transform 0.4s ease;
 }
 
+/* HOVER ZOOM */
 .product-card:hover .product-image img {
   transform: scale(1.1);
 }
@@ -893,7 +894,7 @@ body {
 }
 
 .add-to-cart-btn {
-  background: var(--surface-color);
+  background: white;
   color: var(--primary-color);
   border: 1px solid var(--border-color);
 }
@@ -1717,45 +1718,55 @@ body {
 .place-order-btn:hover {
   background: #229954;
 }
-
-/* Reviews */
 .reviews {
-  padding: 80px 20px;
+  padding: 100px 20px;
   max-width: 1200px;
-  margin: 0 auto;
+  margin: auto;
 }
 
 .reviews h2 {
   text-align: center;
-  margin-bottom: 50px;
-  font-size: 2.5rem;
-  color: var(--text-color);
+  font-size: 2.8rem;
+  margin-bottom: 60px;
+  color: var(--gold);
+  letter-spacing: 2px;
 }
 
+/* Grid */
 .reviews-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 35px;
 }
 
+/* Card */
 .review-card {
-  background: var(--surface-color);
-  padding: 30px;
-  border-radius: var(--border-radius);
-  box-shadow: var(--shadow-light);
+  background: linear-gradient(145deg, #111, #000);
+  border-radius: 18px;
+  padding: 35px;
+  box-shadow: 0 20px 40px var(--shadow);
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
   position: relative;
+  overflow: hidden;
 }
 
 .review-card::before {
-  content: '"';
+  content: "“";
   position: absolute;
-  top: -10px;
-  left: 20px;
-  font-size: 4rem;
-  color: var(--secondary-color);
-  line-height: 1;
+  top: -15px;
+  left: 25px;
+  font-size: 5rem;
+  color: var(--gold);
+  opacity: 0.2;
 }
 
+.review-card:hover {
+  transform: translateY(-15px) rotateX(6deg) rotateY(-6deg);
+  box-shadow: 0 30px 70px rgba(212, 175, 55, 0.45);
+}
+
+/* Header */
 .review-header {
   display: flex;
   align-items: center;
@@ -1764,26 +1775,45 @@ body {
 }
 
 .review-avatar {
-  width: 50px;
-  height: 50px;
+  width: 55px;
+  height: 55px;
   border-radius: 50%;
   object-fit: cover;
+  border: 2px solid var(--gold);
 }
 
 .review-info h4 {
-  margin-bottom: 5px;
-  color: var(--text-color);
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--white);
 }
 
 .review-rating {
-  color: var(--accent-color);
-  
+  color: var(--gold);
+  font-size: 0.9rem;
+  letter-spacing: 2px;
 }
 
+/* Text */
 .review-text {
-  color: var(--text-light);
-  line-height: 1.6;
   font-style: italic;
+  color: var(--gray);
+  line-height: 1.7;
+  font-size: 0.95rem;
+}
+
+/* Animation */
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 1s ease forwards;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 .cart-btn1{
   display: none;
@@ -2031,6 +2061,7 @@ body {
   .search-container {
     width: 100%;
     margin: 20px 0;
+    margin-left: 25%;
   }
   
   .search-input {
@@ -2232,7 +2263,7 @@ body {
     font-size: 1.2rem;
   }
   .product-card {
-    min-height: 230px;
+    min-height: 214px;
   }
   
   .product-image {
@@ -2258,7 +2289,7 @@ body {
   }
   .product-price {
     font-size: 0.7rem;
-    margin-bottom: 8px;
+    margin-bottom: -6px;
   }
   
   .slide-content h1 {
@@ -2317,6 +2348,7 @@ body {
   height: 55%;
   object-fit: contain;  
 }
+
 
 }
 

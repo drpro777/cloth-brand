@@ -169,7 +169,7 @@
   color: #fff;
   display: flex;
   align-items: center;
-  padding: 4px 6px;
+  padding: 0px px;
   font-size: 14px;
   overflow: hidden;
 }
@@ -232,4 +232,153 @@
     font-size: 12px;
   }
   
+}
+.quick-view-btn {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.75);
+    color: #fff;
+    border: none;
+    padding: 6px 12px;
+    font-size: 13px;
+    border-radius: 20px;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.product-image {
+    position: relative;
+}
+
+.product-card:hover .quick-view-btn {
+    opacity: 1;
+}
+.hero-slider1 {
+  position: relative;
+  width: 100%;
+  height: 460px;
+  overflow: hidden;
+  border-radius: 14px;
+}
+
+/* Slides container */
+.slides1 {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+/* Each slide */
+.slide1 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: all 1s ease;
+}
+
+.slide1.active1 {
+  opacity: 1;
+  transform: translateX(0);
+  z-index: 2;
+}
+
+/* Image */
+.slide1 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Light black overlay (full image) */
+.overlay1 {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+/* Caption container */
+.caption1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #ffffff;
+  z-index: 3;
+
+  /* 🔥 Black background for text */
+  background: rgba(0, 0, 0, 0.105);
+  padding: 25px 40px;
+  border-radius: 10px;
+
+  /* Optional nice effect */
+  backdrop-filter: blur(3px);
+}
+
+/* Heading */
+.caption1 h1 {
+  font-size: 48px;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+/* Paragraph */
+.caption1 p {
+  font-size: 18px;
+  opacity: 0.95;
+}
+
+
+/* Dots */
+.dots1 {
+  position: absolute;
+  bottom: 18px;
+  width: 100%;
+  text-align: center;
+  z-index: 5;
+}
+
+.dot1 {
+  width: 12px;
+  height: 12px;
+  margin: 0 6px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.products-header h1{
+    color: white;
+}
+
+.dot1.active1 {
+  background: #fff;
+  transform: scale(1.3);
+}
+.show-more-wrapper {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.show-more-btn {
+    margin-left: 45.8%;
+  padding: 12px 29px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 1px;
+  background: black;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.show-more-btn:hover {
+  background: #333;
 }

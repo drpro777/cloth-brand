@@ -157,3 +157,58 @@ function displayFeaturedProducts() {
 
 const featured = document.getElementById('np_featured').checked;
 const productObj = { title, description, price, category, stock, discount, sizes, colors, images: imageURLs, featured, createdAt: new Date().toISOString() };
+
+// reviews sections
+document.getElementById("reviewForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById("reviewName").value;
+    const rating = document.getElementById("reviewRating").value;
+    const description = document.getElementById("reviewDescription").value;
+    const images = document.getElementById("reviewImages").files;
+
+    let imageUrls = [];
+
+    for (let img of images) {
+        const imgRef = ref(storage, `reviews/${Date.now()}_${img.name}`);
+        await uploadBytes(imgRef, img);
+        const url = await getDownloadURL(imgRef);
+        imageUrls.push(url);
+    }
+
+    await addDoc(collection(db, "reviews"), {
+        userId: currentUser.uid,
+        name,
+        rating,
+        description,
+        images: imageUrls,
+        createdAt: serverTimestamp()
+    });
+
+    e.target.reset();
+    loadReviews();
+});
+async function loadReviews() {
+    const reviewsList = document.getElementById("reviewsList");
+    reviewsList.innerHTML = "";
+
+    const querySnapshot = await getDocs(collection(db, "reviews"));
+
+    querySnapshot.forEach((doc) => {
+        const data = doc.data();
+
+        reviewsList.innerHTML += `
+            <div class="review-card">
+                <h4>${data.name}</h4>
+                <p>Rating: ⭐ ${data.rating}</p>
+                <p>${data.description}</p>
+
+                <div class="review-images">
+                    ${data.images.map(img => `<img src="${img}" />`).join("")}
+                </div>
+            </div>
+        `;
+    });
+}
+
+loadReviews();

@@ -8,7 +8,7 @@ const productsData = [
   originalPrice: 3500,
 
   images: [
-    "https://images.pexels.com/photos/8532617/pexels-photo-8532617.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+    "per.jpeg",
     "https://images.pexels.com/photos/8532618/pexels-photo-8532618.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
     "https://images.pexels.com/photos/8532619/pexels-photo-8532619.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
   ],
@@ -24,22 +24,22 @@ const productsData = [
 },
     {
         id: 2,
-        title: "Elegant Maxi Dress",
+        title: "Leader",
         description: "Beautiful flowing maxi dress perfect for special occasions. Made from premium fabric with elegant design details.",
         price: 4500,
         originalPrice: 6000,
         images: [
-            "https://images.pexels.com/photos/1536620/pexels-photo-1536620.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "do.png",
             "https://images.pexels.com/photos/1536621/pexels-photo-1536621.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
             "https://images.pexels.com/photos/1536622/pexels-photo-1536622.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
         ],
-        category: "women",
-        rating: 4.8,
-        reviews: 85,
-        sizes: ["XS", "S", "M", "L", "XL"],
-        colors: ["Red", "Black", "Navy", "Emerald"],
-        stock: 30,
-        discount: 25
+        category: "men",
+        rating: 3.2,
+        reviews: 14,
+        sizes: ["50ML", "100ML"],
+        colors: ["Black", "White"],
+        stock: 12,
+        discount: 14
     },
     {
         id: 3,
@@ -48,7 +48,7 @@ const productsData = [
         price: 3500,
         originalPrice: null,
         images: [
-            "https://images.pexels.com/photos/1598508/pexels-photo-1598508.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+            "11.jpeg",
             "https://images.pexels.com/photos/1598509/pexels-photo-1598509.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
             "https://images.pexels.com/photos/1598510/pexels-photo-1598510.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
         ],

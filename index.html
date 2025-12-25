@@ -14,6 +14,7 @@
 </head>
 
 <body>
+
   <!-- Loading Screen with Wooden Door Animation -->
   <div id="loading-screen" class="loading-screen">
     <div class="wooden-door">
@@ -61,6 +62,7 @@
           <a href="#" class="nav-link" onclick="showPage('products')">
             <span data-en="Shop" data-ur="مصنوعات">Shop</span>
           </a>
+          
         </li>
         <li class="nav-item">
           <a href="#" class="nav-link" onclick="showPage('about')">
@@ -205,7 +207,7 @@
     <div id="termsPage" class="page">
       <div class="info-container">
         <h1>Terms & Conditions</h1>
-        <p>Welcome to Zerli’n. By accessing or using our website, you agree to comply with the following terms and
+        <p>Welcome to M.R Perfumes. By accessing or using our website, you agree to comply with the following terms and
           conditions...</p>
         <ul>
           <li>Use of our website is for lawful purposes only.</li>
@@ -254,6 +256,7 @@
 
     <!-- Home Page -->
     <div id="homePage" class="page active">
+
       <!-- Hero Section -->
       <section class="hero">
         <div class="hero-slider" id="heroSlider">
@@ -290,15 +293,15 @@
         <button class="slider-btn next" onclick="nextSlide()">›</button>
 
       </section>
-      <!-- Top Policy Slider -->
+              <!-- Top Policy Slider -->
 <div class="top-slider">
   <button class="slider-control left" onclick="slidePolicy(-1)">‹</button>
 
   <div class="slider-viewport">
     <div class="slider-track" id="policyTrack">
-      <span>🚚 Free Delivery on Orders Over Rs. 3000</span>
-      <span>🔄 30 Days Easy Return Policy</span>
-      <span>💳 Secure Payments & COD Available</span>
+      <span>Wellcome M.R Perfumes</span>
+      <span>Delivery charges in Punjab Rs:300 & Out of Punjab Rs:400 </span>
+      <span>💳 Only COD Available</span>
       <span>⭐ Premium Quality Guaranteed</span>
     </div>
   </div>
@@ -393,6 +396,7 @@
 
           </div>
         </div>
+        
       </section>
 
 
@@ -455,9 +459,49 @@
       </button>
       <!-- Navigation Links (auto-created with JS) -->
       <div id="productsNav" class="products-nav"></div>
-    
+     
+      
       <div class="products-header">
-        
+<div class="hero-slider1">
+  <div class="slides1">
+
+    <div class="slide1 active1">
+      <img src="https://images.unsplash.com/photo-1647452118891-a56807a40b45?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Product 1">
+      <div class="overlay1"></div>
+      <div class="caption1">
+        <h1>Premium Products</h1>
+        <p>Quality you can trust</p>
+      </div>
+    </div>
+
+    <div class="slide1">
+      <img src="https://images.unsplash.com/photo-1602070945737-067cfd04174c?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Product 2">
+      <div class="overlay1"></div>
+      <div class="caption1">
+        <h1>Modern Design</h1>
+        <p>Crafted for excellence</p>
+      </div>
+    </div>
+
+    <div class="slide1">
+      <img src="https://images.unsplash.com/photo-1621814374283-57cc5d0d39c2?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZnJhZ3JhbmNlfGVufDB8fDB8fHww" alt="Product 3">
+      <div class="overlay1"></div>
+      <div class="caption1">
+        <h1>Best Performance</h1>
+        <p>Innovation at its best</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="dots1">
+    <span class="dot1 active1" onclick="currentSlide1(0)"></span>
+    <span class="dot1" onclick="currentSlide1(1)"></span>
+    <span class="dot1" onclick="currentSlide1(2)"></span>
+  </div>
+</div>
+
+
         <h1>Our Products</h1>
 
       <div class="filters">
@@ -490,6 +534,12 @@
       <div class="products-grid" id="allProducts">
         <!-- Products will be loaded dynamically -->
       </div>
+      <div class="show-more-wrapper">
+  <button id="showMoreBtn" class="show-more-btn" onclick="showMoreProducts()">
+    Show More
+  </button>
+</div>
+
     </div>
 
 
@@ -719,8 +769,7 @@
             <h3>Payment Method</h3>
             <div class="payment-options">
               <label><input type="radio" name="payment" value="cod" checked> Cash on Delivery</label>
-              <label><input type="radio" name="payment" value="card"> Credit/Debit Card</label>
-              <label><input type="radio" name="payment" value="bank"> Bank Transfer</label>
+             
             </div>
           </div>
 
@@ -734,9 +783,9 @@
     </div>
 
 
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore-compat.js"></script>
@@ -744,6 +793,7 @@
     <script src="firebase.js"></script>
     <script src="product.js"></script>
     <script src="script.js"></script>
+    <script src="functions.js"></script>
     <footer class="site-footer">
       <div class="footer-wave">
         <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
@@ -884,6 +934,7 @@
       });
 
     </script>
+    
 </body>
 
 </html>
